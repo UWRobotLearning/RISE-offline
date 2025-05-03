@@ -1,1 +1,199 @@
-hello world
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>VideoMimic</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto+Mono:wght@300&display=swap');
+
+    body {
+      background-color: #fdfaf4;
+      font-family: 'Playfair Display', serif;
+      color: #1b1b1b;
+      padding: 60px 30px;
+    }
+
+    .toc {
+      width: 180px;
+      font-family: 'Roboto Mono', monospace;
+      position: fixed;
+      top: 250px;
+      left: max(30px, calc(25vw - 330px));
+    }
+
+    .toc h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 24px;
+      margin-top: 0;
+      margin-bottom: 10px;
+    }
+
+    .toc hr {
+      border: 0;
+      height: 1px;
+      background-color: #ccc;
+      margin-bottom: 15px;
+    }
+
+    .toc ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .toc li {
+      margin-bottom: 10px;
+    }
+
+    .toc a {
+      text-decoration: none;
+      color: #333;
+      font-size: 16px;
+    }
+
+    .toc a:hover {
+      color: #000;
+      text-decoration: underline;
+    }
+
+    .main-content {
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    .hero-text {
+      font-size: 60px;
+      font-weight: 700;
+      letter-spacing: -1px;
+      line-height: 1.1;
+      margin-bottom: 10px;
+    }
+
+    .sub-hero-text {
+      font-size: 40px;
+      font-weight: 400;
+      margin-bottom: 50px;
+      line-height: 1.2;
+    }
+
+    .tagline {
+      font-family: 'Roboto Mono', monospace;
+      font-size: 24px;
+      background: #000;
+      color: #fff;
+      display: inline-block;
+      padding: 8px 16px;
+      margin: 40px 0;
+    }
+
+    img {
+      width: 100%;
+      border: 0cm solid #000;
+      margin: 0px 20px;
+    }
+
+    .section {
+      font-size: 20px;
+      line-height: 1.7;
+      margin-bottom: 40px;
+    }
+
+    .pull-quote {
+      font-size: 32px;
+      font-style: italic;
+      font-weight: 400;
+      margin: 60px 0 20px 0;
+      color: #333;
+    }
+
+    .footer {
+      font-size: 14px;
+      font-family: 'Roboto Mono', monospace;
+      color: #666;
+      margin-top: 80px;
+      border-top: 1px solid #ccc;
+      padding-top: 30px;
+      text-align: center;
+    }
+
+    /* New style for figure captions */
+    .figure-caption {
+      font-family: 'Roboto Mono', monospace;
+      font-size: 14px;
+      color: #555;
+      text-align: center;
+      margin-top: 10px; /* Space above caption */
+      margin-bottom: 40px; /* Space below caption, before next element */
+      padding: 0 20px; /* Add some horizontal padding */
+    }
+  </style>
+</head>
+<body>
+  <div class="toc">
+    <h3>Content</h3>
+    <hr>
+    <ul>
+      <li><a href="#abstract">Abstract</a></li>
+      <li><a href="#real-to-sim">Real to Sim</a></li>
+      <li><a href="#training-in-sim">Training in Sim</a></li>
+      <li><a href="#deploy-in-real">Deploy in Real</a></li>
+    </ul>
+  </div>
+
+  <div class="main-content">
+    <div class="hero-text">VideoMimic:</div>
+    <div class="sub-hero-text">Visual imitation enables contextual humanoid control</div>
+
+    <!-- use the video ./figs/videomimic_teaser.mp4 -->
+    <video src="./figs/videomimic_teaser.mp4" width="100%" height="100%" controls></video>
+    <!-- Caption for Figure 1 (Teaser Video) -->
+    <p class="figure-caption">
+      <b>Figure 1:</b> Overview of the VideoMimic real-to-sim-to-real pipeline converting everyday videos into transferable humanoid skills.
+    </p>
+    <div class="tagline" id="abstract">Abstract.</div>
+
+
+    <div class="section">
+
+        How can we teach humanoids to climb staircases and sit on chairs using the surrounding environment context? Arguably, the simplest way is to <em>just show them</em>---casually capture a human motion video and feed it to humanoids.
+        We introduce <span style="font-variant: small-caps;">VideoMimic</span>, a real-to-sim-to-real pipeline that mines everyday videos, jointly reconstructs the humans and the environment, and produces whole-body control policies for humanoid robots that perform the corresponding skills.
+       We demonstrate the results of our pipeline on real humanoid robots, showing robust, repeatable contextual control such as staircase ascents and descents, sitting and standing from chairs and benches, as well as other dynamic whole-body skills---all from a single policy, conditioned on the environment and global root commands. 
+       We hope our data and approach help enable a scalable path towards teaching humanoids to operate in diverse real-world environments.
+    
+    </div> 
+
+    <div class="tagline" id="real-to-sim">Real to Sim.</div>
+
+    <img src="figs/2.png" alt="real-to-sim pipeline">
+    <!-- Caption for Figure 2 -->
+    <p class="figure-caption">
+      <b>Figure 2:</b> The Real-to-Sim pipeline reconstructs human motion and scene geometry from video, outputting simulator-ready data.
+    </p>
+
+    <img src="figs/4.png" alt="real-to-sim pipeline">
+    <!-- Caption for Figure 4 -->
+    <p class="figure-caption">
+      <b>Figure 4:</b> Versatile capabilities include handling internet videos, multi-human reconstruction, and ego-view rendering.
+    </p>
+
+    <div class="tagline" id="training-in-sim">Training in Sim.</div>
+    <img src="figs/3.png" alt="real-to-sim pipeline">
+    <!-- Caption for Figure 3 -->
+    <p class="figure-caption">
+      <b>Figure 3:</b> Policy training pipeline in simulation, progressing from MoCap pre-training to geometry-aware tracking and distillation.
+    </p>
+
+    <div class="tagline" id="deploy-in-real">Deploy in Real.</div>
+    <img src="figs/5.png" alt="real-to-sim pipeline">
+    <!-- Caption for Figure 5 -->
+    <p class="figure-caption">
+      <b>Figure 5:</b> Real-world deployment showing various skills (terrain traversal, standing, sitting) executed by a single context-aware policy.
+    </p>
+
+
+    <div class="footer">
+      © UC Berkeley Robotics | Powered by vision, motion, and a little ambition.
+    </div>
+  </div>
+</body>
+</html>
