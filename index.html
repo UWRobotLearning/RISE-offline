@@ -18,7 +18,19 @@
       font-family: 'Roboto Mono', monospace;
       position: fixed;
       top: 250px;
-      left: max(30px, calc(25vw - 330px));
+      /* Hide TOC by default */
+      display: none; 
+      /* left: max(30px, calc(25vw - 330px)); */ /* Move left positioning into media query */
+    }
+
+    /* Media Query: Apply styles only when viewport width is 1300px or wider */
+    @media (min-width: 1400px) {
+      .toc {
+        /* Show the TOC */
+        display: block; 
+        /* Apply the calculated left position */
+        left: max(30px, calc(25vw - 330px)); 
+      }
     }
 
     .toc h3 {
@@ -141,11 +153,12 @@
   </div>
 
   <div class="main-content">
-    <div class="hero-text">VideoMimic:</div>
+    <div class="hero-text">VideoMimic</div>
     <div class="sub-hero-text">Visual imitation enables contextual humanoid control</div>
 
     <!-- use the video ./figs/videomimic_teaser.mp4 -->
-    <video src="./figs/videomimic_teaser.mp4" width="100%" height="100%" controls></video>
+    <video id="teaser-video" src="./figs/videomimic_teaser.mp4" width="100%" height="100%" controls muted playsinline>
+    </video>
     <!-- Caption for Figure 1 (Teaser Video) -->
     <!-- <p class="figure-caption">
       <b>Figure 1:</b> Overview of the VideoMimic real-to-sim-to-real pipeline converting everyday videos into transferable humanoid skills.
@@ -196,5 +209,63 @@
       © UC Berkeley Robotics | Powered by vision, motion, and a little ambition.
     </div>
   </div>
+
+  <!-- Add JavaScript for delayed video playback and looping -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const video = document.getElementById('teaser-video'); // Get the video element by its ID
+      const initialDelay = 2000; // 2 seconds
+      const loopDelay = 2000;    // 2 seconds
+
+      if (video) {
+        let initialPlayTimeout;
+        let loopTimeout;
+
+        // --- Initial Play Delay ---
+        initialPlayTimeout = setTimeout(function() {
+          video.play().catch(function(error) {
+            console.log('Delayed auto-play prevented:', error);
+            // Autoplay was prevented, user might need to click play
+          });
+        }, initialDelay);
+
+        // --- Delayed Looping ---
+        video.addEventListener('ended', function() {
+          clearTimeout(loopTimeout); // Clear previous loop timeout if any
+          loopTimeout = setTimeout(function() {
+            video.currentTime = 0; // Reset video to the beginning
+            video.play().catch(function(error) {
+              console.log('Delayed loop play prevented:', error);
+            });
+          }, loopDelay);
+        });
+
+        // --- Clear Timeouts on Manual Pause ---
+        video.addEventListener('pause', function() {
+          // Only clear timeouts if the video isn't at the very end
+          // (since 'ended' can sometimes trigger 'pause')
+          // and wasn't paused right at the beginning before initial play
+          if (!video.ended && video.currentTime > 0) {
+             clearTimeout(initialPlayTimeout); // Clear initial delay if paused before it starts
+             clearTimeout(loopTimeout);       // Clear loop delay
+             console.log('Manual pause detected, clearing timeouts.');
+          }
+        });
+
+        // --- Clear Timeouts on Manual Play (if paused before initial delay finishes) ---
+         video.addEventListener('play', function() {
+             // If the video starts playing before the initial timeout finishes (e.g., user clicks play)
+             // clear the initial timeout to prevent it from trying to play again.
+             if (initialPlayTimeout) {
+                 clearTimeout(initialPlayTimeout);
+             }
+         });
+
+      } else {
+        console.error('Video element with ID "teaser-video" not found.');
+      }
+    });
+  </script>
+
 </body>
 </html>
