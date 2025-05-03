@@ -88,6 +88,38 @@
       line-height: 1.2;
     }
 
+    /* New style for authors */
+    .authors {
+      font-family: 'Roboto Mono', monospace; /* Use a monospace font like taglines */
+      font-size: 16px; /* Slightly smaller font size */
+      color: #333; /* Dark grey color */
+      line-height: 1.6; /* Adjust line spacing */
+      margin-top: -32.5px; /* Reduce space below subtitle */
+      margin-bottom: 17.5px; /* Add space below authors */
+      text-align: left; /* Ensure left alignment */
+    }
+    .authors span { /* Style for affiliation/notes */
+        display: block; /* Put affiliation/note on new line */
+        font-size: 14px;
+        color: #555;
+        margin-top: 0px;
+    }
+    /* Style for the affiliation specifically */
+    .authors .affiliation {
+        font-weight: bold; /* Make it bold */
+        font-size: 18px;   /* Increase font size (+2 from 16px parent, or adjust as needed) */
+        color: #333;      /* Make it slightly darker like main author text */
+    }
+    /* Style for links within the authors block */
+    .authors a {
+        color: inherit; /* Inherit the color from the .authors class */
+        text-decoration: none; /* Remove default underline */
+    }
+    .authors a:hover {
+        text-decoration: underline; /* Add underline on hover */
+    }
+    /* End new style */
+
     .tagline {
       font-family: 'Roboto Mono', monospace;
       font-size: 24px;
@@ -156,13 +188,21 @@
     <div class="hero-text">VideoMimic</div>
     <div class="sub-hero-text">Visual imitation enables contextual humanoid control</div>
 
+    <!-- Add Authors -->
+    <div class="authors">
+      <a href="https://allshire.org/" target="_blank">Arthur Allshire*</a>, <a href="https://hongsukchoi.github.io/" target="_blank">Hongsuk Choi*</a>, <a href="https://www.junyi42.com/" target="_blank">Junyi Zhang*</a>, <a href="https://mcallisterdavid.com/" target="_blank">David McAllister*</a>, <a href="https://www.linkedin.com/in/antzhang/" target="_blank">Anthony Zhang</a>, <a href="https://chungmin99.github.io/" target="_blank">Chung Min Kim</a>,<br>
+      <a href="https://people.eecs.berkeley.edu/~trevor/" target="_blank">Trevor Darrell</a>, <a href="https://people.eecs.berkeley.edu/~pabbeel/" target="_blank">Pieter Abbeel</a>, <a href="https://people.eecs.berkeley.edu/~jitendrak/" target="_blank">Jitendra Malik</a>, <a href="https://people.eecs.berkeley.edu/~kanazawa/" target="_blank">Angjoo Kanazawa</a>
+      <span class="affiliation">University of California, Berkeley</span>
+    </div>
+    <!-- End Authors -->
+
     <!-- use the video ./figs/videomimic_teaser.mp4 -->
     <video id="teaser-video" src="./figs/videomimic_teaser.mp4" width="100%" height="100%" controls muted playsinline>
     </video>
     <!-- Caption for Figure 1 (Teaser Video) -->
-    <!-- <p class="figure-caption">
-      <b>Figure 1:</b> Overview of the VideoMimic real-to-sim-to-real pipeline converting everyday videos into transferable humanoid skills.
-    </p> -->
+    <p class="figure-caption">
+        <span style="font-variant: small-caps;">VideoMimic</span> is a real-to-sim-to-real pipeline that converts monocular videos into transferable humanoid skills, letting robots learn context-aware behaviors (terrain-traversing, climbing, sitting) from a single policy.
+    </p>
     
     <div class="tagline" id="abstract">Abstract.</div>
 
