@@ -135,8 +135,26 @@
 
     img {
       width: 100%;
-      border: 0cm solid #000;
+      /* Update border: set width (e.g., 4px), style (solid), color (#000) */
+      /* border: 0cm solid #000; */
+      border: 1.5px solid #000; 
+      /* Add border-radius for rounded corners */
+      border-radius: 15px; 
       margin: 0px 20px;
+      /* Ensure images behave correctly with border-box sizing */
+      box-sizing: border-box; 
+    }
+
+    /* Style to remove border and radius from Figure 2 (figs/4.png) */
+    #figure-2-img {
+      border: none; /* 移除边框 */
+      border-radius: 0; /* 移除圆角 */
+    }
+
+    /* Style to add left padding to Figure 3 (figs/3.png) */
+    #figure-3-img {
+      padding-left: 15px; /* 在左侧添加 20px 的内边距 */
+      background-color: #fff; /* 设置背景色为白色 */
     }
 
     .section {
@@ -193,7 +211,7 @@
 
     <!-- Add Authors -->
     <div class="authors">
-      <a href="https://allshire.org/" target="_blank">Arthur Allshire*</a>, <a href="https://hongsukchoi.github.io/" target="_blank">Hongsuk Choi*</a>, <a href="https://www.junyi42.com/" target="_blank">Junyi Zhang*</a>, <a href="https://mcallisterdavid.com/" target="_blank">David McAllister*</a>, <a href="https://www.linkedin.com/in/antzhang/" target="_blank">Anthony Zhang</a>, <a href="https://chungmin99.github.io/" target="_blank">Chung Min Kim</a>,<br>
+      <a href="https://allshire.org/" target="_blank">Arthur Allshire*</a>, <a href="https://hongsukchoi.github.io/" target="_blank">Hongsuk Choi*</a>, <a href="https://www.junyi42.com/" target="_blank">Junyi Zhang*</a>, <a href="https://mcallisterdavid.com/" target="_blank">David McAllister*</a>, <a href="https://antoniomacaronio.github.io/personal-website/#/home/" target="_blank">Anthony Zhang</a>, <a href="https://chungmin99.github.io/" target="_blank">Chung Min Kim</a>,<br>
       <a href="https://people.eecs.berkeley.edu/~trevor/" target="_blank">Trevor Darrell</a>, <a href="https://people.eecs.berkeley.edu/~pabbeel/" target="_blank">Pieter Abbeel</a>, <a href="https://people.eecs.berkeley.edu/~malik/" target="_blank">Jitendra Malik</a>, <a href="https://people.eecs.berkeley.edu/~kanazawa/" target="_blank">Angjoo Kanazawa</a>
       <span class="affiliation">University of California, Berkeley</span>
     </div>
@@ -212,9 +230,9 @@
 
     <div class="section">
 
-        How can we teach humanoids to climb staircases and sit on chairs using the surrounding environment context? Arguably, the simplest way is to <em>just show them</em>---casually capture a human motion video and feed it to humanoids.
+        How can we teach humanoids to climb staircases and sit on chairs using the surrounding environment context? Arguably, the simplest way is to <em>just show them</em>&mdash;casually capture a human motion video and feed it to humanoids.
         We introduce <span style="font-variant: small-caps;">VideoMimic</span>, a real-to-sim-to-real pipeline that mines everyday videos, jointly reconstructs the humans and the environment, and produces whole-body control policies for humanoid robots that perform the corresponding skills.
-       We demonstrate the results of our pipeline on real humanoid robots, showing robust, repeatable contextual control such as staircase ascents and descents, sitting and standing from chairs and benches, as well as other dynamic whole-body skills---all from a single policy, conditioned on the environment and global root commands. 
+       We demonstrate the results of our pipeline on real humanoid robots, showing robust, repeatable contextual control such as staircase ascents and descents, sitting and standing from chairs and benches, as well as other dynamic whole-body skills&mdash;all from a single policy, conditioned on the environment and global root commands. 
        We hope our data and approach help enable a scalable path towards teaching humanoids to operate in diverse real-world environments.
     
     </div> 
@@ -224,17 +242,17 @@
     <img src="figs/2.png" alt="real-to-sim pipeline">
     <!-- Caption for Figure 2 -->
     <p class="figure-caption">
-      <b>Figure 2:</b> The Real-to-Sim pipeline reconstructs human motion and scene geometry from video, outputting simulator-ready data.
+      <b>Figure 1:</b> The Real-to-Sim pipeline reconstructs human motion and scene geometry from video, outputting simulator-ready data.
     </p>
 
-    <img src="figs/4.png" alt="real-to-sim pipeline">
+    <img id="figure-2-img" src="figs/4.png" alt="real-to-sim pipeline">
     <!-- Caption for Figure 4 -->
     <p class="figure-caption">
-      <b>Figure 4:</b> Versatile capabilities include handling internet videos, multi-human reconstruction, and ego-view rendering.
+      <b>Figure 2:</b> Versatile capabilities include handling internet videos, multi-human reconstruction, and ego-view rendering.
     </p>
 
     <div class="tagline" id="training-in-sim">Training in Sim.</div>
-    <img src="figs/3.png" alt="real-to-sim pipeline">
+    <img id="figure-3-img" src="figs/3.png" alt="real-to-sim pipeline">
     <!-- Caption for Figure 3 -->
     <p class="figure-caption">
       <b>Figure 3:</b> Policy training pipeline in simulation, progressing from MoCap pre-training to geometry-aware tracking and distillation.
@@ -244,12 +262,12 @@
     <img src="figs/5.png" alt="real-to-sim pipeline">
     <!-- Caption for Figure 5 -->
     <p class="figure-caption">
-      <b>Figure 5:</b> Real-world deployment showing various skills (terrain traversal, standing, sitting) executed by a single context-aware policy.
+      <b>Figure 4:</b> Real-world deployment showing various skills (terrain traversal, standing, sitting) executed by a single context-aware policy.
     </p>
 
 
     <div class="footer">
-      © UC Berkeley Robotics | Powered by vision, motion, and a little ambition.
+      © UC Berkeley | Powered by vision, motion, and a little ambition.
     </div>
   </div>
 
