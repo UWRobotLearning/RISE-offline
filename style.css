@@ -1,0 +1,328 @@
+/* CSS styles for the article */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto+Mono:wght@300;700&display=swap');
+
+body {
+  background-color: #fdfaf4;
+  font-family: 'Playfair Display', serif;
+  color: #1b1b1b;
+  padding: 60px 30px;
+}
+
+.toc {
+  width: 180px;
+  font-family: 'Roboto Mono', monospace;
+  position: fixed;
+  top: 250px;
+  /* Hide TOC by default */
+  display: none; 
+  /* left: max(30px, calc(25vw - 330px)); */ /* Move left positioning into media query */
+}
+
+/* Media Query: Apply styles only when viewport width is 1300px or wider */
+@media (min-width: 1400px) {
+  .toc {
+    /* Show the TOC */
+    display: block; 
+    /* Apply the calculated left position */
+    left: max(30px, calc(25vw - 330px)); 
+  }
+}
+
+.toc h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 24px;
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.toc hr {
+  border: 0;
+  height: 1px;
+  background-color: #ccc;
+  margin-bottom: 15px;
+}
+
+.toc ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.toc li {
+  margin-bottom: 10px;
+}
+
+.toc a {
+  text-decoration: none;
+  color: #333;
+  font-size: 16px;
+}
+
+.toc a:hover {
+  color: #000;
+  text-decoration: underline;
+}
+
+.main-content {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.hero-text {
+  font-size: 60px;
+  font-weight: 700;
+  letter-spacing: -1px;
+  line-height: 1.1;
+  margin-bottom: 10px;
+}
+
+.sub-hero-text {
+  font-size: 40px;
+  font-weight: 400;
+  margin-bottom: 50px;
+  line-height: 1.2;
+}
+
+/* New style for authors */
+.authors {
+  font-family: 'Roboto Mono', monospace; /* Use a monospace font like taglines */
+  font-size: 16px; /* Slightly smaller font size */
+  color: #333; /* Dark grey color */
+  line-height: 1.6; /* Adjust line spacing */
+  margin-top: -32.5px; /* Reduce space below subtitle */
+  margin-bottom: 17.5px; /* Add space below authors */
+  text-align: left; /* Ensure left alignment */
+}
+.authors span { /* Style for affiliation/notes */
+    display: block; /* Put affiliation/note on new line */
+    font-size: 14px;
+    color: #555;
+    margin-top: 0px;
+}
+/* Style for the affiliation specifically */
+.authors .affiliation {
+    /* Change from bold to a higher numeric weight */
+    /* font-weight: bold; */ 
+    /* Set font-weight to 700 (standard bold) */
+    font-weight: 600;  
+    font-size: 16px;   
+    color: #111;      
+}
+/* Style for links within the authors block */
+.authors a {
+    color: inherit; /* Inherit the color from the .authors class */
+    text-decoration: none; /* Remove default underline */
+}
+.authors a:hover {
+    text-decoration: underline; /* Add underline on hover */
+}
+/* End new style */
+
+.tagline {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 24px;
+  background: #000;
+  color: #fff;
+  display: inline-block;
+  padding: 8px 16px;
+  margin: 40px 0;
+}
+
+img {
+  width: 100%;
+  /* Update border: set width (e.g., 4px), style (solid), color (#000) */
+  /* border: 0cm solid #000; */
+  border: 1.5px solid #000; 
+  /* Add border-radius for rounded corners */
+  border-radius: 15px; 
+  margin: 0px 20px;
+  /* Ensure images behave correctly with border-box sizing */
+  box-sizing: border-box; 
+}
+
+/* Style to remove border and radius from Figure 2 (figs/4.png) */
+#figure-2-img {
+  /* border: none; */ /* Remove border */
+  border: none;
+  /* border-radius: 0; */ /* Remove border radius */
+  border-radius: 0;
+}
+
+/* Style to add left padding to Figure 3 (figs/3.png) */
+#figure-3-img {
+  /* padding-left: 15px; */ /* Add 15px padding on the left */
+  padding-left: 15px;
+  /* background-color: #fff; */ /* Set background color to white */
+  background-color: #fff;
+}
+
+/* --- Updated Styles for Video Gallery --- */
+
+/* New outer wrapper for the whole section */
+.video-gallery-section {
+    margin-bottom: 40px; /* Space below the gallery section */
+    width: 100%; /* Allow it to span full width */
+}
+
+/* Container for the scrollable videos - now wider */
+.video-gallery-container {
+  /* Remove position: relative */
+  /* Remove padding: 0 45px */
+  box-sizing: border-box;
+  width: 100%; /* Take full width */
+  overflow-x: auto; /* Enable horizontal scrolling */
+  scroll-behavior: smooth; /* Smooth scrolling effect */
+   /* Hide scrollbar */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;  /* IE and Edge */
+}
+.video-gallery-container::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+
+/* The actual scrolling div holding the videos */
+.video-gallery {
+  display: flex;
+  gap: 15px; /* Space between videos */
+  padding: 0 5vw; /* Add padding L/R to make content wider than main column (adjust 5vw as needed) */
+  padding-bottom: 10px; /* Add some space at the bottom */
+  box-sizing: border-box;
+  width: max-content; /* Ensure it fits all videos horizontally */
+  margin: 0 auto; /* Center the flex container if it's narrower than the container (unlikely with max-content) */
+}
+
+
+.gallery-video {
+  flex: 0 0 auto; /* Prevent videos from shrinking/growing in the flex context */
+  /* width: 30vw; */ /* Remove fixed/relative width */
+  /* max-width: 450px; */ /* Remove max-width as width will be auto */
+  height: 220px;  /* Set a fixed height for all videos. Adjust this value as desired. */
+  width: auto;    /* Allow width to adjust to maintain original aspect ratio */
+  /* max-height: 253.125px; */ /* No longer needed if height is fixed */
+  /* object-fit: cover; */ /* Remove object-fit: cover to avoid cropping */
+  border-radius: 15px; /* Keep the rounded corners */
+  box-sizing: border-box;
+  background-color: #fdfaf4; /* Assuming you've reverted from the lime diagnostic */
+  /* Add a box-shadow for the glow/shadow effect */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Styles for the navigation buttons */
+.gallery-nav {
+  /* ... existing button styles (background, color, border, radius, size, etc.) ... */
+  background-color: rgba(40, 40, 40, 0.8);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 35px;  /* Slightly smaller buttons */
+  height: 35px; /* Slightly smaller buttons */
+  font-size: 20px; /* Slightly smaller font */
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s ease;
+  margin: 0 5px; /* Adjust margin between buttons */
+  flex-shrink: 0; /* Prevent buttons from shrinking */
+}
+.gallery-nav:hover {
+    background-color: rgba(0, 0, 0, 1);
+}
+
+/* Container for the navigation buttons - remove centering margin */
+.gallery-nav-controls {
+    /* max-width: 960px; */ /* No longer needed */
+    /* margin: 15px auto 0 auto; */ /* Remove auto margin */
+    display: flex; /* Keep as flex to layout buttons */
+    /* justify-content: center; */ /* No longer needed */
+    align-items: center;
+    margin-right: 15px; /* Add space between buttons and caption text */
+}
+
+
+/* Container to center the gallery caption and buttons */
+.gallery-caption-container {
+    max-width: 960px; /* Align container with main content */
+    margin: 15px auto 0 auto; /* Top margin, centered horizontally */
+    padding: 0 20px; /* Match original caption padding */
+    box-sizing: border-box;
+    display: flex; /* Make it a flex container */
+    align-items: center; /* Vertically center items (buttons and text) */
+    justify-content: center; /* Center content horizontally */
+}
+
+/* Specific style adjustments for the gallery caption text */
+.figure-caption.gallery-caption {
+    margin-bottom: 0;
+    margin-top: 0; /* Remove top margin, alignment handled by flex */
+    text-align: left; /* Align text to the left within its space */
+    flex-grow: 1; /* Allow text to take available space if needed */
+    /* Optional: Add a small left margin if needed */
+    /* margin-left: 10px; */
+}
+/* --- End Video Gallery Styles --- */
+
+.section {
+  font-size: 20px;
+  line-height: 1.7;
+  margin-bottom: 40px;
+}
+
+.pull-quote {
+  font-size: 32px;
+  font-style: italic;
+  font-weight: 400;
+  margin: 60px 0 20px 0;
+  color: #333;
+}
+
+.footer {
+  font-size: 14px;
+  font-family: 'Roboto Mono', monospace;
+  color: #666;
+  margin-top: 80px;
+  border-top: 1px solid #ccc;
+  padding-top: 30px;
+  text-align: center;
+}
+
+/* New style for figure captions */
+.figure-caption {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 14px;
+  color: #555;
+  text-align: center;
+  margin-top: 10px; /* Space above caption */
+  margin-bottom: 40px; /* Space below caption, before next element */
+  padding: 0 20px; /* Add some horizontal padding */
+}
+
+/* New styles for quick links */
+.quick-links {
+  text-align: center;
+  margin-top: -10px; /* Adjust to bring closer to caption if needed, or use a positive value for more space */
+  margin-bottom: 0px; /* Space before the next section (Abstract tagline) */
+}
+.quick-links a {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 18px; /* Slightly larger than caption */
+  font-weight: bold;
+  /* color: #337ab7; */ /* Standard link blue, or choose your own */
+  color: #333; /* Change to dark grey */
+  text-decoration: none;
+  margin: 0 36px; /* Spacing between links */
+  padding: 5px 8px; /* Add some padding for a button-like feel if desired */
+  /* border: 1px solid transparent; */ /* Optional: for button look */
+  /* border-radius: 4px; */ /* Optional: for button look */
+}
+.quick-links a:hover,
+.quick-links a:focus {
+  text-decoration: underline;
+  /* color: #23527c; */ /* Darker blue on hover */
+  color: #000; /* Optional: Change to black or slightly darker grey on hover */
+  /* background-color: #f0f0f0; */ /* Optional: background for button look on hover */
+  /* border-color: #ccc; */ /* Optional: for button look on hover */
+}
+/* End new styles for quick links */
