@@ -253,7 +253,7 @@ img {
     padding: 0 20px; /* Match original caption padding */
     box-sizing: border-box;
     display: flex; /* Make it a flex container */
-    align-items: center; /* Vertically center items (buttons and text) */
+    align-items: flex-start; /* Align items to the top */
     justify-content: center; /* Center content horizontally */
 }
 
