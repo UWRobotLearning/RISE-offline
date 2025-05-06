@@ -169,7 +169,10 @@ img {
   /* Remove position: relative */
   /* Remove padding: 0 45px */
   box-sizing: border-box;
-  width: 100%; /* Take full width */
+  /* width: 100%; */ /* Remove this to use max-width */
+  max-width: 1150px; /* Set a maximum width for the gallery container */
+  margin-left: auto;   /* Center the container */
+  margin-right: auto;  /* Center the container */
   overflow-x: auto; /* Enable horizontal scrolling */
   scroll-behavior: smooth; /* Smooth scrolling effect */
    /* Hide scrollbar */
@@ -185,7 +188,8 @@ img {
 .video-gallery {
   display: flex;
   gap: 15px; /* Space between videos */
-  padding: 0 5vw; /* Add padding L/R to make content wider than main column (adjust 5vw as needed) */
+  /* padding: 0 5vw; */ /* Original padding */
+  padding: 0 20px; /* Adjusted to fixed padding, or keep 5vw if preferred */
   padding-bottom: 10px; /* Add some space at the bottom */
   box-sizing: border-box;
   width: max-content; /* Ensure it fits all videos horizontally */

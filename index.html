@@ -26,7 +26,8 @@
     <!-- Add Authors -->
     <div class="authors">
       <a href="https://allshire.org/" target="_blank">Arthur Allshire*</a>, <a href="https://hongsukchoi.github.io/" target="_blank">Hongsuk Choi*</a>, <a href="https://www.junyi42.com/" target="_blank">Junyi Zhang*</a>, <a href="https://mcallisterdavid.com/" target="_blank">David McAllister*</a>, <a href="https://antoniomacaronio.github.io/personal-website/#/home/" target="_blank">Anthony Zhang</a>, <a href="https://chungmin99.github.io/" target="_blank">Chung Min Kim</a>,<br>
-      <a href="https://people.eecs.berkeley.edu/~trevor/" target="_blank">Trevor Darrell</a>, <a href="https://people.eecs.berkeley.edu/~pabbeel/" target="_blank">Pieter Abbeel</a>, <a href="https://people.eecs.berkeley.edu/~malik/" target="_blank">Jitendra Malik</a>, <a href="https://people.eecs.berkeley.edu/~kanazawa/" target="_blank">Angjoo Kanazawa.</a> (*:equal contribution)
+      <a href="https://people.eecs.berkeley.edu/~trevor/" target="_blank">Trevor Darrell</a>, <a href="https://people.eecs.berkeley.edu/~pabbeel/" target="_blank">Pieter Abbeel</a>, <a href="https://people.eecs.berkeley.edu/~malik/" target="_blank">Jitendra Malik</a>, <a href="https://people.eecs.berkeley.edu/~kanazawa/" target="_blank">Angjoo Kanazawa.</a>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(*:equal contribution)
       <span class="affiliation">University of California, Berkeley</span>
     </div>
     <!-- End Authors -->
@@ -44,7 +45,7 @@
       <a href="./VideoMimic.pdf" target="_blank">[pdf]</a>
       <a href="#" target="_blank">[arxiv]</a>
       <a href="#">[code(soon)]</a> 
-      <a href="#">[gallery]</a>
+      <a href="#gallery-section-anchor">[gallery]</a>
     </div>
     
     <div class="tagline" id="abstract">Abstract.</div>
@@ -91,10 +92,10 @@
 
   </div> <!-- End of main-content div -->
 
-  <!-- Video Gallery Section (Now outside main-content) -->
+  <!-- Video Gallery Section (Now outside main-content) - SITTING VIDEOS -->
   <div class="video-gallery-section" id="gallery-section-anchor">
     <div class="video-gallery-container">
-      <div class="video-gallery" id="videoGallery">
+      <div class="video-gallery" id="videoGallerySitting">
         <!-- Videos remain here - ADD autoplay -->
         <video class="gallery-video" src="./sitting/1.mp4" autoplay muted playsinline loop></video>
         <video class="gallery-video" src="./sitting/2.mp4" autoplay muted playsinline loop></video>
@@ -107,16 +108,46 @@
     <div class="gallery-caption-container">
         <!-- Move button controls INSIDE caption container -->
         <div class="gallery-nav-controls">
-            <button class="gallery-nav left" id="scrollLeftBtn">&lt;</button>
-            <button class="gallery-nav right" id="scrollRightBtn">&gt;</button>
+            <button class="gallery-nav left" id="scrollLeftBtnSitting">&lt;</button>
+            <button class="gallery-nav right" id="scrollRightBtnSitting">&gt;</button>
         </div>
         <!-- Caption text -->
-        <p class="figure-caption gallery-caption"> <!-- Added gallery-caption class -->
+        <p class="figure-caption gallery-caption">
             Examples of the tasks that our model can perform, following instructions of varying granularity. All experiments were done in homes that were not in the training data.
         </p>
     </div>
   </div>
   <!-- End Video Gallery Section -->
+
+    <!-- Video Gallery Section (Now outside main-content) - TRAVERSING VIDEOS -->
+    <div class="video-gallery-section" id="traversingGallerySection">
+      <div class="video-gallery-container">
+        <div class="video-gallery" id="videoGalleryTraversing">
+          <!-- Videos remain here - ADD autoplay -->
+          <video class="gallery-video" src="./traversing/1.mp4" autoplay muted playsinline loop></video>
+          <video class="gallery-video" src="./traversing/2.mp4" autoplay muted playsinline loop></video>
+          <video class="gallery-video" src="./traversing/7.mp4" autoplay muted playsinline loop></video>
+          <video class="gallery-video" src="./traversing/4.mp4" autoplay muted playsinline loop></video>
+          <video class="gallery-video" src="./traversing/5.mp4" autoplay muted playsinline loop></video>
+          <video class="gallery-video" src="./traversing/6.mp4" autoplay muted playsinline loop></video>
+          <video class="gallery-video" src="./traversing/3.mp4" autoplay muted playsinline loop></video>
+          <!-- Add more videos as needed, ensuring they have autoplay muted loop -->
+        </div>
+      </div>
+      <!-- Container for the caption AND buttons -->
+      <div class="gallery-caption-container">
+          <!-- Move button controls INSIDE caption container -->
+          <div class="gallery-nav-controls">
+              <button class="gallery-nav left" id="scrollLeftBtnTraversing">&lt;</button>
+              <button class="gallery-nav right" id="scrollRightBtnTraversing">&gt;</button>
+          </div>
+          <!-- Caption text -->
+          <p class="figure-caption gallery-caption">
+              Examples of the tasks that our model can perform, following instructions of varying granularity. All experiments were done in homes that were not in the training data.
+          </p>
+      </div>
+    </div>
+    <!-- End Video Gallery Section -->
 
   <div class="footer">
     <!-- © UC Berkeley | Powered by vision, motion, and a little ambition. -->
@@ -183,52 +214,71 @@
   <!-- JavaScript for Video Gallery Navigation -->
   <script>
     document.addEventListener('DOMContentLoaded', function() {
-      // Select the scrollable container element
-      const galleryContainer = document.querySelector('.video-gallery-container');
-      // Select the inner div holding the videos (still needed for calculations)
-      const galleryInner = document.getElementById('videoGallery');
-      const scrollLeftBtn = document.getElementById('scrollLeftBtn');
-      const scrollRightBtn = document.getElementById('scrollRightBtn');
+      const galleries = [
+        {
+          sectionId: 'gallery-section-anchor', // ID of the .video-gallery-section for sitting
+          galleryInnerId: 'videoGallerySitting',
+          scrollLeftBtnId: 'scrollLeftBtnSitting',
+          scrollRightBtnId: 'scrollRightBtnSitting'
+        },
+        {
+          sectionId: 'traversingGallerySection', // ID of the .video-gallery-section for traversing
+          galleryInnerId: 'videoGalleryTraversing',
+          scrollLeftBtnId: 'scrollLeftBtnTraversing',
+          scrollRightBtnId: 'scrollRightBtnTraversing'
+        }
+      ];
 
-      // Check if all necessary elements exist
-      if (galleryContainer && galleryInner && scrollLeftBtn && scrollRightBtn) {
-        // Calculate the scroll amount based on the width of the first video + gap
-        // Use galleryInner to find the first video element
-        const scrollAmount = (galleryInner.firstElementChild?.offsetWidth || 300) + 15; // 15 is the gap
+      galleries.forEach(galleryConfig => {
+        const gallerySection = document.getElementById(galleryConfig.sectionId);
+        if (!gallerySection) {
+          console.error(`Gallery section with ID ${galleryConfig.sectionId} not found.`);
+          return;
+        }
 
-        scrollLeftBtn.addEventListener('click', () => {
-          // Scroll the CONTAINER element
-          galleryContainer.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
-        });
+        const galleryContainer = gallerySection.querySelector('.video-gallery-container');
+        const galleryInner = document.getElementById(galleryConfig.galleryInnerId);
+        const scrollLeftBtn = document.getElementById(galleryConfig.scrollLeftBtnId);
+        const scrollRightBtn = document.getElementById(galleryConfig.scrollRightBtnId);
 
-        scrollRightBtn.addEventListener('click', () => {
-          // Scroll the CONTAINER element
-          galleryContainer.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-        });
+        if (galleryContainer && galleryInner && scrollLeftBtn && scrollRightBtn) {
+          // Calculate the scroll amount based on the width of the first video + gap
+          const scrollAmount = (galleryInner.firstElementChild?.offsetWidth || 300) + 15; // 15 is the gap
 
-        /* --- REMOVE OR COMMENT OUT HOVER LOGIC ---
-        // Optional: Add hover-to-play functionality for gallery videos
-        // Target videos within galleryInner
-        const galleryVideos = galleryInner.querySelectorAll('.gallery-video');
-        galleryVideos.forEach(video => {
-            video.addEventListener('mouseenter', () => {
-                video.play().catch(e => console.log("Autoplay prevented:", e));
-            });
-            video.addEventListener('mouseleave', () => {
-                video.pause();
-                // video.currentTime = 0; // Optional: reset video on mouse leave
-            });
-        });
-        */ // --- END OF REMOVED HOVER LOGIC ---
+          scrollLeftBtn.addEventListener('click', () => {
+            // Scroll the CONTAINER element
+            galleryContainer.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+          });
 
-      } else {
-        console.error('Gallery elements not found for navigation setup.');
-        // Log which elements might be missing
-        if (!galleryContainer) console.error('Missing element: .video-gallery-container');
-        if (!galleryInner) console.error('Missing element: #videoGallery');
-        if (!scrollLeftBtn) console.error('Missing element: #scrollLeftBtn');
-        if (!scrollRightBtn) console.error('Missing element: #scrollRightBtn');
-      }
+          scrollRightBtn.addEventListener('click', () => {
+            // Scroll the CONTAINER element
+            galleryContainer.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+          });
+
+          /* --- REMOVE OR COMMENT OUT HOVER LOGIC ---
+          // Optional: Add hover-to-play functionality for gallery videos
+          // Target videos within galleryInner
+          const galleryVideos = galleryInner.querySelectorAll('.gallery-video');
+          galleryVideos.forEach(video => {
+              video.addEventListener('mouseenter', () => {
+                  video.play().catch(e => console.log("Autoplay prevented:", e));
+              });
+              video.addEventListener('mouseleave', () => {
+                  video.pause();
+                  // video.currentTime = 0; // Optional: reset video on mouse leave
+              });
+          });
+          */ // --- END OF REMOVED HOVER LOGIC ---
+
+        } else {
+          console.error(`Gallery elements not found for navigation setup in section ${galleryConfig.sectionId}.`);
+          // Log which elements might be missing
+          if (!galleryContainer) console.error('Missing element: .video-gallery-container in section ' + galleryConfig.sectionId);
+          if (!galleryInner) console.error(`Missing element with ID ${galleryConfig.galleryInnerId}`);
+          if (!scrollLeftBtn) console.error(`Missing element with ID ${galleryConfig.scrollLeftBtnId}`);
+          if (!scrollRightBtn) console.error(`Missing element with ID ${galleryConfig.scrollRightBtnId}`);
+        }
+      });
     });
   </script>
 
