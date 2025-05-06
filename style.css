@@ -161,7 +161,12 @@ img {
 /* New outer wrapper for the whole section */
 .video-gallery-section {
     margin-bottom: 40px; /* Space below the gallery section */
-    width: 100%; /* Allow it to span full width */
+    /* width: 100%; */ /* Was 100% of parent (.main-content) */
+    width: 100vw; /* Make the section span the full viewport width */
+    position: relative; /* Establishes a positioning context, good practice with calc for margins */
+    margin-left: calc((100% - 100vw) / 2); /* Calculates the negative margin to align left edge with viewport */
+    /* 100% here refers to the width of the containing block (.main-content) */
+    box-sizing: border-box; /* Ensures padding/border don't add to the 100vw width */
 }
 
 /* Container for the scrollable videos - now wider */
@@ -307,7 +312,7 @@ img {
 .quick-links {
   text-align: center;
   margin-top: -10px; /* Adjust to bring closer to caption if needed, or use a positive value for more space */
-  margin-bottom: 0px; /* Space before the next section (Abstract tagline) */
+  margin-bottom: 30px; /* Space before the next section (Abstract tagline) */
 }
 .quick-links a {
   font-family: 'Roboto Mono', monospace;
