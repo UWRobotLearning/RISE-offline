@@ -149,18 +149,126 @@
     /* Style to remove border and radius from Figure 2 (figs/4.png) */
     #figure-2-img {
       /* border: none; */ /* Remove border */
-      border: none; 
+      border: none;
       /* border-radius: 0; */ /* Remove border radius */
-      border-radius: 0; 
+      border-radius: 0;
     }
 
     /* Style to add left padding to Figure 3 (figs/3.png) */
     #figure-3-img {
       /* padding-left: 15px; */ /* Add 15px padding on the left */
-      padding-left: 15px; 
+      padding-left: 15px;
       /* background-color: #fff; */ /* Set background color to white */
-      background-color: #fff; 
+      background-color: #fff;
     }
+
+    /* --- Updated Styles for Video Gallery --- */
+
+    /* New outer wrapper for the whole section */
+    .video-gallery-section {
+        margin-bottom: 40px; /* Space below the gallery section */
+        width: 100%; /* Allow it to span full width */
+    }
+
+    /* Container for the scrollable videos - now wider */
+    .video-gallery-container {
+      /* Remove position: relative */
+      /* Remove padding: 0 45px */
+      box-sizing: border-box;
+      width: 100%; /* Take full width */
+      overflow-x: auto; /* Enable horizontal scrolling */
+      scroll-behavior: smooth; /* Smooth scrolling effect */
+       /* Hide scrollbar */
+      scrollbar-width: none; /* Firefox */
+      -ms-overflow-style: none;  /* IE and Edge */
+    }
+    .video-gallery-container::-webkit-scrollbar {
+      display: none; /* Chrome, Safari, Opera */
+    }
+
+
+    /* The actual scrolling div holding the videos */
+    .video-gallery {
+      display: flex;
+      gap: 15px; /* Space between videos */
+      padding: 0 5vw; /* Add padding L/R to make content wider than main column (adjust 5vw as needed) */
+      padding-bottom: 10px; /* Add some space at the bottom */
+      box-sizing: border-box;
+      width: max-content; /* Ensure it fits all videos horizontally */
+      margin: 0 auto; /* Center the flex container if it's narrower than the container (unlikely with max-content) */
+    }
+
+
+    .gallery-video {
+      flex: 0 0 auto; /* Prevent videos from shrinking/growing in the flex context */
+      /* width: 30vw; */ /* Remove fixed/relative width */
+      /* max-width: 450px; */ /* Remove max-width as width will be auto */
+      height: 220px;  /* Set a fixed height for all videos. Adjust this value as desired. */
+      width: auto;    /* Allow width to adjust to maintain original aspect ratio */
+      /* max-height: 253.125px; */ /* No longer needed if height is fixed */
+      /* object-fit: cover; */ /* Remove object-fit: cover to avoid cropping */
+      border-radius: 15px; /* Keep the rounded corners */
+      box-sizing: border-box;
+      background-color: #000; /* Optional: background for the video element itself, useful if videos are transparent or fail to load */
+      /* Add a box-shadow for the glow/shadow effect */
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    /* Styles for the navigation buttons */
+    .gallery-nav {
+      /* ... existing button styles (background, color, border, radius, size, etc.) ... */
+      background-color: rgba(40, 40, 40, 0.8);
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 35px;  /* Slightly smaller buttons */
+      height: 35px; /* Slightly smaller buttons */
+      font-size: 20px; /* Slightly smaller font */
+      font-weight: bold;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background-color 0.2s ease;
+      margin: 0 5px; /* Adjust margin between buttons */
+      flex-shrink: 0; /* Prevent buttons from shrinking */
+    }
+    .gallery-nav:hover {
+        background-color: rgba(0, 0, 0, 1);
+    }
+
+    /* Container for the navigation buttons - remove centering margin */
+    .gallery-nav-controls {
+        /* max-width: 960px; */ /* No longer needed */
+        /* margin: 15px auto 0 auto; */ /* Remove auto margin */
+        display: flex; /* Keep as flex to layout buttons */
+        /* justify-content: center; */ /* No longer needed */
+        align-items: center;
+        margin-right: 15px; /* Add space between buttons and caption text */
+    }
+
+
+    /* Container to center the gallery caption and buttons */
+    .gallery-caption-container {
+        max-width: 960px; /* Align container with main content */
+        margin: 15px auto 0 auto; /* Top margin, centered horizontally */
+        padding: 0 20px; /* Match original caption padding */
+        box-sizing: border-box;
+        display: flex; /* Make it a flex container */
+        align-items: center; /* Vertically center items (buttons and text) */
+        justify-content: center; /* Center content horizontally */
+    }
+
+    /* Specific style adjustments for the gallery caption text */
+    .figure-caption.gallery-caption {
+        margin-bottom: 0;
+        margin-top: 0; /* Remove top margin, alignment handled by flex */
+        text-align: left; /* Align text to the left within its space */
+        flex-grow: 1; /* Allow text to take available space if needed */
+        /* Optional: Add a small left margin if needed */
+        /* margin-left: 10px; */
+    }
+    /* --- End Video Gallery Styles --- */
 
     .section {
       font-size: 20px;
@@ -196,6 +304,34 @@
       margin-bottom: 40px; /* Space below caption, before next element */
       padding: 0 20px; /* Add some horizontal padding */
     }
+
+    /* New styles for quick links */
+    .quick-links {
+      text-align: center;
+      margin-top: -10px; /* Adjust to bring closer to caption if needed, or use a positive value for more space */
+      margin-bottom: 0px; /* Space before the next section (Abstract tagline) */
+    }
+    .quick-links a {
+      font-family: 'Roboto Mono', monospace;
+      font-size: 18px; /* Slightly larger than caption */
+      font-weight: bold;
+      /* color: #337ab7; */ /* Standard link blue, or choose your own */
+      color: #333; /* Change to dark grey */
+      text-decoration: none;
+      margin: 0 36px; /* Spacing between links */
+      padding: 5px 8px; /* Add some padding for a button-like feel if desired */
+      /* border: 1px solid transparent; */ /* Optional: for button look */
+      /* border-radius: 4px; */ /* Optional: for button look */
+    }
+    .quick-links a:hover,
+    .quick-links a:focus {
+      text-decoration: underline;
+      /* color: #23527c; */ /* Darker blue on hover */
+      color: #000; /* Optional: Change to black or slightly darker grey on hover */
+      /* background-color: #f0f0f0; */ /* Optional: background for button look on hover */
+      /* border-color: #ccc; */ /* Optional: for button look on hover */
+    }
+    /* End new styles for quick links */
   </style>
 </head>
 <body>
@@ -229,6 +365,14 @@
     <p class="figure-caption">
         <span style="font-variant: small-caps;">VideoMimic</span> is a real-to-sim-to-real pipeline that converts monocular videos into transferable humanoid skills, letting robots learn context-aware behaviors (terrain-traversing, climbing, sitting) in a single policy.
     </p>
+
+    <!-- Add Quick Links Here -->
+    <div class="quick-links">
+      <a href="./VideoMimic.pdf" target="_blank">[pdf]</a>
+      <a href="#" target="_blank">[arxiv]</a>
+      <a href="#">[code(soon)]</a> 
+      <a href="#">[gallery]</a>
+    </div>
     
     <div class="tagline" id="abstract">Abstract.</div>
 
@@ -264,17 +408,46 @@
     </p>
 
     <div class="tagline" id="deploy-in-real">Deploy in Real.</div>
-    <img src="figs/5.png" alt="real-to-sim pipeline">
-    <!-- Caption for Figure 5 -->
+
+    <!-- NOTE: The entire video gallery block below is MOVED outside main-content -->
+
+    <!-- <img src="figs/5.png" alt="real-to-sim pipeline">
     <p class="figure-caption">
       <b>Figure 4:</b> Real-world deployment showing various skills (terrain traversal, standing, sitting) executed by a single context-aware policy.
-    </p>
+    </p> -->
 
+  </div> <!-- End of main-content div -->
 
-    <div class="footer">
-      <!-- © UC Berkeley | Powered by vision, motion, and a little ambition. -->
-       © UC Berkeley | Webpage designed by the <span style="font-variant: small-caps;">VideoMimic</span> team.
+  <!-- Video Gallery Section (Now outside main-content) -->
+  <div class="video-gallery-section" id="gallery-section-anchor">
+    <div class="video-gallery-container">
+      <div class="video-gallery" id="videoGallery">
+        <!-- Videos remain here - ADD autoplay -->
+        <video class="gallery-video" src="./sitting/1.mp4" autoplay muted playsinline loop></video>
+        <video class="gallery-video" src="./sitting/2.mp4" autoplay muted playsinline loop></video>
+        <video class="gallery-video" src="./sitting/3.mp4" autoplay muted playsinline loop></video>
+        <video class="gallery-video" src="./sitting/4.mp4" autoplay muted playsinline loop></video>
+        <!-- Add more videos as needed, ensuring they have autoplay muted loop -->
+      </div>
     </div>
+    <!-- Container for the caption AND buttons -->
+    <div class="gallery-caption-container">
+        <!-- Move button controls INSIDE caption container -->
+        <div class="gallery-nav-controls">
+            <button class="gallery-nav left" id="scrollLeftBtn">&lt;</button>
+            <button class="gallery-nav right" id="scrollRightBtn">&gt;</button>
+        </div>
+        <!-- Caption text -->
+        <p class="figure-caption gallery-caption"> <!-- Added gallery-caption class -->
+            Examples of the tasks that our model can perform, following instructions of varying granularity. All experiments were done in homes that were not in the training data.
+        </p>
+    </div>
+  </div>
+  <!-- End Video Gallery Section -->
+
+  <div class="footer">
+    <!-- © UC Berkeley | Powered by vision, motion, and a little ambition. -->
+     © UC Berkeley | Webpage designed by the <span style="font-variant: small-caps;">VideoMimic</span> team.
   </div>
 
   <!-- Add JavaScript for delayed video playback and looping -->
@@ -330,6 +503,58 @@
 
       } else {
         console.error('Video element with ID "teaser-video" not found.');
+      }
+    });
+  </script>
+
+  <!-- JavaScript for Video Gallery Navigation -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Select the scrollable container element
+      const galleryContainer = document.querySelector('.video-gallery-container');
+      // Select the inner div holding the videos (still needed for calculations)
+      const galleryInner = document.getElementById('videoGallery');
+      const scrollLeftBtn = document.getElementById('scrollLeftBtn');
+      const scrollRightBtn = document.getElementById('scrollRightBtn');
+
+      // Check if all necessary elements exist
+      if (galleryContainer && galleryInner && scrollLeftBtn && scrollRightBtn) {
+        // Calculate the scroll amount based on the width of the first video + gap
+        // Use galleryInner to find the first video element
+        const scrollAmount = (galleryInner.firstElementChild?.offsetWidth || 300) + 15; // 15 is the gap
+
+        scrollLeftBtn.addEventListener('click', () => {
+          // Scroll the CONTAINER element
+          galleryContainer.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+        });
+
+        scrollRightBtn.addEventListener('click', () => {
+          // Scroll the CONTAINER element
+          galleryContainer.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+        });
+
+        /* --- REMOVE OR COMMENT OUT HOVER LOGIC ---
+        // Optional: Add hover-to-play functionality for gallery videos
+        // Target videos within galleryInner
+        const galleryVideos = galleryInner.querySelectorAll('.gallery-video');
+        galleryVideos.forEach(video => {
+            video.addEventListener('mouseenter', () => {
+                video.play().catch(e => console.log("Autoplay prevented:", e));
+            });
+            video.addEventListener('mouseleave', () => {
+                video.pause();
+                // video.currentTime = 0; // Optional: reset video on mouse leave
+            });
+        });
+        */ // --- END OF REMOVED HOVER LOGIC ---
+
+      } else {
+        console.error('Gallery elements not found for navigation setup.');
+        // Log which elements might be missing
+        if (!galleryContainer) console.error('Missing element: .video-gallery-container');
+        if (!galleryInner) console.error('Missing element: #videoGallery');
+        if (!scrollLeftBtn) console.error('Missing element: #scrollLeftBtn');
+        if (!scrollRightBtn) console.error('Missing element: #scrollRightBtn');
       }
     });
   </script>
