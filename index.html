@@ -34,8 +34,7 @@
     <!-- End Authors -->
 
     <!-- use the video ./figs/videomimic_teaser.mp4 -->
-    <video id="teaser-video" src="./figs/videomimic_teaser.mp4" width="100%" height="100%" controls muted playsinline>
-    </video>
+    <video id="teaser-video" src="./figs/videomimic_teaser.mp4" width="100%" height="100%" controls muted playsinline autoplay></video>
     <!-- Caption for Figure 1 (Teaser Video) -->
     <p class="figure-caption">
         <span style="font-variant: small-caps;">VideoMimic</span> is a real-to-sim-to-real pipeline that converts monocular videos into transferable humanoid skills, letting robots learn context-aware behaviors (terrain-traversing, climbing, sitting) in a single policy.
@@ -210,61 +209,64 @@
      © UC Berkeley | Webpage designed by the <span style="font-variant: small-caps;">VideoMimic</span> team.
   </div>
 
-  <!-- Add JavaScript for delayed video playback and looping -->
+  <!-- Teaser Video Autoplay with Delay and Loop -->
   <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const video = document.getElementById('teaser-video'); // Get the video element by its ID
-      const initialDelay = 2000; // 2 seconds
-      const loopDelay = 2000;    // 2 seconds
+  document.addEventListener('DOMContentLoaded', function() {
+    const video = document.getElementById('teaser-video');
+    // const initialDelay = 1000; // No longer needed, autoplay attribute handles initial play
+    const loopDelay = 3000;    // 3 seconds delay before looping
 
-      if (video) {
-        let initialPlayTimeout;
-        let loopTimeout;
+    // let initialPlayTimeout; // No longer needed
+    let loopTimeout;
 
-        // --- Initial Play Delay ---
-        initialPlayTimeout = setTimeout(function() {
+    if (video) {
+      // Ensure video is muted (already in HTML, but good practice)
+      video.muted = true;
+      // Controls are already in HTML, ensuring user can play if autoplay fails
+
+      // REMOVE JavaScript-based initial play:
+      /*
+      initialPlayTimeout = setTimeout(function() {
+        video.play().then(function() {
+          // Autoplay started
+        }).catch(function(error) {
+          console.log('Initial autoplay prevented for teaser video. User interaction might be needed.', error);
+          video.controls = true; // Ensure controls are visible
+        });
+      }, initialDelay);
+      */
+
+      // Loop with delay - this part can stay
+      video.addEventListener('ended', function() {
+        clearTimeout(loopTimeout); 
+        loopTimeout = setTimeout(function() {
+          video.currentTime = 0; 
           video.play().catch(function(error) {
-            console.log('Delayed auto-play prevented:', error);
-            // Autoplay was prevented, user might need to click play
+            console.log('Delayed loop play prevented for teaser video:', error);
           });
-        }, initialDelay);
+        }, loopDelay);
+      });
 
-        // --- Delayed Looping ---
-        video.addEventListener('ended', function() {
-          clearTimeout(loopTimeout); // Clear previous loop timeout if any
-          loopTimeout = setTimeout(function() {
-            video.currentTime = 0; // Reset video to the beginning
-            video.play().catch(function(error) {
-              console.log('Delayed loop play prevented:', error);
-            });
-          }, loopDelay);
-        });
+      // --- Clear Timeouts on Manual Pause ---
+      video.addEventListener('pause', function() {
+        if (!video.ended && video.currentTime > 0) {
+           // clearTimeout(initialPlayTimeout); // No longer needed
+           clearTimeout(loopTimeout);
+           console.log('Teaser video: Manual pause detected, clearing loop timeout.');
+        }
+      });
 
-        // --- Clear Timeouts on Manual Pause ---
-        video.addEventListener('pause', function() {
-          // Only clear timeouts if the video isn't at the very end
-          // (since 'ended' can sometimes trigger 'pause')
-          // and wasn't paused right at the beginning before initial play
-          if (!video.ended && video.currentTime > 0) {
-             clearTimeout(initialPlayTimeout); // Clear initial delay if paused before it starts
-             clearTimeout(loopTimeout);       // Clear loop delay
-             console.log('Manual pause detected, clearing timeouts.');
-          }
-        });
+      // --- Clear Timeouts on Manual Play (if paused before initial delay finishes) ---
+       video.addEventListener('play', function() {
+           // if (initialPlayTimeout) { // No longer needed
+           //     clearTimeout(initialPlayTimeout);
+           // }
+       });
 
-        // --- Clear Timeouts on Manual Play (if paused before initial delay finishes) ---
-         video.addEventListener('play', function() {
-             // If the video starts playing before the initial timeout finishes (e.g., user clicks play)
-             // clear the initial timeout to prevent it from trying to play again.
-             if (initialPlayTimeout) {
-                 clearTimeout(initialPlayTimeout);
-             }
-         });
-
-      } else {
-        console.error('Video element with ID "teaser-video" not found.');
-      }
-    });
+    } else {
+      console.error('Video element with ID "teaser-video" not found.');
+    }
+  });
   </script>
 
   <!-- JavaScript for Video Gallery Navigation -->
