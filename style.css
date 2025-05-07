@@ -169,16 +169,16 @@ a#figure-3-img img {
 /* Style for Figure 1 (figs/2-min.png) link container */
 #figure-1-img {
   margin-top: 20px; /* Consistent top margin */
+  margin-left: -25px; /* Override global img margin */
+  margin-right: 18px; /* Override global img margin */
 }
 
 /* Style for Figure 2 (figs/4.png) link container */
 #figure-2-img {
   /* border: none; */ /* Remove border from the link itself */
-  border: none;
-  /* border-radius: 0; */ /* Remove border radius from the link itself */
-  border-radius: 0;
-  margin-left: 0; /* Override global img margin */
-  margin-right: 0; /* Override global img margin */
+  border-radius: 0; /* Match the link's border-radius removal */
+  margin-left: -25px; /* Override global img margin */
+  margin-right: 17.5px; /* Override global img margin */
   margin-top: 20px; /* Consistent top margin */
 }
 
@@ -190,12 +190,21 @@ a#figure-2-img img {
 
 /* Style for Figure 3 (figs/3.png) link container */
 #figure-3-img {
-  /* padding-left: 15px; */ /* Add 15px padding on the left */
   padding-left: 15px;
-  /* background-color: #fff; */ /* Set background color to white */
   background-color: #fff;
-  margin-top: 20px; /* Consistent top margin */
+  margin-top: 20px;
   /* The image inside will get the default border from global img styles */
+  border: 1.5px solid #000; /* Add border to the <a> tag */
+  border-radius: 15px;    /* Add border-radius to the <a> tag */
+  box-sizing: border-box; /* Ensure padding and border are within the element's width */
+  overflow: hidden; /* Clip child elements (the img) to the rounded corners */
+}
+
+/* Specific style for the image inside #figure-3-img link */
+a#figure-3-img img {
+  border: none; /* Remove border from the image itself */
+  border-radius: 0; /* Remove border-radius from the image */
+  margin: 0; /* Override global img margin to prevent interference with padding */
 }
 
 /* --- Updated Styles for Video Gallery --- */
