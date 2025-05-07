@@ -311,9 +311,9 @@ img {
   justify-content: center;
   align-items: center;
 
-  border: 1px solid #eee; /* Border for the slot */
+  border: 1px solid #fdfaf4; /* Border for the slot */
   box-sizing: border-box;
-  background-color: #f0f0f0; /* Background for the slot */
+  background-color: #fdfaf4; /* Background for the slot */
 }
 
 /* Set max-height for slots in the TOP row */
@@ -337,8 +337,14 @@ video.r2s-video-item {
   width: auto;      /* Maintain aspect ratio */
   height: auto;     /* Maintain aspect ratio */
   object-fit: contain; /* Show entire video, letterbox if needed */
-  background-color: #000; /* Black background for letterboxing */
+  background-color: #fdfaf4; /* Black background for letterboxing */
   border: none; /* Video itself has no border; the slot has one if applicable */
+}
+
+/* Apply a slight scale to SMPL and G1 videos to hide potential 1px edge artifacts */
+.r2s-video-smpl,
+.r2s-video-g1 {
+  transform: scale(1.001);
 }
 
 /* Styling for the container of stacked videos */
