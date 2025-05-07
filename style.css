@@ -285,8 +285,8 @@ img {
 .r2s-vertical-layout {
   display: flex;
   flex-direction: column;
-  gap: 15px; /* Space between the top and bottom rows */
-  margin-bottom: 30px;
+  gap: 10px; /* Space between the top and bottom rows */
+  margin-bottom: 5px;
   /* padding: 0px 20px; */ /* REMOVE this horizontal padding */
   box-sizing: border-box;
 }
@@ -478,8 +478,8 @@ video.r2s-video-item {
 /* Styling for individual videos within the gallery */
 .video-gallery .gallery-video {
   /* width: auto; */ /* Let height dictate width for consistency */
-  height: 180px; /* Fixed height for all gallery videos */
-  margin-right: 15px; /* Spacing between videos */
+  height: 224px; /* Fixed height for all gallery videos */
+  margin-right: 0px; /* Spacing between videos */
   flex-shrink: 0; /* Prevent videos from shrinking in the flex container */
 }
 
