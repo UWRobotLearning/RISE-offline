@@ -34,16 +34,14 @@
     /* .gallery-video class is already defined in style.css */
     /* We can add specific overrides or additional styles if needed */
     .gallery-video {
-        /* Ensure styles from style.css apply, e.g., height, width: auto, border-radius */
-        /* Example: if you want a different size on this page */
-        /* height: 180px; */ /* This might be overridden by style.css if present */
-        flex-grow: 0; /* Do not allow items to grow */
-        flex-shrink: 0; /* Do not allow items to shrink beyond their basis */
-        flex-basis: calc(33% - 20px); /* Aim for 4 items per row, accounting for gap */
-        width: calc(33% - 20px);      /* Fallback width */
-        max-width: calc(33% - 20px);  /* Ensure it doesn't exceed this */
-        height: auto;                 /* Maintain aspect ratio based on new width */
-        box-sizing: border-box;       /* Include padding/border in the element's total width and height */
+        /* Ensure styles from style.css apply, e.g., border-radius */
+        /* Removed percentage-based flex properties */
+        width: 200px; /* Set an absolute width - ADJUST AS NEEDED */
+        height: auto; /* Maintain aspect ratio */
+        box-sizing: border-box; /* Include padding/border in the element's total width and height */
+        /* The global .gallery-video style in style.css might still apply other properties like height,
+           so ensure this more specific rule takes precedence or adjust style.css if needed.
+           For instance, if style.css has a fixed height for .gallery-video, that might conflict. */
     }
     .back-link {
       display: block;
