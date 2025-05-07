@@ -146,22 +146,56 @@ img {
   margin-right: 0;
 }
 
-/* Style to remove border and radius from Figure 2 (figs/4.png) */
+/* General style for the specific image links */
+a#figure-1-img,
+a#figure-2-img,
+a#figure-3-img {
+  display: block; /* Ensures proper layout and application of margins */
+  text-decoration: none; /* Removes hyperlink underline */
+  cursor: default; /* Makes it not look like a clickable link */
+  /* margin-top is already set in their specific ID rules below */
+}
+
+/* Ensure images within these links take full width and are block */
+a#figure-1-img img,
+a#figure-2-img img,
+a#figure-3-img img {
+  display: block; /* Removes extra space below if image were inline */
+  width: 100%;    /* Makes image fill the link's width */
+  height: auto;   /* Maintains aspect ratio */
+  /* General img border styles will apply unless overridden below */
+}
+
+/* Style for Figure 1 (figs/2-min.png) link container */
+#figure-1-img {
+  margin-top: 20px; /* Consistent top margin */
+}
+
+/* Style for Figure 2 (figs/4.png) link container */
 #figure-2-img {
-  /* border: none; */ /* Remove border */
+  /* border: none; */ /* Remove border from the link itself */
   border: none;
-  /* border-radius: 0; */ /* Remove border radius */
+  /* border-radius: 0; */ /* Remove border radius from the link itself */
   border-radius: 0;
   margin-left: 0; /* Override global img margin */
   margin-right: 0; /* Override global img margin */
+  margin-top: 20px; /* Consistent top margin */
 }
 
-/* Style to add left padding to Figure 3 (figs/3.png) */
+/* Specific border handling for image inside #figure-2-img link */
+a#figure-2-img img {
+  border: none; /* Ensure the image inside the borderless link is also borderless */
+  border-radius: 0; /* Match the link's border-radius removal */
+}
+
+/* Style for Figure 3 (figs/3.png) link container */
 #figure-3-img {
   /* padding-left: 15px; */ /* Add 15px padding on the left */
   padding-left: 15px;
   /* background-color: #fff; */ /* Set background color to white */
   background-color: #fff;
+  margin-top: 20px; /* Consistent top margin */
+  /* The image inside will get the default border from global img styles */
 }
 
 /* --- Updated Styles for Video Gallery --- */

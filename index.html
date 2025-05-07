@@ -210,26 +210,26 @@
   </div>
   <!-- End Video Gallery Section -->
 
-    <a href="figs/2.png" download="2.png">
-      <img src="figs/2-min.png" alt="real-to-sim pipeline" id="figure-1-img" style="margin-top: 20px; cursor: pointer;" title="Click to download full resolution">
+    <a id="figure-1-img" href="figs/2.png" download="2.png">
+      <img src="figs/2-min.png" alt="real-to-sim pipeline">
     </a>
     <!-- Caption for Figure 2 -->
     <p class="figure-caption">
       <b>Figure 1:</b> The Real-to-Sim pipeline reconstructs human motion and scene geometry from video, outputting simulator-ready data.
     </p>
 
-    <a href="figs/4.png" download="4.png">
-      <img src="figs/4-min.png" alt="real-to-sim pipeline" id="figure-2-img" style="cursor: pointer;" title="Click to download full resolution">
+    <a id="figure-2-img" href="figs/4.png" download="4.png">
+      <img src="figs/4-min.png" alt="Approach Overview">
     </a>
-    <!-- Caption for Figure 4 -->
+    <!-- Caption for Figure 2 -->
     <p class="figure-caption">
       <b>Figure 2:</b> Versatile capabilities include handling internet videos, multi-human reconstruction, and ego-view rendering.
     </p>
 
     <div class="section-subtitle" id="training-in-sim">2. Training in Sim.</div>
 
-    <a href="figs/3.png" download="3.png">
-      <img src="figs/3-min.png" alt="Training in Sim" id="figure-3-img" style="cursor: pointer;" title="Click to download full resolution">
+    <a id="figure-3-img" href="figs/3.png" download="3.png">
+      <img src="figs/3-min.png" alt="Training in Sim">
     </a>
     <!-- Caption for Figure 3 -->
     <p class="figure-caption">
@@ -466,6 +466,21 @@
       // The `loop` attribute on the HTML video tags will handle continuous looping.
       // The videos will naturally re-synchronize at their LCM due to the loop attribute
       // if they have different durations and all successfully start.
+    });
+  </script>
+
+  <!-- JavaScript to prevent default click on specific image links -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const imageLinkIds = ['figure-1-img', 'figure-2-img', 'figure-3-img'];
+      imageLinkIds.forEach(id => {
+        const linkElement = document.getElementById(id);
+        if (linkElement) {
+          linkElement.addEventListener('click', function(event) {
+            event.preventDefault();
+          });
+        }
+      });
     });
   </script>
 
