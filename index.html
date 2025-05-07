@@ -175,7 +175,8 @@
         <p class="r2s-caption-item">Training in Simulation&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
       </div>
       <p class="figure-caption">
-        <b>Our pipeline on a single video. Given the input video, we reconstruct the human and scene, retarget the human motion to Unitree G1, and train a policy in simulation that can mimic the kinematic motion.</b>
+        <b>From a monocular video, we jointly reconstruct metric-scale 4D human trajectories and dense scene geometry. The human motion is retargeted to a humanoid, and with the scene converted to a mesh in the simulator, the motion is used as a reference to train a context-aware whole-body control policy. While our policy does not use RGB conditioning for now, we demon-
+strate the potential of our reconstruction for ego-view rendering.</b>
       </p>
     </div>
 
