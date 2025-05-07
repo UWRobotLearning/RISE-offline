@@ -457,3 +457,20 @@ video.r2s-video-item {
   /* border-color: #ccc; */ /* Optional: for button look on hover */
 }
 /* End new styles for quick links */
+
+/* Adding subsection styling in the table of contents */
+.toc-subsection {
+  margin-left: 20px; /* Indent subsections in TOC */
+  font-size: 0.95em; /* Make slightly smaller than main sections */
+}
+
+/* Style for section subtitles (subsection headers) */
+.section-subtitle {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 20px;
+  background: #000;
+  color: #fff;
+  display: inline-block;
+  padding: 6px 14px;
+  margin: 30px 0;
+}
