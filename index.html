@@ -384,43 +384,56 @@
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       const videosToSync = [
-        document.querySelector('.r2s-video-input'),   // 10s
-        document.querySelector('.r2s-video-smpl'),    // 30s
-        document.querySelector('.r2s-video-g1'),      // 30s
-        document.querySelector('.r2s-video-ego-rgb'), // 10s
-        document.querySelector('.r2s-video-ego-depth'),// 10s
-        document.querySelector('.r2s-video-sim')      // 10s
+        document.querySelector('.r2s-video-input'),
+        document.querySelector('.r2s-video-smpl'),
+        document.querySelector('.r2s-video-g1'),
+        document.querySelector('.r2s-video-ego-rgb'),
+        document.querySelector('.r2s-video-ego-depth'),
+        document.querySelector('.r2s-video-sim')
       ].filter(Boolean); // Filter out nulls if any class name is wrong or video missing
 
-      function attemptToPlayAllR2SVideos() {
+      function synchronizeAndPlayR2SVideos() {
         if (videosToSync.length === 0) {
           console.warn('No videos found for Real-to-Sim synchronization.');
           return;
         }
 
-        const playPromises = videosToSync.map(video => {
-          video.currentTime = 0; // Ensure starting from the beginning
-          return video.play()
-            .catch(error => {
-              console.warn(`Autoplay was prevented for video with source ${video.src}. User interaction might be needed.`, error);
-              // You could add a visual indicator or a manual play button here if needed
-            });
+        const readyPromises = videosToSync.map(video => {
+          return new Promise((resolve, reject) => {
+            // If video is already ready (e.g., cached), resolve immediately
+            if (video.readyState >= 4) { // HAVE_ENOUGH_DATA (canplaythrough)
+              resolve();
+            } else {
+              video.addEventListener('canplaythrough', resolve, { once: true });
+              video.addEventListener('error', reject, { once: true }); // Handle potential loading errors
+            }
+          });
         });
 
-        Promise.all(playPromises.map(p => p.catch(e => e))) // Wait for all play attempts (even if some fail)
+        Promise.all(readyPromises)
           .then(() => {
-            console.log('Attempted to start all Real-to-Sim videos for synchronization.');
+            console.log('All Real-to-Sim videos are ready to play. Starting playback.');
+            videosToSync.forEach(video => {
+              video.currentTime = 0; // Ensure starting from the beginning
+              video.play().catch(error => {
+                console.warn(`Autoplay was prevented for video ${video.src}. User interaction might be needed.`, error);
+                // Ensure controls are visible if autoplay fails for any video
+                video.controls = true;
+              });
+            });
+          })
+          .catch(error => {
+            console.error('Error waiting for Real-to-Sim videos to be ready:', error);
+            // Optionally, provide a fallback or user message here
+            videosToSync.forEach(video => video.controls = true); // Show controls on all if any failed to load
           });
       }
 
-      attemptToPlayAllR2SVideos();
+      synchronizeAndPlayR2SVideos();
 
       // The `loop` attribute on the HTML video tags will handle continuous looping.
-      // - 10s videos loop every 10s.
-      // - 30s videos loop every 30s.
-      // Every 30 seconds (the LCM of 10 and 30), all videos will simultaneously be at their start (currentTime = 0).
-      // This means after 90 seconds (which is 3 loops of the 30s videos), 
-      // they will all be starting a new loop together, effectively "synced".
+      // The videos will naturally re-synchronize at their LCM due to the loop attribute
+      // if they have different durations and all successfully start.
     });
   </script>
 
