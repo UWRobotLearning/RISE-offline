@@ -187,10 +187,10 @@
     <div class="video-gallery-container">
       <div class="video-gallery" id="videoGalleryReconstruction">
         <!-- Videos remain here - ADD autoplay -->
-        <video class="gallery-video" src="./reconstruction/7.mp4" autoplay muted playsinline loop></video>
+        <video class="gallery-video" src="./reconstruction/6.mp4" autoplay muted playsinline loop></video>
         <video class="gallery-video" src="./reconstruction/11.mp4" autoplay muted playsinline loop></video>
         <video class="gallery-video" src="./reconstruction/13.mp4" autoplay muted playsinline loop></video>
-        <video class="gallery-video" src="./reconstruction/6.mp4" autoplay muted playsinline loop></video>
+        <video class="gallery-video" src="./reconstruction/7.mp4" autoplay muted playsinline loop></video>
         <video class="gallery-video" src="./reconstruction/14.mp4" autoplay muted playsinline loop></video>
         <!-- Add more videos as needed, ensuring they have autoplay muted loop -->
       </div>
@@ -210,13 +210,17 @@
   </div>
   <!-- End Video Gallery Section -->
 
-    <img src="figs/2.png" alt="real-to-sim pipeline" id="figure-1-img" style="margin-top: 20px;">
+    <a href="figs/2.png" download="2.png">
+      <img src="figs/2-min.png" alt="real-to-sim pipeline" id="figure-1-img" style="margin-top: 20px; cursor: pointer;" title="Click to download full resolution">
+    </a>
     <!-- Caption for Figure 2 -->
     <p class="figure-caption">
       <b>Figure 1:</b> The Real-to-Sim pipeline reconstructs human motion and scene geometry from video, outputting simulator-ready data.
     </p>
 
-    <img id="figure-2-img" src="figs/4.png" alt="real-to-sim pipeline">
+    <a href="figs/4.png" download="4.png">
+      <img src="figs/4-min.png" alt="real-to-sim pipeline" id="figure-2-img" style="cursor: pointer;" title="Click to download full resolution">
+    </a>
     <!-- Caption for Figure 4 -->
     <p class="figure-caption">
       <b>Figure 2:</b> Versatile capabilities include handling internet videos, multi-human reconstruction, and ego-view rendering.
@@ -224,7 +228,9 @@
 
     <div class="section-subtitle" id="training-in-sim">2. Training in Sim.</div>
 
-    <img id="figure-3-img" src="figs/3.png" alt="real-to-sim pipeline">
+    <a href="figs/3.png" download="3.png">
+      <img src="figs/3-min.png" alt="Training in Sim" id="figure-3-img" style="cursor: pointer;" title="Click to download full resolution">
+    </a>
     <!-- Caption for Figure 3 -->
     <p class="figure-caption">
       <b>Figure 3:</b> Policy training pipeline in simulation, progressing from MoCap pre-training to environment-aware tracking and distillation.
