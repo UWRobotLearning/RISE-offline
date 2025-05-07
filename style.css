@@ -474,3 +474,27 @@ video.r2s-video-item {
   padding: 6px 14px;
   margin: 30px 0;
 }
+
+/* Styling for individual videos within the gallery */
+.video-gallery .gallery-video {
+  /* width: auto; */ /* Let height dictate width for consistency */
+  height: 180px; /* Fixed height for all gallery videos */
+  margin-right: 15px; /* Spacing between videos */
+  flex-shrink: 0; /* Prevent videos from shrinking in the flex container */
+}
+
+/* Make videos in the Reconstruction Gallery taller */
+#reconstructionGallerySection .gallery-video {
+  height: 220px; /* Adjust this value as needed for desired taller height */
+}
+
+/* Styling for the caption and navigation controls container */
+.gallery-caption-container {
+  max-width: 960px; /* Align container with main content */
+  margin: 15px auto 0 auto; /* Top margin, centered horizontally */
+  padding: 0 20px; /* Match original caption padding */
+  box-sizing: border-box;
+  display: flex; /* Make it a flex container */
+  align-items: flex-start; /* Align items to the top */
+  justify-content: center; /* Center content horizontally */
+}
