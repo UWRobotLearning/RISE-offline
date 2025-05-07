@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reconstruction Gallery - VideoMimic</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      background-color: #fdfaf4; /* Matching index.html background */
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      color: #333;
+    }
+    .gallery-page-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    .gallery-page-header {
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 2em;
+      color: #333;
+      font-family: 'Roboto Mono', monospace;
+    }
+    .video-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px; /* Space between videos */
+      justify-content: flex-start; /* Align items to the start of the line */
+    }
+    /* .gallery-video class is already defined in style.css */
+    /* We can add specific overrides or additional styles if needed */
+    .gallery-video {
+        /* Ensure styles from style.css apply, e.g., height, width: auto, border-radius */
+        /* Example: if you want a different size on this page */
+        /* height: 180px; */ /* This might be overridden by style.css if present */
+        flex-grow: 0; /* Do not allow items to grow */
+        flex-shrink: 0; /* Do not allow items to shrink beyond their basis */
+        flex-basis: calc(33% - 20px); /* Aim for 4 items per row, accounting for gap */
+        width: calc(33% - 20px);      /* Fallback width */
+        max-width: calc(33% - 20px);  /* Ensure it doesn't exceed this */
+        height: auto;                 /* Maintain aspect ratio based on new width */
+        box-sizing: border-box;       /* Include padding/border in the element's total width and height */
+    }
+    .back-link {
+      display: block;
+      text-align: center;
+      margin-top: 40px;
+      margin-bottom: 20px;
+      font-family: 'Roboto Mono', monospace;
+      font-size: 1.1em;
+    }
+    .back-link a {
+      color: #337ab7;
+      text-decoration: none;
+    }
+    .back-link a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="gallery-page-container">
+    <div class="back-link">
+      <a href="index.html">&larr; Back to Main Page</a>
+    </div>
+
+    <h1 class="gallery-page-header">Human + World Reconstruction Gallery</h1>
+
+    <div class="video-grid">
+      <video class="gallery-video" src="./reconstruction/1.mp4" autoplay muted playsinline loop></video>
+      <video class="gallery-video" src="./reconstruction/2.mp4" autoplay muted playsinline loop></video>
+      <video class="gallery-video" src="./reconstruction/3.mp4" autoplay muted playsinline loop></video>
+      <video class="gallery-video" src="./reconstruction/4.mp4" autoplay muted playsinline loop></video>
+      <video class="gallery-video" src="./reconstruction/5.mp4" autoplay muted playsinline loop></video>
+      <!-- Video 6 is on index.html -->
+      <video class="gallery-video" src="./reconstruction/8.mp4" autoplay muted playsinline loop></video>
+      <video class="gallery-video" src="./reconstruction/9.mp4" autoplay muted playsinline loop></video>
+      <video class="gallery-video" src="./reconstruction/10.mp4" autoplay muted playsinline loop></video>
+      <!-- Video 11 is on index.html -->
+      <video class="gallery-video" src="./reconstruction/12.mp4" autoplay muted playsinline loop></video>
+      <!-- Video 13 is on index.html -->
+      <!-- Video 14 is on index.html -->
+      <video class="gallery-video" src="./reconstruction/15.mp4" autoplay muted playsinline loop></video>
+      <video class="gallery-video" src="./reconstruction/16.mp4" autoplay muted playsinline loop></video>
+      <video class="gallery-video" src="./reconstruction/17.mp4" autoplay muted playsinline loop></video>
+    </div>
+
+    <div class="back-link" style="margin-top: 50px;">
+      <a href="index.html">&larr; Back to Main Page</a>
+    </div>
+  </div>
+
+</body>
+</html>

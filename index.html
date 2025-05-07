@@ -181,6 +181,34 @@
 
     <div class="section-subtitle" id="real-to-sim">1. Real to Sim.</div>
 
+      <!-- Video Gallery Section - SITTING VIDEOS -->
+  <div class="video-gallery-section" id="reconstructionGallerySection">
+    <div class="video-gallery-container">
+      <div class="video-gallery" id="videoGalleryReconstruction">
+        <!-- Videos remain here - ADD autoplay -->
+        <video class="gallery-video" src="./reconstruction/6.mp4" autoplay muted playsinline loop></video>
+        <video class="gallery-video" src="./reconstruction/11.mp4" autoplay muted playsinline loop></video>
+        <video class="gallery-video" src="./reconstruction/14.mp4" autoplay muted playsinline loop></video>
+        <video class="gallery-video" src="./reconstruction/13.mp4" autoplay muted playsinline loop></video>
+        <video class="gallery-video" src="./reconstruction/7.mp4" autoplay muted playsinline loop></video>
+        <!-- Add more videos as needed, ensuring they have autoplay muted loop -->
+      </div>
+    </div>
+    <!-- Container for the caption AND buttons -->
+    <div class="gallery-caption-container">
+        <!-- Move button controls INSIDE caption container -->
+        <div class="gallery-nav-controls">
+            <button class="gallery-nav left" id="scrollLeftBtnReconstruction">&lt;</button>
+            <button class="gallery-nav right" id="scrollRightBtnReconstruction">&gt;</button>
+        </div>
+        <!-- Caption text -->
+        <p class="figure-caption gallery-caption">
+            <b>Human + World Reconstruction:</b> Our reconstruction pipeline can handle videos with multiple humans and complex environments from Internet. More results in <a href="./page1.html" target="_blank">gallery</a>.
+        </p>
+    </div>
+  </div>
+  <!-- End Video Gallery Section -->
+
     <img src="figs/2.png" alt="real-to-sim pipeline" id="figure-2-img">
     <!-- Caption for Figure 2 -->
     <p class="figure-caption">
@@ -290,6 +318,12 @@
           galleryInnerId: 'videoGalleryStairs',
           scrollLeftBtnId: 'scrollLeftBtnStairs',
           scrollRightBtnId: 'scrollRightBtnStairs'
+        },
+        {
+          sectionId: 'reconstructionGallerySection', // ID of the .video-gallery-section for reconstruction
+          galleryInnerId: 'videoGalleryReconstruction',
+          scrollLeftBtnId: 'scrollLeftBtnReconstruction',
+          scrollRightBtnId: 'scrollRightBtnReconstruction'
         }
       ];
 
