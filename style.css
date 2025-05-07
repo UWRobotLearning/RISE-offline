@@ -498,3 +498,36 @@ video.r2s-video-item {
   align-items: flex-start; /* Align items to the top */
   justify-content: center; /* Center content horizontally */
 }
+
+/* --- BibTeX Styling --- */
+.bibtex-code {
+  background-color: rgba(80, 80, 80, 0.8); /* Match gallery arrow background */
+  color: #f1f1f1; /* Light text color for readability */
+  padding: 20px;
+  border-radius: 8px;
+  margin: 80px auto -40px; /* Spacing and centering, bottom margin reduced to 20px */
+  max-width: 1000px;  /* Max width of the BibTeX box */
+  box-sizing: border-box;
+  font-size: 14px; /* Base font size for BibTeX */
+}
+
+.bibtex-title {
+  font-family: 'Courier New', Courier, monospace; /* Same font family as code */
+  font-weight: bold;
+  font-size: 1.15em; /* Slightly larger than the code text */
+  margin-bottom: 10px; /* Space between title and pre block */
+  color: #f1f1f1; /* Ensure it matches the box text color */
+}
+
+.bibtex-code pre {
+  white-space: pre-wrap;       /* Allows text to wrap */
+  overflow-wrap: break-word;   /* Breaks long words if necessary (updated from word-wrap) */
+  margin: 0;                   /* Remove default margin from pre tag */
+}
+
+.bibtex-code code {
+  font-family: 'Courier New', Courier, monospace; /* Monospace font for code */
+  overflow-wrap: break-word; /* Ensure long words break to prevent overflow */
+  /* Color will be inherited from .bibtex-code */
+}
+/* --- End BibTeX Styling --- */
