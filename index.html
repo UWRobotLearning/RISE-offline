@@ -43,8 +43,8 @@
     <!-- Add Quick Links Here -->
     <div class="quick-links">
       <a href="./VideoMimic.pdf" target="_blank">[pdf]</a>
-      <a href="#" target="_blank">[arxiv]</a>
-      <a href="#">[code(soon)]</a> 
+      <a href="https://arxiv.org/abs/2505.03729" target="_blank">[arxiv]</a>
+      <a href="https://github.com/hongsukchoi/VideoMimic">[code(soon)]</a> 
       <!-- <a href="#gallery-section-anchor">[gallery]</a> -->
     </div>
     
@@ -150,11 +150,37 @@
       </div>
     </div>
   <!-- End Video Gallery Section -->
-
-
     <div class="tagline" id="real-to-sim">Real to Sim.</div>
 
-    <img src="figs/2.png" alt="real-to-sim pipeline">
+    <div class="r2s-vertical-layout">
+      <div class="r2s-video-row r2s-top-row">
+        <video class="r2s-video-item r2s-video-input" src="./single/input.mp4" autoplay muted loop playsinline></video>
+        <video class="r2s-video-item r2s-video-smpl" src="./single/smpl.mp4" autoplay muted loop playsinline></video>
+      </div>
+      <div class="r2s-caption-row">
+        <p class="r2s-caption-item">Input Video</p>
+        <p class="r2s-caption-item">Human + Scene Reconstruction</p>
+      </div>
+      <div class="r2s-video-row r2s-bottom-row">
+        <video class="r2s-video-item r2s-video-g1" src="./single/g1.mp4" autoplay muted loop playsinline></video>
+        <div class="stacked-ego-videos">
+          <video class="r2s-video-item r2s-video-ego-rgb" src="./single/ego_rgb.mp4" autoplay muted loop playsinline></video>
+          <video class="r2s-video-item r2s-video-ego-depth" src="./single/ego_depth.mp4" autoplay muted loop playsinline></video>
+        </div>
+        <video class="r2s-video-item r2s-video-sim" src="./single/sim.mp4" autoplay muted loop playsinline></video>
+      </div>
+      <div class="r2s-caption-row">
+        <p class="r2s-caption-item">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;G1 Retargeted Results</p>
+        <p class="r2s-caption-item">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Egoview (RGB/Depth)</p>
+        <p class="r2s-caption-item">Training in Simulation&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+      </div>
+      <p class="figure-caption">
+        <b>Our pipeline on a single video. Given the input video, we first reconstruct the human and scene, then retarget the human motion to Unitree G1, and finally train a policy in simulation that can mimic the kinematic motion.</b>
+      </p>
+    </div>
+
+
+    <img src="figs/2.png" alt="real-to-sim pipeline" id="figure-2-img">
     <!-- Caption for Figure 2 -->
     <p class="figure-caption">
       <b>Figure 1:</b> The Real-to-Sim pipeline reconstructs human motion and scene geometry from video, outputting simulator-ready data.

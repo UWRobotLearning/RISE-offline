@@ -135,9 +135,15 @@ img {
   border: 1.5px solid #000; 
   /* Add border-radius for rounded corners */
   border-radius: 15px; 
-  margin: 0px 20px;
+  margin: 0px 20px; /* Keep global rule if needed elsewhere */
   /* Ensure images behave correctly with border-box sizing */
   box-sizing: border-box; 
+}
+
+/* Override for images directly within .main-content that need to align */
+.main-content > img {
+  margin-left: 0;
+  margin-right: 0;
 }
 
 /* Style to remove border and radius from Figure 2 (figs/4.png) */
@@ -146,6 +152,8 @@ img {
   border: none;
   /* border-radius: 0; */ /* Remove border radius */
   border-radius: 0;
+  margin-left: 0; /* Override global img margin */
+  margin-right: 0; /* Override global img margin */
 }
 
 /* Style to add left padding to Figure 3 (figs/3.png) */
@@ -272,6 +280,120 @@ img {
     /* margin-left: 10px; */
 }
 /* --- End Video Gallery Styles --- */
+
+/* --- Styles for Real-to-Sim Vertical Video Layout --- */
+.r2s-vertical-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 15px; /* Space between the top and bottom rows */
+  margin-bottom: 30px;
+  /* padding: 0px 20px; */ /* REMOVE this horizontal padding */
+  box-sizing: border-box;
+}
+
+.r2s-video-row {
+  display: flex;
+  gap: 15px; /* Space between items in a row */
+  align-items: center; /* Vertically align items in the row */
+  justify-content: center; /* Center the group of items if they don't fill the width */
+}
+
+/* Styling for the "slots" - direct children of .r2s-video-row */
+/* These are the elements that will grow to fill the row. */
+.r2s-video-row > .r2s-video-item, /* Targets <video class="r2s-video-item"> directly in a row */
+.r2s-video-row > .stacked-ego-videos { /* Targets <div class="stacked-ego-videos"> directly in a row */
+  flex-grow: 1; /* Allow the slot to grow */
+  flex-basis: 0;  /* Good practice with flex-grow */
+  /* max-height: 240px; */ /* REMOVE max-height from general slot rule */
+
+  /* Make the slot a flex container to center its actual content (the video or the stack) */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border: 1px solid #eee; /* Border for the slot */
+  box-sizing: border-box;
+  background-color: #f0f0f0; /* Background for the slot */
+}
+
+/* Set max-height for slots in the TOP row */
+.r2s-top-row > .r2s-video-item,
+.r2s-top-row > .stacked-ego-videos { /* Though top row doesn't have stacked videos, good for consistency */
+  max-height: 266px;
+}
+
+/* Set max-height for slots in the BOTTOM row */
+.r2s-bottom-row > .r2s-video-item,
+.r2s-bottom-row > .stacked-ego-videos {
+  max-height: 247px;
+}
+
+/* General styling for ALL <video> elements with class r2s-video-item */
+/* This applies to videos directly in a row AND those inside .stacked-ego-videos */
+video.r2s-video-item {
+  display: block; /* Behaves well for sizing */
+  max-width: 100%;  /* Video won't exceed the width of its parent container (slot or stacked-ego-videos div) */
+  max-height: 100%; /* Video won't exceed the height of its parent container */
+  width: auto;      /* Maintain aspect ratio */
+  height: auto;     /* Maintain aspect ratio */
+  object-fit: contain; /* Show entire video, letterbox if needed */
+  background-color: #000; /* Black background for letterboxing */
+  border: none; /* Video itself has no border; the slot has one if applicable */
+}
+
+/* Styling for the container of stacked videos */
+.stacked-ego-videos {
+  /* This element is a flex item within .r2s-video-row (handled by the rule above) */
+  /* and also a flex container for its children. */
+  display: flex; /* This ensures it behaves as a flex container for its children */
+                 /* It might override display:flex from the slot rule if that rule also targeted this class directly,
+                    but the current slot rule uses the child selector '>' so it's fine. */
+  flex-direction: column;
+  gap: 5px;
+  
+  width: auto; /* Width determined by its 1:1 children */
+  height: 100%; /* Take full available height of its slot (which is max 180px) */
+  max-width: 100%; /* Ensure it doesn't overflow its slot if children are unexpectedly wide */
+  
+  /* Remove any slot-like styling if it was applied by a more general class,
+     as its appearance is defined by its children and its slot parent. */
+  border: none; /* The slot around .stacked-ego-videos has the border */
+  background-color: transparent; /* The slot around .stacked-ego-videos has the background */
+  /* max-height is effectively controlled by its parent slot */
+}
+
+/* Styling for videos INSIDE the .stacked-ego-videos container */
+.stacked-ego-videos > video.r2s-video-item {
+  /* These videos are already styled by 'video.r2s-video-item' for object-fit, background, etc. */
+  /* We just need to enforce their 1:1 aspect ratio and height calculation. */
+  aspect-ratio: 1 / 1;
+  width: auto; /* Width will be derived from height and 1:1 aspect ratio */
+  height: calc(50% - (5px / 2)); /* Each takes half the parent's height, minus half the gap */
+  min-height: 0;
+  /* max-width and max-height of 100% (from video.r2s-video-item) are fine here,
+     as they refer to 100% of this specific video's calculated 1:1 box. */
+}
+/* --- End Real-to-Sim Vertical Video Layout Styles --- */
+
+/* --- Styles for Real-to-Sim Captions --- */
+.r2s-caption-row {
+  display: flex;
+  gap: 15px; /* Should match the gap in .r2s-video-row */
+  justify-content: center; /* Should match justify-content in .r2s-video-row */
+  margin-top: -15px; /* Small space between videos and captions */
+}
+
+.r2s-caption-item {
+  flex-grow: 1; /* Allow caption item to grow, similar to video slots */
+  flex-basis: 0;
+  text-align: center; /* Center text within its slot */
+  font-size: 13px; /* Adjust as needed */
+  color: #555; /* Adjust as needed */
+  font-family: 'Roboto Mono', monospace;
+  /* Optional: to better align with video slots if they have borders/padding */
+  /* padding: 0 5px; */
+}
+/* --- End Styles for Real-to-Sim Captions --- */
 
 .section {
   font-size: 20px;
