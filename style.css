@@ -16,6 +16,7 @@ body {
   /* Hide TOC by default */
   display: none; 
   /* left: max(30px, calc(25vw - 330px)); */ /* Move left positioning into media query */
+  z-index: 1000; /* Add a high z-index to ensure TOC stays on top */
 }
 
 /* Media Query: Apply styles only when viewport width is 1300px or wider */
