@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>RISEOffline</title>
-  <link rel="icon" href="./figs/logo.jpeg" type="image/jpeg">
+  <link rel="icon" href="https://fonts.gstatic.com/s/e/notoemoji/latest/1f305/512.gif" type="image/gif">
   <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
   <link rel="stylesheet" href="style.css">
 </head>
@@ -15,8 +15,9 @@
       <li><a href="#abstract">Abstract</a></li>
       <li><a href="#deploy-in-real">Real-world Demo</a></li>
       <li><a href="#approach">Approach</a></li>
-      <li class="toc-subsection"><a href="#real-to-sim">Real to Sim</a></li>
-      <li class="toc-subsection"><a href="#training-in-sim">Training in Sim</a></li>
+      <li class="toc-subsection"><a href="#spectral norm">Non-expert Data</a></li>
+      <li class="toc-subsection"><a href="#training-in-sim">Offline RL</a></li>
+      <li class="toc-subsection"><a href="#spectral norm">Lipschitz Continuity</a></li>
       <li><a href="#acknowledgements">Acknowledgements</a></li>
     </ul>
   </div>
@@ -87,8 +88,8 @@ Learning via Offline Reinforcement Learning</div>
         are able to leverage all collected data, including partial or suboptimal demonstra-
         tions, to bolster task-directed policy performance, underscoring the importance of
         methods for using non-expert data for scalable and robust robot learning.
-        We introduce Robust Imitation Learning by Stitching from Experts,
-        or <span style="font-variant: small-caps;">RISE</span>. 
+        We introduce <b>R</b>obust <b>I</b>mitation Learning by <b>S</b>titching from <b>E</b>xperts,
+        or <span style="font-variant: small-caps;">RISE</span> 🌅. 
     
     </div> 
 
@@ -119,6 +120,33 @@ Learning via Offline Reinforcement Learning</div>
           <!-- Caption text -->
           <p class="figure-caption gallery-caption">
               <b>Tipping:</b> Yada yada.
+          </p>
+      </div>
+    </div>
+
+  <!-- Video Gallery Section - Cloth VIDEOS -->
+    <div class="video-gallery-section" id="ClothGallerySection">
+      <div class="video-gallery-container">
+        <div class="video-gallery" id="videoGalleryCloth">
+          <!-- Videos remain here - ADD autoplay -->
+          <video class="gallery-video" src="./cloth/Cloth_Fold_DATA.mp4" autoplay muted playsinline loop></video>
+          <video class="gallery-video" src="./cloth/Cloth_Fold.mp4" autoplay muted playsinline loop></video>
+          <video class="gallery-video" src="./cloth/Cloth_Stack_DATA.mp4" autoplay muted playsinline loop></video>
+          <video class="gallery-video" src="./cloth/Cloth_Stack.mp4" autoplay muted playsinline loop></video>
+          <!--- Insert more videos here!!!!-->
+          <!-- Add more videos as needed, ensuring they have autoplay muted loop -->
+        </div>
+      </div>
+      <!-- Container for the caption AND buttons -->
+      <div class="gallery-caption-container">
+          <!-- Move button controls INSIDE caption container -->
+          <div class="gallery-nav-controls">
+              <button class="gallery-nav left" id="scrollLeftBtnTraversing">&lt;</button>
+              <button class="gallery-nav right" id="scrollRightBtnTraversing">&gt;</button>
+          </div>
+          <!-- Caption text -->
+          <p class="figure-caption gallery-caption">
+              <b>Colth:</b> Yada yada.
           </p>
       </div>
     </div>
