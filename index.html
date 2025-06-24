@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>VideoMimic</title>
-  <link rel="icon" href="./figs/logo.png" type="image/png">
+  <title>RISEOffline</title>
+  <link rel="icon" href="./figs/logo.jpeg" type="image/jpeg">
   <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
   <link rel="stylesheet" href="style.css">
 </head>
@@ -22,15 +22,16 @@
   </div>
 
   <div class="main-content">
-    <div class="hero-text">VideoMimic</div>
-    <div class="sub-hero-text">Visual imitation enables contextual humanoid control</div>
+    <div class="hero-text">RISE</div>
+    <div class="sub-hero-text">Using Non-Expert Data to Robustify Imitation
+Learning via Offline Reinforcement Learning</div>
 
     <!-- Add Authors -->
     <div class="authors">
-      <a href="https://allshire.org/" target="_blank">Arthur Allshire*</a>, <a href="https://hongsukchoi.github.io/" target="_blank">Hongsuk Choi*</a>, <a href="https://www.junyi42.com/" target="_blank">Junyi Zhang*</a>, <a href="https://mcallisterdavid.com/" target="_blank">David McAllister*</a>, <a href="https://antoniomacaronio.github.io/personal-website/#/home/" target="_blank">Anthony Zhang</a>, <a href="https://chungmin99.github.io/" target="_blank">Chung Min Kim</a>,<br>
-      <a href="https://people.eecs.berkeley.edu/~trevor/" target="_blank">Trevor Darrell</a>, <a href="https://people.eecs.berkeley.edu/~pabbeel/" target="_blank">Pieter Abbeel</a>, <a href="https://people.eecs.berkeley.edu/~malik/" target="_blank">Jitendra Malik</a>, <a href="https://people.eecs.berkeley.edu/~kanazawa/" target="_blank">Angjoo Kanazawa.</a>
+      <a href="https://kevinhuang8.github.io/" target="_blank">Kevin Huang*</a>, <a href="https:/rosari.ooo/" target="_blank">Rosario Scalise*</a>
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(*:equal contribution)
-      <span class="affiliation">University of California, Berkeley</span>
+      <span class="affiliation">University of Washington</span>
+      <span class="affiliation">Toyota Research Institute</span>
     </div>
     <!-- End Authors -->
 
@@ -54,10 +55,27 @@
 
     <div class="section">
 
-        How can we teach humanoids to climb staircases and sit on chairs using the surrounding environment context? Arguably, the simplest way is to <em>just show them</em>&mdash;casually capture a human motion video and feed it to humanoids.
-        We introduce <span style="font-variant: small-caps;">VideoMimic</span>, a real-to-sim-to-real pipeline that mines everyday videos, jointly reconstructs the humans and the environment, and produces whole-body control policies for humanoid robots that perform the corresponding skills.
-       We demonstrate the results of our pipeline on real humanoid robots, showing robust, repeatable contextual control such as staircase ascents and descents, sitting and standing from chairs and benches, as well as other dynamic whole-body skills&mdash;all from a single policy, conditioned on the environment and global root commands. 
-       <span style="font-variant: small-caps;">VideoMimic</span> offers a scalable path towards teaching humanoids to operate in diverse real-world environments.
+        Imitation learning has proven highly effective for training robots to
+        perform complex tasks from expert human demonstrations. However, it remains
+        limited by reliance on high-quality, task-specific data, restricting adaptability to
+        the diverse range of real-world object configurations and scenarios. In contrast,
+        non-expert data—such as play data, suboptimal demonstrations, or partial task
+        completions—can offer broader coverage and lower collection costs, but conven-
+        tional imitation learning approaches fail to utilize this data effectively. To address
+        these challenges, we show that offline reinforcement learning can be used as a
+        tool to harness non-expert data to enhance the performance of imitation learning
+        policies. We show that while standard offline RL approaches can be ineffective
+        at actually leveraging non-expert data under sparse coverage, simple algorithmic
+        modifications can allow the utilization of this data without significant additional
+        assumptions. Our approach shows that broadening the support of the policy dis-
+        tribution in offline RL can allow offline RL augmented imitation algorithms to
+        solve tasks robustly, under sparse coverage. In manipulation tasks, these innova-
+        tions significantly increase the range of states where learned policies are success-
+        ful when non-expert data is incorporated. Moreover, we show that these methods
+        are able to leverage all collected data, including partial or suboptimal demonstra-
+        tions, to bolster task-directed policy performance, underscoring the importance of
+        methods for using non-expert data for scalable and robust robot learning.
+        We introduce <span style="font-variant: small-caps;">RISE</span>.
     
     </div> 
 
@@ -240,26 +258,13 @@
     <div class="tagline" id="acknowledgements">Acknowledgements.</div>
     <div class="section" style="margin-top: -5px;">
       <p>
-        We thank Brent Yi for his guidance with the excellent 3D visualization tool we use, Viser. We
-        are grateful to Ritvik Singh, Jason Liu, Ankur Handa, Ilija Radosavovic, Himanshu Gaurav-Singh,
-        Haven Feng, and Kevin Zakka for helpful advice and discussions during the paper. We thank Lea
-        M&uuml;ller for helpful discussions at the start of the project. We thank Zhizheng Liu for helpful
-        suggestions on evaluating human and scene reconstruction. We thank Moji Shi and Huayi Wang for
-        advice on using LiDAR heightmap input. We thank Eric Xu, Matthew Liu, Hayeon
-        Jeong, Hyunjoo Lee, Jihoon Choi, Tyler Bonnen, and Yao Tang for their help in capturing and
-        featuring in the video clips used in this project.
+        We thank .
       </p>
     </div>
 
     <div class="bibtex-code" id="bibtex">
       <div class="bibtex-title">BibTeX</div>
-      <pre><code>@article{videomimic,
-          title     = {Visual imitation enables contextual humanoid control},
-          author    = {Allshire, Arthur and Choi, Hongsuk and Zhang, Junyi and McAllister, David 
-                       and Zhang, Anthony and Kim, Chung Min and Darrell, Trevor and Abbeel, 
-                       Pieter and Malik, Jitendra and Kanazawa, Angjoo},
-          journal   = {arXiv preprint arXiv:2505.03729},
-          year      = {2025}
+      <pre><code>Insert bibtex here.
         }</code></pre>
     </div>
 
@@ -267,8 +272,7 @@
 
 
   <div class="footer">
-    <!-- © UC Berkeley | Powered by vision, motion, and a little ambition. -->
-     © UC Berkeley | Webpage designed by the <span style="font-variant: small-caps;">VideoMimic</span> team. Source code available <a href="https://github.com/videomimic-1/videomimic-1.github.io" target="_blank">here</a>.
+     © UW | Adapted from design by the <span style="font-variant: small-caps;">VideoMimic</span> team. Source code available <a href="https://github.com/videomimic-1/videomimic-1.github.io" target="_blank">here</a>.
   </div>
 
   <!-- Teaser Video Autoplay with Delay and Loop -->
