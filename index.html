@@ -15,9 +15,9 @@
       <li><a href="#abstract">Abstract</a></li>
       <li><a href="#deploy-in-real">Real-world Demo</a></li>
       <li><a href="#approach">Approach</a></li>
-      <li class="toc-subsection"><a href="#non-expert">Non-expert Data</a></li>
-      <li class="toc-subsection"><a href="#offline-rl">Offline RL</a></li>
-      <li class="toc-subsection"><a href="#lipschitz">Lipschitz Continuity</a></li>
+      <li class="toc-subsection"><a href="#spectral norm">Non-expert Data</a></li>
+      <li class="toc-subsection"><a href="#training-in-sim">Offline RL</a></li>
+      <li class="toc-subsection"><a href="#spectral norm">Lipschitz Continuity</a></li>
       <li><a href="#acknowledgements">Acknowledgements</a></li>
     </ul>
   </div>
@@ -152,39 +152,73 @@ Learning via Offline Reinforcement Learning</div>
     </div>
   <!-- End Video Gallery Section -->
 
-  <!-- APPROACH section -->
-    <div class="tagline" id="approach">Approach.</div>
 
-    <div class="r2s-vertical-layout">
-      <div class="r2s-video-row r2s-top-row">
-        <video class="r2s-video-item r2s-video-input" src="./single/input.mp4" autoplay muted loop playsinline></video>
-        <video class="r2s-video-item r2s-video-smpl" src="./single/smpl.mp4" autoplay muted loop playsinline></video>
-      </div>
-      <div class="r2s-caption-row">
-        <p class="r2s-caption-item">Input Video</p>
-        <p class="r2s-caption-item">Human + Scene Reconstruction</p>
-      </div>
-      <div class="r2s-video-row r2s-bottom-row">
-        <video class="r2s-video-item r2s-video-g1" src="./single/g1.mp4" autoplay muted loop playsinline></video>
-        <div class="stacked-ego-videos">
-          <video class="r2s-video-item r2s-video-ego-rgb" src="./single/ego_rgb.mp4" autoplay muted loop playsinline></video>
-          <video class="r2s-video-item r2s-video-ego-depth" src="./single/ego_depth.mp4" autoplay muted loop playsinline></video>
-        </div>
-        <video class="r2s-video-item r2s-video-sim" src="./single/sim.mp4" autoplay muted loop playsinline></video>
-      </div>
-      <div class="r2s-caption-row">
-        <p class="r2s-caption-item">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;G1 Retargeted Results</p>
-        <p class="r2s-caption-item">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Egoview (RGB/Depth)</p>
-        <p class="r2s-caption-item">Training in Simulation&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
-      </div>
-      <p class="figure-caption">
-        <b>From a monocular video, we jointly reconstruct metric-scale 4D human trajectories and dense scene geometry. The human motion is retargeted to a humanoid, and with the scene converted to a mesh in the simulator, the motion is used as a reference to train a context-aware whole-body control policy. While our policy does not use RGB conditioning for now, we demonstrate the potential of our reconstruction for ego-view rendering.</b>
+  <!-- APPROACH -->
+    <div class="tagline" id="approach">Approach.</div>
+    <div class="section" style="margin-top: -5px;">
+      <p>
+        Figures explaining.
       </p>
     </div>
 
-    <div class="section-subtitle" id="non-expert">Non-expert Data.</div>
-    <div class="section-subtitle" id="offline-rl">Offline RL.</div>
-    <div class="section-subtitle" id="lipschitz">Lipschitz.</div>
+
+    <!-- Container for the caption AND buttons -->
+    <div class="gallery-caption-container">
+        <!-- Move button controls INSIDE caption container -->
+        <div class="gallery-nav-controls">
+            <button class="gallery-nav left" id="scrollLeftBtnReconstruction">&lt;</button>
+            <button class="gallery-nav right" id="scrollRightBtnReconstruction">&gt;</button>
+        </div>
+        <!-- Caption text -->
+        <p class="figure-caption gallery-caption" style="margin-bottom: 30px;">
+            <b>Test:</b> A caption.
+        </p>
+    </div>
+  </div>
+  <!-- End Video Gallery Section -->
+
+    <a id="figure-1-img" href="figs/2.png" download="2.png">
+      <img src="figs/2-min.png" alt="real-to-sim pipeline">
+    </a>
+    <!-- Caption for Figure 2 -->
+    <p class="figure-caption">
+      <b>Figure 1:</b> Another.
+    </p>
+
+    <a id="figure-2-img" href="figs/4.png" download="4.png">
+      <img src="figs/4-min.png" alt="Approach Overview">
+    </a>
+    <!-- Caption for Figure 2 -->
+    <p class="figure-caption">
+      <b>Figure 2:</b> Another.
+    </p>
+
+    <div class="section-subtitle" id="lipschitz">2. Lipschitz.</div>
+
+    <a id="figure-3-img" href="figs/3.png" download="3.png">
+      <img src="figs/3-min.png" alt="Training in Sim">
+    </a>
+    <!-- Caption for Figure 3 -->
+    <p class="figure-caption">
+      <b>Figure 3:</b> Another.
+    </p>
+
+
+    <div class="tagline" id="acknowledgements">Acknowledgements.</div>
+    <div class="section" style="margin-top: -5px;">
+      <p>
+        We thank .
+      </p>
+    </div>
+
+    <div class="bibtex-code" id="bibtex">
+      <div class="bibtex-title">BibTeX</div>
+      <pre><code>Insert bibtex here.
+        }</code></pre>
+    </div>
+
+  </div> <!-- End of main-content div -->
+
 
   <div class="footer">
      © UW | Adapted from design by the <span style="font-variant: small-caps;">VideoMimic</span> team. Source code available <a href="https://github.com/videomimic-1/videomimic-1.github.io" target="_blank">here</a>.
