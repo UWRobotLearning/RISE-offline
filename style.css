@@ -528,7 +528,7 @@ video.r2s-video-item {
 /* Styling for individual videos within the gallery */
 .video-gallery .gallery-video {
   /* width: auto; */ /* Let height dictate width for consistency */
-  height: 224px; /* Fixed height for all gallery videos */
+  height: 400px; /* Fixed height for all gallery videos */
   margin-right: 0px; /* Spacing between videos */
   flex-shrink: 0; /* Prevent videos from shrinking in the flex container */
 }
