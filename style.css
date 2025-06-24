@@ -258,7 +258,7 @@ a#figure-3-img img {
   flex: 0 0 auto; /* Prevent videos from shrinking/growing in the flex context */
   /* width: 30vw; */ /* Remove fixed/relative width */
   /* max-width: 450px; */ /* Remove max-width as width will be auto */
-  height: 220px;  /* Set a fixed height for all videos. Adjust this value as desired. */
+  height: 420px;  /* Set a fixed height for all videos. Adjust this value as desired. */
   width: auto;    /* Allow width to adjust to maintain original aspect ratio */
   /* max-height: 253.125px; */ /* No longer needed if height is fixed */
   /* object-fit: cover; */ /* Remove object-fit: cover to avoid cropping */
