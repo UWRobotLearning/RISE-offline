@@ -15,9 +15,9 @@
       <li><a href="#abstract">Abstract</a></li>
       <li><a href="#deploy-in-real">Real-world Demo</a></li>
       <li><a href="#approach">Approach</a></li>
-      <li class="toc-subsection"><a href="#spectral norm">Non-expert Data</a></li>
-      <li class="toc-subsection"><a href="#training-in-sim">Offline RL</a></li>
-      <li class="toc-subsection"><a href="#spectral norm">Lipschitz Continuity</a></li>
+      <li class="toc-subsection"><a href="#non-expert">Non-expert Data</a></li>
+      <li class="toc-subsection"><a href="#offline-rl">Offline RL</a></li>
+      <li class="toc-subsection"><a href="#lipschitz">Lipschitz Continuity</a></li>
       <li><a href="#acknowledgements">Acknowledgements</a></li>
     </ul>
   </div>
@@ -146,7 +146,7 @@ Learning via Offline Reinforcement Learning</div>
           </div>
           <!-- Caption text -->
           <p class="figure-caption gallery-caption">
-              <b>Colth:</b> Yada yada.
+              <b>Cloth:</b> Yada yada.
           </p>
       </div>
     </div>
@@ -182,77 +182,9 @@ Learning via Offline Reinforcement Learning</div>
       </p>
     </div>
 
-    <div class="section-subtitle" id="real-to-sim">1. Real to Sim.</div>
-
-  <!-- Video Gallery Section - SITTING VIDEOS -->
-  <div class="video-gallery-section" id="reconstructionGallerySection">
-    <div class="video-gallery-container">
-      <div class="video-gallery" id="videoGalleryReconstruction">
-        <!-- Videos remain here - ADD autoplay -->
-        <video class="gallery-video" src="./reconstruction/6.mp4" autoplay muted playsinline loop></video>
-        <video class="gallery-video" src="./reconstruction/11.mp4" autoplay muted playsinline loop></video>
-        <video class="gallery-video" src="./reconstruction/13.mp4" autoplay muted playsinline loop></video>
-        <video class="gallery-video" src="./reconstruction/7.mp4" autoplay muted playsinline loop></video>
-        <video class="gallery-video" src="./reconstruction/14.mp4" autoplay muted playsinline loop></video>
-        <!-- Add more videos as needed, ensuring they have autoplay muted loop -->
-      </div>
-    </div>
-    <!-- Container for the caption AND buttons -->
-    <div class="gallery-caption-container">
-        <!-- Move button controls INSIDE caption container -->
-        <div class="gallery-nav-controls">
-            <button class="gallery-nav left" id="scrollLeftBtnReconstruction">&lt;</button>
-            <button class="gallery-nav right" id="scrollRightBtnReconstruction">&gt;</button>
-        </div>
-        <!-- Caption text -->
-        <p class="figure-caption gallery-caption" style="margin-bottom: 30px;">
-            <b>Human + World Reconstruction:</b> Our reconstruction pipeline can handle videos with multiple humans and complex environments from Internet. More results in the <a href="./page1.html" target="_blank">gallery</a>.
-        </p>
-    </div>
-  </div>
-  <!-- End Video Gallery Section -->
-
-    <a id="figure-1-img" href="figs/2.png" download="2.png">
-      <img src="figs/2-min.png" alt="real-to-sim pipeline">
-    </a>
-    <!-- Caption for Figure 2 -->
-    <p class="figure-caption">
-      <b>Figure 1:</b> The Real-to-Sim pipeline reconstructs human motion and scene geometry from video, outputting simulator-ready data.
-    </p>
-
-    <a id="figure-2-img" href="figs/4.png" download="4.png">
-      <img src="figs/4-min.png" alt="Approach Overview">
-    </a>
-    <!-- Caption for Figure 2 -->
-    <p class="figure-caption">
-      <b>Figure 2:</b> Versatile capabilities include handling internet videos, multi-human reconstruction, and ego-view rendering.
-    </p>
-
-    <div class="section-subtitle" id="training-in-sim">2. Training in Sim.</div>
-
-    <a id="figure-3-img" href="figs/3.png" download="3.png">
-      <img src="figs/3-min.png" alt="Training in Sim">
-    </a>
-    <!-- Caption for Figure 3 -->
-    <p class="figure-caption">
-      <b>Figure 3:</b> Policy training pipeline in simulation, progressing from MoCap pre-training to environment-aware tracking and distillation.
-    </p>
-
-    <div class="tagline" id="acknowledgements">Acknowledgements.</div>
-    <div class="section" style="margin-top: -5px;">
-      <p>
-        We thank .
-      </p>
-    </div>
-
-    <div class="bibtex-code" id="bibtex">
-      <div class="bibtex-title">BibTeX</div>
-      <pre><code>Insert bibtex here.
-        }</code></pre>
-    </div>
-
-  </div> <!-- End of main-content div -->
-
+    <div class="section-subtitle" id="non-expert">Non-expert Data.</div>
+    <div class="section-subtitle" id="offline-rl">Offline RL.</div>
+    <div class="section-subtitle" id="lipschitz">Lipschitz.</div>
 
   <div class="footer">
      © UW | Adapted from design by the <span style="font-variant: small-caps;">VideoMimic</span> team. Source code available <a href="https://github.com/videomimic-1/videomimic-1.github.io" target="_blank">here</a>.
