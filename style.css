@@ -6,6 +6,14 @@ body {
   font-family: 'Playfair Display', serif;
   color: #1b1b1b;
   padding: 60px 30px;
+  line-height: 1.6;
+}
+
+/* Responsive padding for mobile */
+@media (max-width: 768px) {
+  body {
+    padding: 30px 15px;
+  }
 }
 
 .toc {
@@ -19,7 +27,7 @@ body {
   z-index: 1000; /* Add a high z-index to ensure TOC stays on top */
 }
 
-/* Media Query: Apply styles only when viewport width is 1300px or wider */
+/* Media Query: Apply styles only when viewport width is 1400px or wider */
 @media (min-width: 1400px) {
   .toc {
     /* Show the TOC */
@@ -57,6 +65,7 @@ body {
   text-decoration: none;
   color: #333;
   font-size: 16px;
+  transition: color 0.2s ease;
 }
 
 .toc a:hover {
@@ -82,6 +91,17 @@ body {
   font-weight: 400;
   margin-bottom: 50px;
   line-height: 1.2;
+}
+
+/* Responsive hero text */
+@media (max-width: 768px) {
+  .hero-text {
+    font-size: 40px;
+  }
+  .sub-hero-text {
+    font-size: 28px;
+    margin-bottom: 30px;
+  }
 }
 
 /* New style for authors */
@@ -113,6 +133,7 @@ body {
 .authors a {
     color: inherit; /* Inherit the color from the .authors class */
     text-decoration: none; /* Remove default underline */
+    transition: color 0.2s ease;
 }
 .authors a:hover {
     text-decoration: underline; /* Add underline on hover */
@@ -126,7 +147,8 @@ body {
   color: #fff;
   display: inline-block;
   padding: 8px 16px;
-  margin: 40px 0;
+  margin: 40px 0 20px 0;
+  border-radius: 4px;
 }
 
 img {
@@ -139,6 +161,11 @@ img {
   margin: 0px 20px; /* Keep global rule if needed elsewhere */
   /* Ensure images behave correctly with border-box sizing */
   box-sizing: border-box; 
+  transition: transform 0.2s ease;
+}
+
+img:hover {
+  transform: scale(1.02);
 }
 
 /* Override for images directly within .main-content that need to align */
@@ -167,11 +194,13 @@ a#figure-3-img img {
   /* General img border styles will apply unless overridden below */
 }
 
-/* Style for Figure 1 (figs/2-min.png) link container */
+/* Style for Figure 1 (TeaserFig.jpeg) link container */
 #figure-1-img {
   margin-top: 20px; /* Consistent top margin */
-  margin-left: -25px; /* Override global img margin */
-  margin-right: 18px; /* Override global img margin */
+  margin-left: auto; /* Center the figure */
+  margin-right: auto; /* Center the figure */
+  width: 80%; /* Make it smaller */
+  display: block; /* Ensure proper centering */
 }
 
 /* Style for Figure 2 (figs/4.png) link container */
@@ -212,13 +241,10 @@ a#figure-3-img img {
 
 /* New outer wrapper for the whole section */
 .video-gallery-section {
-    margin-bottom: 40px; /* Space below the gallery section */
-    /* width: 100%; */ /* Was 100% of parent (.main-content) */
-    width: 100vw; /* Make the section span the full viewport width */
-    position: relative; /* Establishes a positioning context, good practice with calc for margins */
-    margin-left: calc((100% - 100vw) / 2); /* Calculates the negative margin to align left edge with viewport */
-    /* 100% here refers to the width of the containing block (.main-content) */
-    box-sizing: border-box; /* Ensures padding/border don't add to the 100vw width */
+    margin: 30px 0;
+    padding: 20px 0;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
 }
 
 /* Container for the scrollable videos - now wider */
@@ -235,6 +261,7 @@ a#figure-3-img img {
    /* Hide scrollbar */
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none;  /* IE and Edge */
+  margin-bottom: 15px;
 }
 .video-gallery-container::-webkit-scrollbar {
   display: none; /* Chrome, Safari, Opera */
@@ -244,52 +271,40 @@ a#figure-3-img img {
 /* The actual scrolling div holding the videos */
 .video-gallery {
   display: flex;
-  gap: 15px; /* Space between videos */
-  /* padding: 0 5vw; */ /* Original padding */
-  padding: 0 20px; /* Adjusted to fixed padding, or keep 5vw if preferred */
-  padding-bottom: 10px; /* Add some space at the bottom */
-  box-sizing: border-box;
-  width: max-content; /* Ensure it fits all videos horizontally */
-  margin: 0 auto; /* Center the flex container if it's narrower than the container (unlikely with max-content) */
+  gap: 15px;
+  padding: 10px 0;
+  min-width: max-content;
 }
 
 
 .gallery-video {
-  flex: 0 0 auto; /* Prevent videos from shrinking/growing in the flex context */
-  /* width: 30vw; */ /* Remove fixed/relative width */
-  /* max-width: 450px; */ /* Remove max-width as width will be auto */
-  height: 1000px;  /* Set a fixed height for all videos. Adjust this value as desired. */
-  width: auto;    /* Allow width to adjust to maintain original aspect ratio */
-  /* max-height: 253.125px; */ /* No longer needed if height is fixed */
-  /* object-fit: cover; */ /* Remove object-fit: cover to avoid cropping */
-  border-radius: 15px; /* Keep the rounded corners */
-  box-sizing: border-box;
-  background-color: #fdfaf4; /* Assuming you've reverted from the lime diagnostic */
-  /* Add a box-shadow for the glow/shadow effect */
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  width: 300px;
+  height: 200px;
+  object-fit: cover;
+  border: 1.5px solid #000;
+  border-radius: 10px;
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+.gallery-video:hover {
+  transform: scale(1.05);
 }
 
 /* Styles for the navigation buttons */
 .gallery-nav {
   /* ... existing button styles (background, color, border, radius, size, etc.) ... */
-  background-color: rgba(40, 40, 40, 0.8);
-  color: white;
+  background: #000;
+  color: #fff;
   border: none;
-  border-radius: 50%;
-  width: 35px;  /* Slightly smaller buttons */
-  height: 35px; /* Slightly smaller buttons */
-  font-size: 20px; /* Slightly smaller font */
-  font-weight: bold;
+  padding: 8px 12px;
   cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  border-radius: 4px;
+  font-size: 16px;
   transition: background-color 0.2s ease;
-  margin: 0 5px; /* Adjust margin between buttons */
-  flex-shrink: 0; /* Prevent buttons from shrinking */
 }
 .gallery-nav:hover {
-    background-color: rgba(0, 0, 0, 1);
+    background: #333;
 }
 
 /* Container for the navigation buttons - remove centering margin */
@@ -298,30 +313,24 @@ a#figure-3-img img {
     /* margin: 15px auto 0 auto; */ /* Remove auto margin */
     display: flex; /* Keep as flex to layout buttons */
     /* justify-content: center; */ /* No longer needed */
-    align-items: center;
-    margin-right: 15px; /* Add space between buttons and caption text */
+    gap: 10px;
+    justify-content: center;
+    margin-bottom: 10px;
 }
 
 
 /* Container to center the gallery caption and buttons */
 .gallery-caption-container {
-    max-width: 960px; /* Align container with main content */
-    margin: 15px auto 0 auto; /* Top margin, centered horizontally */
-    padding: 0 20px; /* Match original caption padding */
-    box-sizing: border-box;
-    display: flex; /* Make it a flex container */
-    align-items: flex-start; /* Align items to the top */
-    justify-content: center; /* Center content horizontally */
+    text-align: center;
+    margin-top: 10px;
 }
 
 /* Specific style adjustments for the gallery caption text */
 .figure-caption.gallery-caption {
-    margin-bottom: 0;
-    margin-top: 0; /* Remove top margin, alignment handled by flex */
-    text-align: left; /* Align text to the left within its space */
-    flex-grow: 1; /* Allow text to take available space if needed */
-    /* Optional: Add a small left margin if needed */
-    /* margin-left: 10px; */
+    font-size: 16px;
+    color: #333;
+    margin: 0;
+    font-style: italic;
 }
 /* --- End Video Gallery Styles --- */
 
@@ -446,83 +455,86 @@ video.r2s-video-item {
 /* --- End Styles for Real-to-Sim Captions --- */
 
 .section {
-  font-size: 20px;
+  font-size: 18px;
   line-height: 1.7;
-  margin-bottom: 40px;
-}
-
-.pull-quote {
-  font-size: 32px;
-  font-style: italic;
-  font-weight: 400;
-  margin: 60px 0 20px 0;
+  margin: 20px 0;
   color: #333;
 }
 
-.footer {
-  font-size: 14px;
-  font-family: 'Roboto Mono', monospace;
-  color: #666;
-  margin-top: 80px;
-  border-top: 1px solid #ccc;
-  padding-top: 30px;
+.pull-quote {
+  font-size: 24px;
+  font-style: italic;
   text-align: center;
+  margin: 40px 0;
+  color: #555;
+}
+
+.footer {
+  text-align: center;
+  margin-top: 60px;
+  padding: 20px 0;
+  border-top: 1px solid #ccc;
+  color: #666;
+  font-size: 14px;
+}
+
+.footer a {
+  color: #333;
+  text-decoration: none;
+}
+
+.footer a:hover {
+  text-decoration: underline;
 }
 
 /* New style for figure captions */
 .figure-caption {
-  font-family: 'Roboto Mono', monospace;
-  font-size: 14px;
+  font-size: 16px;
   color: #555;
   text-align: center;
-  margin-top: 10px; /* Space above caption */
-  margin-bottom: 40px; /* Space below caption, before next element */
-  padding: 0 20px; /* Add some horizontal padding */
+  margin: 10px 0 30px 0;
+  font-style: italic;
 }
 
 /* New styles for quick links */
 .quick-links {
   text-align: center;
-  margin-top: -10px; /* Adjust to bring closer to caption if needed, or use a positive value for more space */
-  margin-bottom: 30px; /* Space before the next section (Abstract tagline) */
+  margin: 30px 0;
 }
 .quick-links a {
-  font-family: 'Roboto Mono', monospace;
-  font-size: 18px; /* Slightly larger than caption */
-  font-weight: bold;
-  /* color: #337ab7; */ /* Standard link blue, or choose your own */
-  color: #333; /* Change to dark grey */
+  display: inline-block;
+  margin: 0 10px;
+  padding: 8px 16px;
+  background: #000;
+  color: #fff;
   text-decoration: none;
-  margin: 0 36px; /* Spacing between links */
-  padding: 5px 8px; /* Add some padding for a button-like feel if desired */
-  /* border: 1px solid transparent; */ /* Optional: for button look */
-  /* border-radius: 4px; */ /* Optional: for button look */
+  border-radius: 4px;
+  font-family: 'Roboto Mono', monospace;
+  font-size: 14px;
+  transition: background-color 0.2s ease;
 }
 .quick-links a:hover,
 .quick-links a:focus {
-  text-decoration: underline;
-  /* color: #23527c; */ /* Darker blue on hover */
-  color: #000; /* Optional: Change to black or slightly darker grey on hover */
-  /* background-color: #f0f0f0; */ /* Optional: background for button look on hover */
-  /* border-color: #ccc; */ /* Optional: for button look on hover */
+  background: #333;
+  transform: translateY(-1px);
 }
 /* End new styles for quick links */
 
 /* Adding subsection styling in the table of contents */
 .toc-subsection {
-  margin-left: 20px; /* Indent subsections in TOC */
-  font-size: 0.95em; /* Make slightly smaller than main sections */
+  margin-left: 20px;
+  font-size: 14px;
 }
 
 /* Style for section subtitles (subsection headers) */
 .section-subtitle {
   font-family: 'Roboto Mono', monospace;
   font-size: 20px;
-  background: #000;
-  color: #fff;
-  display: inline-block;
-  padding: 6px 14px;
-  margin: 30px 0;
+  font-weight: 600;
+  color: #333;
+  margin: 30px 0 15px 0;
+  padding-left: 10px;
+  border-left: 3px solid #000;
 }
 
 /* Styling for individual videos within the gallery */
@@ -551,33 +563,182 @@ video.r2s-video-item {
 
 /* --- BibTeX Styling --- */
 .bibtex-code {
-  background-color: rgba(80, 80, 80, 0.8); /* Match gallery arrow background */
-  color: #f1f1f1; /* Light text color for readability */
-  padding: 20px;
+  background: #f5f5f5;
+  border: 1px solid #ddd;
   border-radius: 8px;
-  margin: 80px auto -40px; /* Spacing and centering, bottom margin reduced to 20px */
-  max-width: 1000px;  /* Max width of the BibTeX box */
-  box-sizing: border-box;
-  font-size: 14px; /* Base font size for BibTeX */
+  padding: 20px;
+  margin: 40px 0;
+  font-family: 'Roboto Mono', monospace;
 }
 
 .bibtex-title {
-  font-family: 'Courier New', Courier, monospace; /* Same font family as code */
   font-weight: bold;
-  font-size: 1.15em; /* Slightly larger than the code text */
-  margin-bottom: 10px; /* Space between title and pre block */
-  color: #f1f1f1; /* Ensure it matches the box text color */
+  margin-bottom: 10px;
+  color: #333;
 }
 
 .bibtex-code pre {
-  white-space: pre-wrap;       /* Allows text to wrap */
-  overflow-wrap: break-word;   /* Breaks long words if necessary (updated from word-wrap) */
-  margin: 0;                   /* Remove default margin from pre tag */
+  margin: 0;
+  white-space: pre-wrap;
+  word-wrap: break-word;
 }
 
 .bibtex-code code {
-  font-family: 'Courier New', Courier, monospace; /* Monospace font for code */
-  overflow-wrap: break-word; /* Ensure long words break to prevent overflow */
-  /* Color will be inherited from .bibtex-code */
+  font-size: 14px;
+  color: #333;
 }
 /* --- End BibTeX Styling --- */
+
+/* Responsive design improvements */
+@media (max-width: 768px) {
+  .video-gallery {
+    gap: 10px;
+  }
+  
+  .gallery-video {
+    width: 250px;
+    height: 150px;
+  }
+  
+  .section {
+    font-size: 16px;
+  }
+  
+  .tagline {
+    font-size: 20px;
+    padding: 6px 12px;
+  }
+  
+  .section-subtitle {
+    font-size: 18px;
+  }
+}
+
+/* Smooth scrolling for better UX */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Enhanced focus states for accessibility */
+a:focus,
+button:focus {
+  outline: 2px solid #007acc;
+  outline-offset: 2px;
+}
+
+/* Side-by-side video comparison styles */
+.side-by-side-videos {
+  margin: 30px 0;
+  padding: 20px 0;
+}
+
+.video-comparison-container {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+  align-items: flex-start;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.video-item {
+  flex: 1;
+  max-width: 300px;
+  text-align: center;
+}
+
+.video-item video {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  border: 1.5px solid #000;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  transition: transform 0.2s ease;
+}
+
+.video-item video:hover {
+  transform: scale(1.02);
+}
+
+.video-caption {
+  font-size: 16px;
+  color: #333;
+  margin: 0;
+  font-style: italic;
+  line-height: 1.4;
+}
+
+/* Responsive design for side-by-side videos */
+@media (max-width: 768px) {
+  .video-comparison-container {
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .video-item {
+    max-width: 100%;
+  }
+}
+
+/* Condensed recovery layout styles */
+.condensed-recovery-layout {
+  margin: 30px 0;
+}
+
+.recovery-row {
+  display: flex;
+  gap: 40px;
+  margin-bottom: 40px;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.recovery-item {
+  flex: 1;
+  max-width: 45%;
+}
+
+.recovery-item.centered {
+  max-width: 45%;
+  margin: 0 auto;
+}
+
+.recovery-description {
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 15px;
+  font-style: italic;
+  text-align: center;
+}
+
+/* Responsive design for condensed recovery layout */
+@media (max-width: 768px) {
+  .recovery-row {
+    flex-direction: column;
+    gap: 30px;
+  }
+  
+  .recovery-item,
+  .recovery-item.centered {
+    max-width: 100%;
+  }
+}
+
+/* Teaser video styling */
+#teaser-video {
+  width: 80%;
+  height: auto;
+  border: 1.5px solid #000;
+  border-radius: 15px;
+  margin: 20px auto;
+  display: block;
+  max-width: 600px;
+}
+/* Styling for individual videos within the gallery */
+.video-gallery .gallery-video {
+  /* width: auto; */ /* Let height dictate width for consistency */
+  height: 400px; /* Fixed height for all gallery videos */
+  margin-right: 0px; /* Spacing between videos */
+  flex-shrink: 0; /* Prevent videos from shrinking in the flex container */
+}

@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <title>RISEOffline</title>
   <link rel="icon" href="https://fonts.gstatic.com/s/e/notoemoji/latest/1f305/512.gif" type="image/gif">
-  <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -13,11 +13,11 @@
     <hr>
     <ul>
       <li><a href="#abstract">Abstract</a></li>
-      <li><a href="#deploy-in-real">Real-world Demo</a></li>
       <li><a href="#approach">Approach</a></li>
-      <li class="toc-subsection"><a href="#spectral norm">Non-expert Data</a></li>
-      <li class="toc-subsection"><a href="#training-in-sim">Offline RL</a></li>
-      <li class="toc-subsection"><a href="#spectral norm">Lipschitz Continuity</a></li>
+      <li><a href="#ood-recovery">OOD Recovery</a></li>
+      <li><a href="#suboptimal-demos">Suboptimal Demos</a></li>
+      <li><a href="#multitask">Multi-Task Learning</a></li>
+      <li><a href="#generalization">Generalization</a></li>
       <li><a href="#acknowledgements">Acknowledgements</a></li>
     </ul>
   </div>
@@ -57,7 +57,7 @@ Learning via Offline Reinforcement Learning</div>
     </div>
     <!-- End Authors -->
 
-    <video id="teaser-video" src="./figs/teaser.mp4" width="100%" height="100%" controls muted playsinline autoplay></video>
+    <video id="teaser-video" src="./figs/teaser.mp4" width="80%" height="auto" controls muted playsinline autoplay></video>
     <!-- Caption for Figure 1 (Teaser Video) -->
     <p class="figure-caption">
         <span style="font-variant: small-caps;">RISE</span>: Robust Imitation by Stiching from Experts demonstrates the following benefits.
@@ -68,14 +68,11 @@ Learning via Offline Reinforcement Learning</div>
       <a href="./todo.pdf" target="_blank">[pdf]</a>
       <a href="https://github.com/UWRobotlearning" target="_blank">[arxiv]</a>
       <a href="https://github.com/UWRobotlearning">[code(soon)]</a> 
-      <!-- <a href="#gallery-section-anchor">[gallery]</a> -->
     </div>
     
     <div class="tagline" id="abstract">Abstract.</div>
 
-
     <div class="section">
-
         Imitation learning has proven highly effective for training robots to
         perform complex tasks from expert human demonstrations. However, it remains
         limited by reliance on high-quality, task-specific data, restricting adaptability to
@@ -98,128 +95,286 @@ Learning via Offline Reinforcement Learning</div>
         methods for using non-expert data for scalable and robust robot learning.
         We introduce <b>R</b>obust <b>I</b>mitation Learning by <b>S</b>titching from <b>E</b>xperts,
         or <span style="font-variant: small-caps;">RISE</span> 🌅. 
-    
     </div> 
 
-    <div class="tagline" id="deploy-in-real">Real-world Demo.</div>
-
-  <!-- VIDEO GALLERIES -->
-
-  <!-- Video Gallery Section - TIPPING VIDEOS -->
-    <div class="video-gallery-section" id="tippingGallerySection">
-      <div class="video-gallery-container">
-        <div class="video-gallery" id="videoGalleryTipping">
-          <!-- Videos remain here - ADD autoplay -->
-          <video class="gallery-video" src="./tipping/Tipping_DATA.mp4" autoplay muted playsinline loop></video>
-          <video class="gallery-video" src="./tipping/Tipping_Recover_From_Failure.mp4" autoplay muted playsinline loop></video>
-          <video class="gallery-video" src="./tipping/Tipping_Single_Disturbance_BCU.mp4" autoplay muted playsinline loop></video>
-          <video class="gallery-video" src="./tipping/Tipping_Single_Disturbance.mp4" autoplay muted playsinline loop></video>
-          <!--- Insert more videos here!!!!-->
-          <!-- Add more videos as needed, ensuring they have autoplay muted loop -->
-        </div>
-      </div>
-      <!-- Container for the caption AND buttons -->
-      <div class="gallery-caption-container">
-          <!-- Move button controls INSIDE caption container -->
-          <div class="gallery-nav-controls">
-              <button class="gallery-nav left" id="scrollLeftBtnTraversing">&lt;</button>
-              <button class="gallery-nav right" id="scrollRightBtnTraversing">&gt;</button>
-          </div>
-          <!-- Caption text -->
-          <p class="figure-caption gallery-caption">
-              <b>Tipping:</b> Yada yada.
-          </p>
-      </div>
-    </div>
-
-  <!-- Video Gallery Section - Cloth VIDEOS -->
-    <div class="video-gallery-section" id="ClothGallerySection">
-      <div class="video-gallery-container">
-        <div class="video-gallery" id="videoGalleryCloth">
-          <!-- Videos remain here - ADD autoplay -->
-          <video class="gallery-video" src="./cloth/Cloth_Fold_DATA.mp4" autoplay muted playsinline loop></video>
-          <video class="gallery-video" src="./cloth/Cloth_Fold.mp4" autoplay muted playsinline loop></video>
-          <video class="gallery-video" src="./cloth/Cloth_Stack_DATA.mp4" autoplay muted playsinline loop></video>
-          <video class="gallery-video" src="./cloth/Cloth_Stack.mp4" autoplay muted playsinline loop></video>
-          <!--- Insert more videos here!!!!-->
-          <!-- Add more videos as needed, ensuring they have autoplay muted loop -->
-        </div>
-      </div>
-      <!-- Container for the caption AND buttons -->
-      <div class="gallery-caption-container">
-          <!-- Move button controls INSIDE caption container -->
-          <div class="gallery-nav-controls">
-              <button class="gallery-nav left" id="scrollLeftBtnTraversing">&lt;</button>
-              <button class="gallery-nav right" id="scrollRightBtnTraversing">&gt;</button>
-          </div>
-          <!-- Caption text -->
-          <p class="figure-caption gallery-caption">
-              <b>Cloth:</b> Yada yada.
-          </p>
-      </div>
-    </div>
-  <!-- End Video Gallery Section -->
-
-
-  <!-- =============================== APPROACH ==================================== -->
-    <div class="tagline" id="approach">Approach.</div>
-    <div class="section" style="margin-top: -5px;">
+    <!-- =============================== APPROACH ==================================== -->
+    <div class="tagline" id="approach">Approach: Robust Imitation Learning via Offline RL.</div>
+    
+    <div class="section">
       <p>
-        Figures explaining.
+        <!-- TODO -->
       </p>
     </div>
 
+    <!-- Paper Abstract Figure -->
+    <a id="figure-1-img" href="figs/TeaserFig.jpeg" download="TeaserFig.jpeg">
+      <img src="figs/TeaserFig.jpeg" alt="RISE Approach Overview">
+    </a>
+    <p class="figure-caption">
+      <b>Figure 1:</b> Overview of RISE approach showing how non-expert data is leveraged to robustify imitation learning.
+    </p>
 
+    <!-- =============================== OOD RECOVERY ==================================== -->
+    <div class="tagline" id="ood-recovery">RISE Enables OOD Recovery.</div>
+    
+    <div class="section">
+      <p>
+        RISE stitches together non-expert data trajectories, such as SE2 planar pushing data, with expert data to recover from OOD states.
+      </p>
+    </div>
+
+    <!-- Condensed OOD Recovery Layout -->
+    <div class="condensed-recovery-layout">
+      <!-- Top row: First two examples side by side -->
+      <div class="recovery-row">
+        <div class="recovery-item">
+          <p class="recovery-description">By utilizing play data, RISE is able to recover from <b>OOD states</b>.</p>
+          <div class="video-comparison-container">
+            <div class="video-item">
+              <!-- TODO: Replace with FAILING BC Lampshade -->
+              <video src="./lampshade/Lampshade_Expert_DATA.mp4" autoplay muted playsinline loop></video>
+              <p class="video-caption"><b>BC Policy:</b> BC fails to recover from initial states that are OOD.</p>
+            </div>
+            <div class="video-item">
+              <video src="./lampshade/LampshadeRecovery.mp4" autoplay muted playsinline loop></video>
+              <p class="video-caption"><b>RISE:</b> By leveraging non-expert data, RISE is able to recover from OOD states.</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="recovery-item">
+          <p class="recovery-description">RISE enables recovery from cases where robot <b>misses the target</b> upon first attempt.</p>
+          <div class="video-comparison-container">
+            <div class="video-item">
+              <!-- TODO: Replace with FAILING BC Tipping -->
+              <video src="./tipping/Tipping_Single_Disturbance_BCU.mp4" autoplay muted playsinline loop></video>
+              <p class="video-caption"><b>BC Policy:</b> BC fails to recover from initial states that are OOD.</p>
+            </div>
+            <div class="video-item">
+              <video src="./tipping/Tipping_Recover_From_Failure.mp4" autoplay muted playsinline loop></video>
+              <p class="video-caption"><b>RISE:</b> RISE is able to recover from robot mistakes.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Bottom row: Third example centered -->
+      <div class="recovery-row">
+        <div class="recovery-item centered">
+          <p class="recovery-description">RISE enables <b>continual recovery</b> in cases where robot is subject to multiple physical perturbations.</p>
+          <div class="video-comparison-container">
+            <div class="video-item">
+              <!-- TODO: Replace with FAILING BC Tipping -->
+              <video src="./tipping/Tipping_Single_Disturbance_BCU.mp4" autoplay muted playsinline loop></video>
+              <p class="video-caption"><b>BC Policy:</b> BC fails to stitch together non-expert data with expert data.</p>
+            </div>
+            <div class="video-item">
+              <video src="./tipping/Tipping_Two_Disturbance.mp4" autoplay muted playsinline loop></video>
+              <p class="video-caption"><b>RISE:</b> RISE is able to continually recover from multiple disturbances.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+    <!-- =============================== SUBOPTIMAL DEMOS ==================================== -->
+    <div class="tagline" id="suboptimal-demos">RISE Leverages Suboptimal Demonstrations.</div>
+    
+    <div class="section">
+      <p>
+        Unlike most imitation learning methods, RISE is robust to suboptimal demonstrations and is able to stitch together useful segments of suboptimal demonstrations to robustify the expert.
+      </p>
+    </div>
+    <i>change to one leg videos</i>
+    <!-- Video Gallery Section - One Leg -->
+    <div class="side-by-side-videos">
+      <div class="video-comparison-container">
+        <div class="video-item">
+          <!-- TODO: Replace with FAILING BC One Leg -->
+          <video src="./lampshade/Lampshade_Expert_DATA.mp4" autoplay muted playsinline loop></video>
+          <p class="video-caption"><b>BC Policy:</b> BC learns to mimic suboptimal demonstrations, hence degrading task completion.</p>
+        </div>
+        <!-- TODO: Replace with RISE One Leg -->
+        <div class="video-item">
+          <video src="./lampshade/LampshadeRecovery.mp4" autoplay muted playsinline loop></video>
+          <p class="video-caption"><b>RISE:</b> RISE is able to stitch together useful segments of suboptimal demonstrations to robustify the expert.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- =============================== Deformable Task ==================================== -->
+    <!-- TODO: Change title -->
+    <div class="tagline" id="suboptimal-demos">RISE Extends to Deformable Object Tasks.</div>
+    
+    <div class="section">
+      <p>
+        TODO 
+      </p>
+    </div>
+    <!-- Video Gallery Section - Cloth -->
+    <div class="side-by-side-videos">
+      <div class="video-comparison-container">
+        <div class="video-item">
+          <!-- TODO: Replace with FAILING BC Cloth -->
+          <video src="./cloth/Cloth_Fold.mp4" autoplay muted playsinline loop></video>
+          <p class="video-caption"><b>BC Policy:</b> BC fails to stack the cloth and fold more than one cloth.</p>
+        </div>
+        <!-- TODO: Replace with RISE Cloth -->
+        <div class="video-item">
+          <video src="./cloth/Cloth_Stack.mp4" autoplay muted playsinline loop></video>
+          <p class="video-caption"><b>RISE:</b> RISE successfully folds and stacks the cloths continually.</p>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- =============================== MULTI-TASK LEARNING ==================================== -->
+     <!-- TODO: Change title -->
+    <div class="tagline" id="multitask">RISE Reduces the Cost of Learning New Tasks.</div>
+    
+    <div class="section">
+      <p>
+        By utilizing cheaper data that can be shared across tasks, RISE amoritzes the cost of collecting new data needed to learn new tasks.
+      </p>
+    </div>
+
+    <!-- Video Gallery Section - Multi-Task -->
+     <!-- TODO: Maybe not necessary? but could add sim videos or a better depiction of this -->
+    <div class="side-by-side-videos">
+      <div class="video-comparison-container">
+        <div class="video-item">
+          <!-- TODO: Replace with FAILING BC Sim -->
+          <video src="./lampshade/Lampshade_Expert_DATA.mp4" autoplay muted playsinline loop></video>
+          <p class="video-caption"><b>BC Policy:</b> BC learns to mimic suboptimal demonstrations, hence degrading task completion.</p>
+        </div>
+        <!-- TODO: Replace with RISE Sim -->
+        <div class="video-item">
+          <video src="./lampshade/LampshadeRecovery.mp4" autoplay muted playsinline loop></video>
+          <p class="video-caption"><b>RISE:</b> RISE is able to stitch together useful segments of suboptimal demonstrations to robustify the expert.</p>
+        </div>
+      </div>
+
+    </div>
+
+
+
+
+<!-- remove if we keep above -->
+  <!-- VIDEO GALLERIES -->
+
+  <!-- Video Gallery Section - TIPPING VIDEOS -->
+  <div class="video-gallery-section" id="tippingGallerySection">
+    <div class="video-gallery-container">
+      <div class="video-gallery" id="videoGalleryTipping">
+        <!-- Videos remain here - ADD autoplay -->
+        <video class="gallery-video" src="./tipping/Tipping_DATA.mp4" autoplay muted playsinline loop></video>
+        <video class="gallery-video" src="./tipping/Tipping_Recover_From_Failure.mp4" autoplay muted playsinline loop></video>
+        <video class="gallery-video" src="./tipping/Tipping_Single_Disturbance_BCU.mp4" autoplay muted playsinline loop></video>
+        <video class="gallery-video" src="./tipping/Tipping_Single_Disturbance.mp4" autoplay muted playsinline loop></video>
+        <!--- Insert more videos here!!!!-->
+        <!-- Add more videos as needed, ensuring they have autoplay muted loop -->
+      </div>
+    </div>
     <!-- Container for the caption AND buttons -->
     <div class="gallery-caption-container">
         <!-- Move button controls INSIDE caption container -->
         <div class="gallery-nav-controls">
-            <button class="gallery-nav left" id="scrollLeftBtnReconstruction">&lt;</button>
-            <button class="gallery-nav right" id="scrollRightBtnReconstruction">&gt;</button>
+            <button class="gallery-nav left" id="scrollLeftBtnTraversing">&lt;</button>
+            <button class="gallery-nav right" id="scrollRightBtnTraversing">&gt;</button>
         </div>
         <!-- Caption text -->
-        <p class="figure-caption gallery-caption" style="margin-bottom: 30px;">
-            <b>Test:</b> A caption.
+        <p class="figure-caption gallery-caption">
+            <b>Tipping:</b> Yada yada.
         </p>
     </div>
-  <!-- End Video Gallery Section -->
+  </div>
 
-  <!-- =============================== Non-expert Data ==================================== -->
-    <div class="section-subtitle" id="non-expert">0. Non-expert Data.</div>
+<!-- Video Gallery Section - Cloth VIDEOS -->
+  <div class="video-gallery-section" id="ClothGallerySection">
+    <div class="video-gallery-container">
+      <div class="video-gallery" id="videoGalleryCloth">
+        <!-- Videos remain here - ADD autoplay -->
+        <video class="gallery-video" src="./cloth/Cloth_Fold_DATA.mp4" autoplay muted playsinline loop></video>
+        <video class="gallery-video" src="./cloth/Cloth_Fold.mp4" autoplay muted playsinline loop></video>
+        <video class="gallery-video" src="./cloth/Cloth_Stack_DATA.mp4" autoplay muted playsinline loop></video>
+        <video class="gallery-video" src="./cloth/Cloth_Stack.mp4" autoplay muted playsinline loop></video>
+        <!--- Insert more videos here!!!!-->
+        <!-- Add more videos as needed, ensuring they have autoplay muted loop -->
+      </div>
+    </div>
+    <!-- Container for the caption AND buttons -->
+    <!-- <div class="gallery-caption-container"> -->
+        <!-- Move button controls INSIDE caption container -->
+        <!-- <div class="gallery-nav-controls">
+            <button class="gallery-nav left" id="scrollLeftBtnTraversing">&lt;</button>
+            <button class="gallery-nav right" id="scrollRightBtnTraversing">&gt;</button>
+        </div>
+        <p class="figure-caption gallery-caption">
+            <b>Cloth:</b> Yada yada.
+        </p>
+    </div>
+  </div> -->
+<!-- End Video Gallery Section -->
 
-    <a id="figure-1-img" href="figs/2.png" download="2.png">
-      <img src="figs/2-min.png" alt="real-to-sim pipeline">
+
+
+    <!-- Additional video gallery for generalization examples -->
+    <!-- <div class="video-gallery-section" id="generalizationGallerySection">
+      <div class="video-gallery-container">
+        <div class="video-gallery" id="videoGalleryGeneralization">
+          <video class="gallery-video" src="./tipping/Tipping_Single_Disturbance.mp4" autoplay muted playsinline loop></video>
+          <video class="gallery-video" src="./cloth/Cloth_Fold.mp4" autoplay muted playsinline loop></video>
+        </div>
+      </div>
+      <div class="gallery-caption-container">
+          <div class="gallery-nav-controls">
+              <button class="gallery-nav left" id="scrollLeftBtnGeneralization">&lt;</button>
+              <button class="gallery-nav right" id="scrollRightBtnGeneralization">&gt;</button>
+          </div>
+          <p class="figure-caption gallery-caption">
+              <b>Generalization:</b> RISE successfully generalizes to new tasks and object configurations.
+          </p>
+      </div>
+    </div> -->
+
+
+
+
+
+    <!-- =============================== Approach Details ==================================== -->
+    <div class="tagline" id="approach-details">The Algorithm.</div>
+         <!-- Offline RL Section -->
+    <div class="section-subtitle">Offline RL</div>
+    <p>TODO</p>
+    <!-- <a id="figure-2-img" href="figs/4.png" download="4.png">
+      <img src="figs/4-min.png" alt="Lipschitz Continuity">
     </a>
-    <!-- Caption for Figure 2 -->
+    <p class="figure-caption"> -->
+
+    <!-- Lipschitz Continuity Section -->
+    <div class="section-subtitle">Lipschitz Continuity for Robustness</div>
+    <p>TODO</p>
+    <a id="figure-3-img" href="SpectralGraphic.jpeg" download="SpectralGraphic.jpeg">
+      <img src="figs/SpectralGraphic.jpeg" alt="Effect of Spectral Norm on Action Distribution">
+    </a>
     <p class="figure-caption">
-      <b>Figure 1:</b> Another.
+      <b>Figure 2:</b> Adding a spectral norm penalty to the behavior policy widens the action distribution, improving robustness.
     </p>
 
-  <!-- =============================== Offline RL ==================================== -->
-    <div class="section-subtitle" id="offline-rl">1. Offline-RL.</div>
-
-    <a id="figure-2-img" href="figs/4.png" download="4.png">
-      <img src="figs/4-min.png" alt="Approach Overview">
+     <!-- Data Augmentation Section -->
+     <div class="section-subtitle">Data Augmentation</div>
+     <p>TODO</p>
+    <!-- <a id="figure-3-img" href="figs/3.png" download="3.png">
+      <img src="figs/3-min.png" alt="Training Process">
     </a>
-    <!-- Caption for Figure 2 -->
     <p class="figure-caption">
-      <b>Figure 2:</b> Another.
-    </p>
-
-  <!-- =============================== lipschitz continuity ==================================== -->
-    <div class="section-subtitle" id="lipschitz">2. Lipschitz Continuity.</div>
-
-    <a id="figure-3-img" href="figs/3.png" download="3.png">
-      <img src="figs/3-min.png" alt="Training in Sim">
-    </a>
-    <!-- Caption for Figure 3 -->
-    <p class="figure-caption">
-      <b>Figure 3:</b> Another.
-    </p>
+      <b>Figure 3:</b> Training process showing how Lipschitz constraints improve policy robustness.
+    </p> -->
 
 
-
-  <!-- =============================== ACKNOWLEDGEMENTS ==================================== -->
+    <!-- =============================== ACKNOWLEDGEMENTS ==================================== -->
     <div class="tagline" id="acknowledgements">Acknowledgements.</div>
     <div class="section" style="margin-top: -5px;">
       <p>
@@ -228,7 +383,7 @@ Learning via Offline Reinforcement Learning</div>
       </p>
     </div>
 
-  <!-- =============================== BIBTEX ==================================== -->
+    <!-- =============================== BIBTEX ==================================== -->
     <div class="bibtex-code" id="bibtex">
       <div class="bibtex-title">BibTeX</div>
       <pre><code>Insert bibtex here.
@@ -236,7 +391,6 @@ Learning via Offline Reinforcement Learning</div>
     </div>
 
   </div> <!-- End of main-content div -->
-
 
   <div class="footer">
      © UW | Adapted from design by the <span style="font-variant: small-caps;">VideoMimic</span> team. Source code available <a href="https://github.com/videomimic-1/videomimic-1.github.io" target="_blank">here</a>.
@@ -246,30 +400,12 @@ Learning via Offline Reinforcement Learning</div>
   <script>
   document.addEventListener('DOMContentLoaded', function() {
     const video = document.getElementById('teaser-video');
-    // const initialDelay = 1000; // No longer needed, autoplay attribute handles initial play
     const loopDelay = 3000;    // 3 seconds delay before looping
-
-    // let initialPlayTimeout; // No longer needed
     let loopTimeout;
 
     if (video) {
-      // Ensure video is muted (already in HTML, but good practice)
       video.muted = true;
-      // Controls are already in HTML, ensuring user can play if autoplay fails
 
-      // REMOVE JavaScript-based initial play:
-      /*
-      initialPlayTimeout = setTimeout(function() {
-        video.play().then(function() {
-          // Autoplay started
-        }).catch(function(error) {
-          console.log('Initial autoplay prevented for teaser video. User interaction might be needed.', error);
-          video.controls = true; // Ensure controls are visible
-        });
-      }, initialDelay);
-      */
-
-      // Loop with delay - this part can stay
       video.addEventListener('ended', function() {
         clearTimeout(loopTimeout); 
         loopTimeout = setTimeout(function() {
@@ -280,21 +416,12 @@ Learning via Offline Reinforcement Learning</div>
         }, loopDelay);
       });
 
-      // --- Clear Timeouts on Manual Pause ---
       video.addEventListener('pause', function() {
         if (!video.ended && video.currentTime > 0) {
-           // clearTimeout(initialPlayTimeout); // No longer needed
            clearTimeout(loopTimeout);
            console.log('Teaser video: Manual pause detected, clearing loop timeout.');
         }
       });
-
-      // --- Clear Timeouts on Manual Play (if paused before initial delay finishes) ---
-       video.addEventListener('play', function() {
-           // if (initialPlayTimeout) { // No longer needed
-           //     clearTimeout(initialPlayTimeout);
-           // }
-       });
 
     } else {
       console.error('Video element with ID "teaser-video" not found.');
@@ -307,28 +434,22 @@ Learning via Offline Reinforcement Learning</div>
     document.addEventListener('DOMContentLoaded', function() {
       const galleries = [
         {
-          sectionId: 'gallery-section-anchor', // ID of the .video-gallery-section for sitting
-          galleryInnerId: 'videoGallerySitting',
-          scrollLeftBtnId: 'scrollLeftBtnSitting',
-          scrollRightBtnId: 'scrollRightBtnSitting'
+          sectionId: 'ClothGallerySection',
+          galleryInnerId: 'videoGalleryCloth',
+          scrollLeftBtnId: 'scrollLeftBtnCloth',
+          scrollRightBtnId: 'scrollRightBtnCloth'
         },
         {
-          sectionId: 'traversingGallerySection', // ID of the .video-gallery-section for traversing
-          galleryInnerId: 'videoGalleryTraversing',
-          scrollLeftBtnId: 'scrollLeftBtnTraversing',
-          scrollRightBtnId: 'scrollRightBtnTraversing'
+          sectionId: 'lampshadeGallerySection',
+          galleryInnerId: 'videoGalleryLampshade',
+          scrollLeftBtnId: 'scrollLeftBtnLampshade',
+          scrollRightBtnId: 'scrollRightBtnLampshade'
         },
         {
-          sectionId: 'stairsGallerySection', // ID of the .video-gallery-section for stairs
-          galleryInnerId: 'videoGalleryStairs',
-          scrollLeftBtnId: 'scrollLeftBtnStairs',
-          scrollRightBtnId: 'scrollRightBtnStairs'
-        },
-        {
-          sectionId: 'reconstructionGallerySection', // ID of the .video-gallery-section for reconstruction
-          galleryInnerId: 'videoGalleryReconstruction',
-          scrollLeftBtnId: 'scrollLeftBtnReconstruction',
-          scrollRightBtnId: 'scrollRightBtnReconstruction'
+          sectionId: 'generalizationGallerySection',
+          galleryInnerId: 'videoGalleryGeneralization',
+          scrollLeftBtnId: 'scrollLeftBtnGeneralization',
+          scrollRightBtnId: 'scrollRightBtnGeneralization'
         }
       ];
 
@@ -345,37 +466,18 @@ Learning via Offline Reinforcement Learning</div>
         const scrollRightBtn = document.getElementById(galleryConfig.scrollRightBtnId);
 
         if (galleryContainer && galleryInner && scrollLeftBtn && scrollRightBtn) {
-          // Calculate the scroll amount based on the width of the first video + gap
-          const scrollAmount = (galleryInner.firstElementChild?.offsetWidth || 300) + 15; // 15 is the gap
+          const scrollAmount = (galleryInner.firstElementChild?.offsetWidth || 300) + 15;
 
           scrollLeftBtn.addEventListener('click', () => {
-            // Scroll the CONTAINER element
             galleryContainer.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
           });
 
           scrollRightBtn.addEventListener('click', () => {
-            // Scroll the CONTAINER element
             galleryContainer.scrollBy({ left: scrollAmount, behavior: 'smooth' });
           });
 
-          /* --- REMOVE OR COMMENT OUT HOVER LOGIC ---
-          // Optional: Add hover-to-play functionality for gallery videos
-          // Target videos within galleryInner
-          const galleryVideos = galleryInner.querySelectorAll('.gallery-video');
-          galleryVideos.forEach(video => {
-              video.addEventListener('mouseenter', () => {
-                  video.play().catch(e => console.log("Autoplay prevented:", e));
-              });
-              video.addEventListener('mouseleave', () => {
-                  video.pause();
-                  // video.currentTime = 0; // Optional: reset video on mouse leave
-              });
-          });
-          */ // --- END OF REMOVED HOVER LOGIC ---
-
         } else {
           console.error(`Gallery elements not found for navigation setup in section ${galleryConfig.sectionId}.`);
-          // Log which elements might be missing
           if (!galleryContainer) console.error('Missing element: .video-gallery-container in section ' + galleryConfig.sectionId);
           if (!galleryInner) console.error(`Missing element with ID ${galleryConfig.galleryInnerId}`);
           if (!scrollLeftBtn) console.error(`Missing element with ID ${galleryConfig.scrollLeftBtnId}`);
@@ -385,72 +487,15 @@ Learning via Offline Reinforcement Learning</div>
     });
   </script>
 
-  <!-- JavaScript for Real-to-Sim Video Synchronization -->
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const videosToSync = [
-        document.querySelector('.r2s-video-input'),
-        document.querySelector('.r2s-video-smpl'),
-        document.querySelector('.r2s-video-g1'),
-        document.querySelector('.r2s-video-ego-rgb'),
-        document.querySelector('.r2s-video-ego-depth'),
-        document.querySelector('.r2s-video-sim')
-      ].filter(Boolean); // Filter out nulls if any class name is wrong or video missing
-
-      function synchronizeAndPlayR2SVideos() {
-        if (videosToSync.length === 0) {
-          console.warn('No videos found for Real-to-Sim synchronization.');
-          return;
-        }
-
-        const readyPromises = videosToSync.map(video => {
-          return new Promise((resolve, reject) => {
-            // If video is already ready (e.g., cached), resolve immediately
-            if (video.readyState >= 4) { // HAVE_ENOUGH_DATA (canplaythrough)
-              resolve();
-            } else {
-              video.addEventListener('canplaythrough', resolve, { once: true });
-              video.addEventListener('error', reject, { once: true }); // Handle potential loading errors
-            }
-          });
-        });
-
-        Promise.all(readyPromises)
-          .then(() => {
-            console.log('All Real-to-Sim videos are ready to play. Starting playback.');
-            videosToSync.forEach(video => {
-              video.currentTime = 0; // Ensure starting from the beginning
-              video.play().catch(error => {
-                console.warn(`Autoplay was prevented for video ${video.src}. User interaction might be needed.`, error);
-                // Ensure controls are visible if autoplay fails for any video
-                video.controls = true;
-              });
-            });
-          })
-          .catch(error => {
-            console.error('Error waiting for Real-to-Sim videos to be ready:', error);
-            // Optionally, provide a fallback or user message here
-            videosToSync.forEach(video => video.controls = true); // Show controls on all if any failed to load
-          });
-      }
-
-      synchronizeAndPlayR2SVideos();
-
-      // The `loop` attribute on the HTML video tags will handle continuous looping.
-      // The videos will naturally re-synchronize at their LCM due to the loop attribute
-      // if they have different durations and all successfully start.
-    });
-  </script>
-
   <!-- JavaScript to prevent default click on specific image links -->
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       const imageLinkIds = ['figure-1-img', 'figure-2-img', 'figure-3-img'];
       imageLinkIds.forEach(id => {
-        const linkElement = document.getElementById(id);
-        if (linkElement) {
-          linkElement.addEventListener('click', function(event) {
-            event.preventDefault();
+        const link = document.getElementById(id);
+        if (link) {
+          link.addEventListener('click', function(e) {
+            e.preventDefault();
           });
         }
       });
