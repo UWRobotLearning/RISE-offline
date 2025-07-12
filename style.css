@@ -735,6 +735,140 @@ button:focus {
   display: block;
   max-width: 600px;
 }
+
+/* BC and RISE video styling */
+.video-bc {
+  border: 3px solid #ffcccc !important;
+  box-shadow: 0 0 8px rgba(255, 204, 204, 0.3);
+}
+
+.video-rise {
+  border: 3px solid #ccffcc !important;
+  box-shadow: 0 0 8px rgba(204, 255, 204, 0.3);
+}
+
+/* Hover effects for BC and RISE videos */
+.video-bc:hover {
+  border-color: #ff9999 !important;
+  box-shadow: 0 0 12px rgba(255, 204, 204, 0.5);
+}
+
+.video-rise:hover {
+  border-color: #99ff99 !important;
+  box-shadow: 0 0 12px rgba(204, 255, 204, 0.5);
+}
+
+/* Expandable dropdown styles */
+.expandable-section {
+  margin: 20px 0;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.expandable-header {
+  background: #f8f8f8;
+  padding: 15px 20px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background-color 0.2s ease;
+  border-bottom: 1px solid #ddd;
+}
+
+.expandable-header:hover {
+  background: #f0f0f0;
+}
+
+.expandable-header h4 {
+  margin: 0;
+  font-family: 'Roboto Mono', monospace;
+  font-size: 16px;
+  color: #333;
+}
+
+.expandable-icon {
+  font-size: 18px;
+  transition: transform 0.3s ease;
+  color: #666;
+}
+
+.expandable-icon.expanded {
+  transform: rotate(180deg);
+}
+
+.expandable-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+  background: white;
+}
+
+.expandable-content.expanded {
+  max-height: 2000px;
+}
+
+/* Demo gallery styles */
+.demo-gallery {
+  padding: 20px;
+}
+
+.demo-gallery-container {
+  overflow-x: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #ccc transparent;
+  margin-bottom: 15px;
+}
+
+.demo-gallery-container::-webkit-scrollbar {
+  height: 6px;
+}
+
+.demo-gallery-container::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.demo-gallery-container::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 3px;
+}
+
+.demo-gallery-inner {
+  display: flex;
+  gap: 15px;
+  padding: 10px 0;
+  min-width: max-content;
+}
+
+.demo-video-item {
+  flex-shrink: 0;
+  width: 250px;
+  text-align: center;
+}
+
+.demo-video-item video {
+  width: 250px;
+  height: 300px;
+  object-fit: cover;
+  border: 1.5px solid #000;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  transition: transform 0.2s ease;
+}
+
+.demo-video-item video:hover {
+  transform: scale(1.02);
+}
+
+.demo-video-caption {
+  font-size: 14px;
+  color: #555;
+  font-style: italic;
+  line-height: 1.4;
+  margin: 0;
+  padding: 0 5px;
+}
 /* Styling for individual videos within the gallery */
 .video-gallery .gallery-video {
   /* width: auto; */ /* Let height dictate width for consistency */

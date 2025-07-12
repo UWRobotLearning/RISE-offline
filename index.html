@@ -131,12 +131,11 @@ Learning via Offline Reinforcement Learning</div>
           <p class="recovery-description">By utilizing play data, RISE is able to recover from <b>OOD states</b>.</p>
           <div class="video-comparison-container">
             <div class="video-item">
-              <!-- TODO: Replace with FAILING BC Lampshade -->
-              <video src="./lampshade/Lampshade_Expert_DATA.mp4" autoplay muted playsinline loop></video>
+              <video class="video-bc" src="./lampshade/Lampshade_BC_OOD.mp4" autoplay muted playsinline loop></video>
               <p class="video-caption"><b>BC Policy:</b> BC fails to recover from initial states that are OOD.</p>
             </div>
             <div class="video-item">
-              <video src="./lampshade/LampshadeRecovery.mp4" autoplay muted playsinline loop></video>
+              <video class="video-rise" src="./lampshade/LampshadeRecovery.mp4" autoplay muted playsinline loop></video>
               <p class="video-caption"><b>RISE:</b> By leveraging non-expert data, RISE is able to recover from OOD states.</p>
             </div>
           </div>
@@ -146,12 +145,11 @@ Learning via Offline Reinforcement Learning</div>
           <p class="recovery-description">RISE enables recovery from cases where robot <b>misses the target</b> upon first attempt.</p>
           <div class="video-comparison-container">
             <div class="video-item">
-              <!-- TODO: Replace with FAILING BC Tipping -->
-              <video src="./tipping/Tipping_Single_Disturbance_BCU.mp4" autoplay muted playsinline loop></video>
-              <p class="video-caption"><b>BC Policy:</b> BC fails to recover from initial states that are OOD.</p>
+              <video class="video-bc" src="./tipping/Tipping_Single_Disturbance_BCU.mp4" autoplay muted playsinline loop></video>
+              <p class="video-caption"><b>BC Policy:</b> BC is unable to recover from distrubtion shift due to the inability to utilize non-expert data effectively.</p>
             </div>
             <div class="video-item">
-              <video src="./tipping/Tipping_Recover_From_Failure.mp4" autoplay muted playsinline loop></video>
+              <video class="video-rise" src="./tipping/Tipping_Recover_From_Failure.mp4" autoplay muted playsinline loop></video>
               <p class="video-caption"><b>RISE:</b> RISE is able to recover from robot mistakes.</p>
             </div>
           </div>
@@ -165,11 +163,11 @@ Learning via Offline Reinforcement Learning</div>
           <div class="video-comparison-container">
             <div class="video-item">
               <!-- TODO: Replace with FAILING BC Tipping -->
-              <video src="./tipping/Tipping_Single_Disturbance_BCU.mp4" autoplay muted playsinline loop></video>
+              <video class="video-bc" src="./tipping/Lampshade_Tipping_BC_Disturbance.mp4" autoplay muted playsinline loop></video>
               <p class="video-caption"><b>BC Policy:</b> BC fails to stitch together non-expert data with expert data.</p>
             </div>
             <div class="video-item">
-              <video src="./tipping/Tipping_Two_Disturbance.mp4" autoplay muted playsinline loop></video>
+              <video class="video-rise" src="./tipping/Tipping_Two_Disturbance.mp4" autoplay muted playsinline loop></video>
               <p class="video-caption"><b>RISE:</b> RISE is able to continually recover from multiple disturbances.</p>
             </div>
           </div>
@@ -177,29 +175,76 @@ Learning via Offline Reinforcement Learning</div>
       </div>
     </div>
 
-
+    <!-- Expandable Demo Gallery for OOD Recovery -->
+    <div class="expandable-section">
+      <div class="expandable-header" onclick="toggleExpandable('ood-demo-gallery')">
+        <h4>Data Used for Lampshade Tasks</h4>
+        <span class="expandable-icon" id="ood-demo-icon">▼</span>
+      </div>
+      <div class="expandable-content" id="ood-demo-gallery">
+        <div class="demo-gallery">
+          <div class="demo-gallery-container">
+            <div class="demo-gallery-inner">
+              <div class="demo-video-item">
+                <video src="./lampshade/Lampshade_Expert_DATA.mp4" autoplay muted playsinline loop></video>
+                <p class="demo-video-caption">Expert demos for lampshade task.</p>
+              </div>
+              <div class="demo-video-item">
+                <video src="./lampshade/Lampshade_Play_DATA.mp4" autoplay muted playsinline loop></video>
+                <p class="demo-video-caption">Play data of random tabletop pushing.</p>
+              </div>
+              <div class="demo-video-item">
+                <video src="./tipping/Tipping_DATA.mp4" autoplay muted playsinline loop></video>
+                <p class="demo-video-caption">Tipping recovery demos.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <!-- =============================== SUBOPTIMAL DEMOS ==================================== -->
     <div class="tagline" id="suboptimal-demos">RISE Leverages Suboptimal Demonstrations.</div>
     
     <div class="section">
       <p>
-        Unlike most imitation learning methods, RISE is robust to suboptimal demonstrations and is able to stitch together useful segments of suboptimal demonstrations to robustify the expert.
+        Unlike most imitation learning methods, RISE is robust to suboptimal demonstrations and is able to stitch together useful segments of suboptimal demonstrations to robustify the expert. Additionally, the non-expert data increases the coverage of the policy performance.
       </p>
     </div>
-    <i>change to one leg videos</i>
     <!-- Video Gallery Section - One Leg -->
     <div class="side-by-side-videos">
       <div class="video-comparison-container">
         <div class="video-item">
-          <!-- TODO: Replace with FAILING BC One Leg -->
-          <video src="./lampshade/Lampshade_Expert_DATA.mp4" autoplay muted playsinline loop></video>
-          <p class="video-caption"><b>BC Policy:</b> BC learns to mimic suboptimal demonstrations, hence degrading task completion.</p>
+          <video class="video-bc" src="./one-leg/One_Leg_BC.mp4" autoplay muted playsinline loop></video>
+          <p class="video-caption"><b>BC Policy:</b> BC learns to mimic suboptimal demonstrations, hence hindering task completion.</p>
         </div>
-        <!-- TODO: Replace with RISE One Leg -->
         <div class="video-item">
-          <video src="./lampshade/LampshadeRecovery.mp4" autoplay muted playsinline loop></video>
-          <p class="video-caption"><b>RISE:</b> RISE is able to stitch together useful segments of suboptimal demonstrations to robustify the expert.</p>
+          <video class="video-rise" src="./one-leg/One_Leg_Insert.mp4" autoplay muted playsinline loop></video>
+          <p class="video-caption"><b>RISE:</b> RISE is able to use suboptimal demos to robustify the expert and not be negatively impacted by them.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Expandable Demo Gallery for Suboptimal Demos -->
+    <div class="expandable-section">
+      <div class="expandable-header" onclick="toggleExpandable('suboptimal-demo-gallery')">
+        <h4>Demo Data Used for One-Leg Insertion Task</h4>
+        <span class="expandable-icon" id="suboptimal-demo-icon">▼</span>
+      </div>
+      <div class="expandable-content" id="suboptimal-demo-gallery">
+        <div class="demo-gallery">
+          <div class="demo-gallery-container">
+            <div class="demo-gallery-inner">
+              <div class="demo-video-item">
+                <video src="./one-leg/One_Leg_Expert_DATA.mp4" autoplay muted playsinline loop></video>
+                <p class="demo-video-caption">Expert demos for one-leg insertion task.</p>
+              </div>
+              <div class="demo-video-item">
+                <video src="./one-leg/One_Leg_Failed_DATA.mp4" autoplay muted playsinline loop></video>
+                <p class="demo-video-caption">Suboptimal demos for one-leg insertion task from an OOD inital state.</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -210,28 +255,49 @@ Learning via Offline Reinforcement Learning</div>
     
     <div class="section">
       <p>
-        TODO 
+        TODO
       </p>
     </div>
     <!-- Video Gallery Section - Cloth -->
     <div class="side-by-side-videos">
       <div class="video-comparison-container">
         <div class="video-item">
-          <!-- TODO: Replace with FAILING BC Cloth -->
-          <video src="./cloth/Cloth_Fold.mp4" autoplay muted playsinline loop></video>
-          <p class="video-caption"><b>BC Policy:</b> BC fails to stack the cloth and fold more than one cloth.</p>
+          <video class="video-bc" src="./cloth/Cloth_BC.mp4" autoplay muted playsinline loop></video>
+          <p class="video-caption"><b>BC Policy:</b> BC fails to complete the task by stacking the folded cloth..</p>
         </div>
         <!-- TODO: Replace with RISE Cloth -->
         <div class="video-item">
-          <video src="./cloth/Cloth_Stack.mp4" autoplay muted playsinline loop></video>
-          <p class="video-caption"><b>RISE:</b> RISE successfully folds and stacks the cloths continually.</p>
+          <video class="video-rise" src="./cloth/Cloth_Fold_Stack.mp4" autoplay muted playsinline loop></video>
+          <p class="video-caption"><b>RISE:</b> RISE successfully stitches folding and stacking with a deformable object.</p>
         </div>
       </div>
     </div>
 
+    <!-- Expandable Demo Gallery for Deformable Tasks -->
+    <div class="expandable-section">
+      <div class="expandable-header" onclick="toggleExpandable('deformable-demo-gallery')">
+        <h4>Data Used for Cloth Stacking Task</h4>
+        <span class="expandable-icon" id="deformable-demo-icon">▼</span>
+      </div>
+      <div class="expandable-content" id="deformable-demo-gallery">
+        <div class="demo-gallery">
+          <div class="demo-gallery-container">
+            <div class="demo-gallery-inner">
+              <div class="demo-video-item">
+                <video src="./cloth/Cloth_Stack_DATA.mp4" autoplay muted playsinline loop></video>
+                <p class="demo-video-caption">Expert demos for stacking cloth task</p>
+              </div>
+              <div class="demo-video-item">
+                <video src="./cloth/Cloth_Fold_DATA.mp4" autoplay muted playsinline loop></video>
+                <p class="demo-video-caption">Recovery demos of folding the cloth.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <!-- =============================== MULTI-TASK LEARNING ==================================== -->
-     <!-- TODO: Change title -->
     <div class="tagline" id="multitask">RISE Reduces the Cost of Learning New Tasks.</div>
     
     <div class="section">
@@ -241,69 +307,105 @@ Learning via Offline Reinforcement Learning</div>
     </div>
 
     <!-- Video Gallery Section - Multi-Task -->
-     <!-- TODO: Maybe not necessary? but could add sim videos or a better depiction of this -->
     <div class="side-by-side-videos">
       <div class="video-comparison-container">
         <div class="video-item">
           <!-- TODO: Replace with FAILING BC Sim -->
-          <video src="./lampshade/Lampshade_Expert_DATA.mp4" autoplay muted playsinline loop></video>
-          <p class="video-caption"><b>BC Policy:</b> BC learns to mimic suboptimal demonstrations, hence degrading task completion.</p>
+          <video class="video-bc" src="" autoplay muted playsinline loop></video>
+          <p class="video-caption"><b>BC Policy:</b> BC fails to complete the task in OOD states for square-peg task.</p>
+        </div>
+        <div class="video-item">
+          <!-- TODO: Replace with FAILING BC Sim -->
+          <video class="video-bc" src="" autoplay muted playsinline loop></video>
+          <p class="video-caption"><b>BC Policy:</b> BC fails to complete the task in OOD states for square-hook task.</p>
         </div>
         <!-- TODO: Replace with RISE Sim -->
         <div class="video-item">
-          <video src="./lampshade/LampshadeRecovery.mp4" autoplay muted playsinline loop></video>
-          <p class="video-caption"><b>RISE:</b> RISE is able to stitch together useful segments of suboptimal demonstrations to robustify the expert.</p>
+          <video class="video-rise" src="" autoplay muted playsinline loop></video>
+          <p class="video-caption"><b>RISE:</b> By sharing square play data, RISE completes the square-peg tasks in a high-coverage of inital state.</p>
+        </div>
+        <!-- TODO: Replace with RISE Sim -->
+        <div class="video-item">
+          <video class="video-rise" src="" autoplay muted playsinline loop></video>
+          <p class="video-caption"><b>RISE:</b> By sharing square play data, RISE completes the square-hook task in a high-coverage of inital state.</p>
         </div>
       </div>
 
     </div>
 
-
-
+    <!-- Expandable Demo Gallery for Multi-Task Learning -->
+    <div class="expandable-section">
+      <div class="expandable-header" onclick="toggleExpandable('multitask-demo-gallery')">
+        <h4>📹 View Demo Data Used for Multi-Task Learning</h4>
+        <span class="expandable-icon" id="multitask-demo-icon">▼</span>
+      </div>
+      <div class="expandable-content" id="multitask-demo-gallery">
+        <div class="demo-gallery">
+          <div class="demo-gallery-container">
+            <div class="demo-gallery-inner">
+              <div class="demo-video-item">
+                <!-- TODO: ADD EXPERT PEG -->
+                <video src="./lampshade/Lampshade_Expert_DATA.mp4" autoplay muted playsinline loop></video>
+                <p class="demo-video-caption">Expert demos collected from narrow inital distribution for square-peg task.</p>
+              </div>
+              <!-- TODO ADD EXPERT HOOK -->
+              <div class="demo-video-item">
+                <video src="./lampshade/Lampshade_Play_DATA.mp4" autoplay muted playsinline loop></video>
+                <p class="demo-video-caption">Expert demos collected from narrow inital distribution for square-hook task.</p>
+              </div>
+              <!-- TODO: ADD SIM PLAY -->
+              <div class="demo-video-item">
+                <video src="./tipping/Tipping_DATA.mp4" autoplay muted playsinline loop></video>
+                <p class="demo-video-caption">Play demos collected from wide inital distribution for square setting.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
 <!-- remove if we keep above -->
   <!-- VIDEO GALLERIES -->
 
   <!-- Video Gallery Section - TIPPING VIDEOS -->
-  <div class="video-gallery-section" id="tippingGallerySection">
+  <!-- <div class="video-gallery-section" id="tippingGallerySection">
     <div class="video-gallery-container">
       <div class="video-gallery" id="videoGalleryTipping">
-        <!-- Videos remain here - ADD autoplay -->
         <video class="gallery-video" src="./tipping/Tipping_DATA.mp4" autoplay muted playsinline loop></video>
         <video class="gallery-video" src="./tipping/Tipping_Recover_From_Failure.mp4" autoplay muted playsinline loop></video>
         <video class="gallery-video" src="./tipping/Tipping_Single_Disturbance_BCU.mp4" autoplay muted playsinline loop></video>
-        <video class="gallery-video" src="./tipping/Tipping_Single_Disturbance.mp4" autoplay muted playsinline loop></video>
+        <video class="gallery-video" src="./tipping/Tipping_Single_Disturbance.mp4" autoplay muted playsinline loop></video> -->
         <!--- Insert more videos here!!!!-->
         <!-- Add more videos as needed, ensuring they have autoplay muted loop -->
-      </div>
-    </div>
+      <!-- </div>
+    </div> -->
     <!-- Container for the caption AND buttons -->
-    <div class="gallery-caption-container">
+    <!-- <div class="gallery-caption-container"> -->
         <!-- Move button controls INSIDE caption container -->
-        <div class="gallery-nav-controls">
+        <!-- <div class="gallery-nav-controls">
             <button class="gallery-nav left" id="scrollLeftBtnTraversing">&lt;</button>
             <button class="gallery-nav right" id="scrollRightBtnTraversing">&gt;</button>
         </div>
-        <!-- Caption text -->
+        Caption text
         <p class="figure-caption gallery-caption">
             <b>Tipping:</b> Yada yada.
         </p>
     </div>
   </div>
 
-<!-- Video Gallery Section - Cloth VIDEOS -->
+Video Gallery Section - Cloth VIDEOS
   <div class="video-gallery-section" id="ClothGallerySection">
     <div class="video-gallery-container">
       <div class="video-gallery" id="videoGalleryCloth">
-        <!-- Videos remain here - ADD autoplay -->
+        Videos remain here - ADD autoplay
         <video class="gallery-video" src="./cloth/Cloth_Fold_DATA.mp4" autoplay muted playsinline loop></video>
         <video class="gallery-video" src="./cloth/Cloth_Fold.mp4" autoplay muted playsinline loop></video>
         <video class="gallery-video" src="./cloth/Cloth_Stack_DATA.mp4" autoplay muted playsinline loop></video>
-        <video class="gallery-video" src="./cloth/Cloth_Stack.mp4" autoplay muted playsinline loop></video>
+        <video class="gallery-video" src="./cloth/Cloth_Stack.mp4" autoplay muted playsinline loop></video> -->
         <!--- Insert more videos here!!!!-->
         <!-- Add more videos as needed, ensuring they have autoplay muted loop -->
-      </div>
-    </div>
+      <!-- </div>
+    </div> -->
     <!-- Container for the caption AND buttons -->
     <!-- <div class="gallery-caption-container"> -->
         <!-- Move button controls INSIDE caption container -->
@@ -485,6 +587,22 @@ Learning via Offline Reinforcement Learning</div>
         }
       });
     });
+  </script>
+
+  <!-- JavaScript for Expandable Sections -->
+  <script>
+    function toggleExpandable(sectionId) {
+      const content = document.getElementById(sectionId);
+      const icon = document.getElementById(sectionId.replace('-gallery', '-demo-icon'));
+      
+      if (content.classList.contains('expanded')) {
+        content.classList.remove('expanded');
+        icon.classList.remove('expanded');
+      } else {
+        content.classList.add('expanded');
+        icon.classList.add('expanded');
+      }
+    }
   </script>
 
   <!-- JavaScript to prevent default click on specific image links -->
