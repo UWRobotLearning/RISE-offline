@@ -16,8 +16,10 @@
       <li><a href="#approach">Approach</a></li>
       <li><a href="#ood-recovery">OOD Recovery</a></li>
       <li><a href="#suboptimal-demos">Suboptimal Demos</a></li>
+      <li><a href="#deformable-tasks">Deformable Tasks</a></li>
       <li><a href="#multitask">Multi-Task Learning</a></li>
-      <li><a href="#generalization">Generalization</a></li>
+      <li><a href="#algorithm">The Algorithm</a></li>
+      <!-- <li><a href="#generalization">Generalization</a></li> -->
       <li><a href="#acknowledgements">Acknowledgements</a></li>
     </ul>
   </div>
@@ -107,8 +109,8 @@ Learning via Offline Reinforcement Learning</div>
     </div>
 
     <!-- Paper Abstract Figure -->
-    <a id="figure-1-img" href="figs/TeaserFig.jpeg" download="TeaserFig.jpeg">
-      <img src="figs/TeaserFig.jpeg" alt="RISE Approach Overview">
+    <a id="figure-1-img" href="figs/Teaser_Figure.png" download="Teaser_Figure.png">
+      <img src="figs/Teaser_Figure.png" alt="RISE Approach Overview">
     </a>
     <p class="figure-caption">
       <b>Figure 1:</b> Overview of RISE approach showing how non-expert data is leveraged to robustify imitation learning.
@@ -187,7 +189,7 @@ Learning via Offline Reinforcement Learning</div>
             <div class="demo-gallery-inner">
               <div class="demo-video-item">
                 <video src="./lampshade/Lampshade_Expert_DATA.mp4" autoplay muted playsinline loop></video>
-                <p class="demo-video-caption">Expert demos for lampshade task.</p>
+                <p class="demo-video-caption">Expert demos for lampshade task collected from narrow inital distribution.</p>
               </div>
               <div class="demo-video-item">
                 <video src="./lampshade/Lampshade_Play_DATA.mp4" autoplay muted playsinline loop></video>
@@ -251,11 +253,11 @@ Learning via Offline Reinforcement Learning</div>
 
     <!-- =============================== Deformable Task ==================================== -->
     <!-- TODO: Change title -->
-    <div class="tagline" id="suboptimal-demos">RISE Extends to Deformable Object Tasks.</div>
+    <div class="tagline" id="deformable-tasks">RISE Extends to Deformable Object Tasks.</div>
     
     <div class="section">
       <p>
-        TODO
+        RISE generalizes beyond rigid, tabletop settings to deformable cloth stacking task requiring multiple steps.
       </p>
     </div>
     <!-- Video Gallery Section - Cloth -->
@@ -445,7 +447,7 @@ Video Gallery Section - Cloth VIDEOS
 
 
     <!-- =============================== Approach Details ==================================== -->
-    <div class="tagline" id="approach-details">The Algorithm.</div>
+    <div class="tagline" id="algorithm">The Algorithm.</div>
          <!-- Offline RL Section -->
     <div class="section-subtitle">Offline RL</div>
     <p>TODO</p>

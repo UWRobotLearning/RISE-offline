@@ -727,35 +727,35 @@ button:focus {
 
 /* Teaser video styling */
 #teaser-video {
-  width: 80%;
+  width: 95%;
   height: auto;
   border: 1.5px solid #000;
   border-radius: 15px;
   margin: 20px auto;
   display: block;
-  max-width: 600px;
+  max-width: 800px;
 }
 
 /* BC and RISE video styling */
 .video-bc {
-  border: 3px solid #ffcccc !important;
-  box-shadow: 0 0 8px rgba(255, 204, 204, 0.3);
+  border: 3px solid #ff6666 !important;
+  box-shadow: 0 0 8px rgba(255, 102, 102, 0.4);
 }
 
 .video-rise {
-  border: 3px solid #ccffcc !important;
-  box-shadow: 0 0 8px rgba(204, 255, 204, 0.3);
+  border: 3px solid #66cc66 !important;
+  box-shadow: 0 0 8px rgba(102, 204, 102, 0.4);
 }
 
 /* Hover effects for BC and RISE videos */
 .video-bc:hover {
-  border-color: #ff9999 !important;
-  box-shadow: 0 0 12px rgba(255, 204, 204, 0.5);
+  border-color: #ff3333 !important;
+  box-shadow: 0 0 12px rgba(255, 102, 102, 0.6);
 }
 
 .video-rise:hover {
-  border-color: #99ff99 !important;
-  box-shadow: 0 0 12px rgba(204, 255, 204, 0.5);
+  border-color: #33cc33 !important;
+  box-shadow: 0 0 12px rgba(102, 204, 102, 0.6);
 }
 
 /* Expandable dropdown styles */
