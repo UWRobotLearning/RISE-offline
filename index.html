@@ -6,6 +6,7 @@
   <link rel="icon" href="https://fonts.gstatic.com/s/e/notoemoji/latest/1f305/512.gif" type="image/gif">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 <body>
   <div class="toc">
@@ -134,7 +135,7 @@ Learning via Offline Reinforcement Learning</div>
           <div class="video-comparison-container">
             <div class="video-item">
               <video class="video-bc" src="./lampshade/Lampshade_BC_OOD.mp4" autoplay muted playsinline loop></video>
-              <p class="video-caption"><b>BC Policy:</b> BC fails to recover from initial states that are OOD.</p>
+              <p class="video-caption"><b>Diffusion Policy:</b> BC fails to recover from initial states that are OOD.</p>
             </div>
             <div class="video-item">
               <video class="video-rise" src="./lampshade/LampshadeRecovery.mp4" autoplay muted playsinline loop></video>
@@ -148,7 +149,7 @@ Learning via Offline Reinforcement Learning</div>
           <div class="video-comparison-container">
             <div class="video-item">
               <video class="video-bc" src="./tipping/Tipping_Single_Disturbance_BCU.mp4" autoplay muted playsinline loop></video>
-              <p class="video-caption"><b>BC Policy:</b> BC is unable to recover from distrubtion shift due to the inability to utilize non-expert data effectively.</p>
+              <p class="video-caption"><b>Diffusion Policy:</b> BC is unable to recover from distrubtion shift due to the inability to utilize non-expert data effectively.</p>
             </div>
             <div class="video-item">
               <video class="video-rise" src="./tipping/Tipping_Recover_From_Failure.mp4" autoplay muted playsinline loop></video>
@@ -166,7 +167,7 @@ Learning via Offline Reinforcement Learning</div>
             <div class="video-item">
               <!-- TODO: Replace with FAILING BC Tipping -->
               <video class="video-bc" src="./tipping/Lampshade_Tipping_BC_Disturbance.mp4" autoplay muted playsinline loop></video>
-              <p class="video-caption"><b>BC Policy:</b> BC fails to stitch together non-expert data with expert data.</p>
+              <p class="video-caption"><b>Diffusion Policy:</b> BC fails to stitch together non-expert data with expert data.</p>
             </div>
             <div class="video-item">
               <video class="video-rise" src="./tipping/Tipping_Two_Disturbance.mp4" autoplay muted playsinline loop></video>
@@ -218,7 +219,7 @@ Learning via Offline Reinforcement Learning</div>
       <div class="video-comparison-container">
         <div class="video-item">
           <video class="video-bc" src="./one-leg/One_Leg_BC.mp4" autoplay muted playsinline loop></video>
-          <p class="video-caption"><b>BC Policy:</b> BC learns to mimic suboptimal demonstrations, hence hindering task completion.</p>
+          <p class="video-caption"><b>Diffusion Policy:</b> BC learns to mimic suboptimal demonstrations, hence hindering task completion.</p>
         </div>
         <div class="video-item">
           <video class="video-rise" src="./one-leg/One_Leg_Insert.mp4" autoplay muted playsinline loop></video>
@@ -265,7 +266,7 @@ Learning via Offline Reinforcement Learning</div>
       <div class="video-comparison-container">
         <div class="video-item">
           <video class="video-bc" src="./cloth/Cloth_BC.mp4" autoplay muted playsinline loop></video>
-          <p class="video-caption"><b>BC Policy:</b> BC fails to complete the task by stacking the folded cloth..</p>
+          <p class="video-caption"><b>Diffusion Policy:</b> BC fails to complete the task by stacking the folded cloth..</p>
         </div>
         <div class="video-item">
           <video class="video-rise" src="./cloth/Cloth_Fold_Stack.mp4" autoplay muted playsinline loop></video>
@@ -307,31 +308,21 @@ Learning via Offline Reinforcement Learning</div>
       </p>
     </div>
 
-    <!-- Video Gallery Section - Multi-Task -->
     <div class="side-by-side-videos">
       <div class="video-comparison-container">
         <div class="video-item">
-          <!-- TODO: Replace with FAILING BC Sim -->
-          <video class="video-bc" src="" autoplay muted playsinline loop></video>
-          <p class="video-caption"><b>BC Policy:</b> BC fails to complete the task in OOD states for square-peg task.</p>
+          <video class="video-bc" src="./base/square_bcu.mp4" autoplay muted playsinline loop></video>
+          <p class="video-caption"><b>Diffusion Policy:</b> BC fails to complete the task in OOD states for square-peg and square-hook tasks.</p>
         </div>
         <div class="video-item">
-          <!-- TODO: Replace with FAILING BC Sim -->
-          <video class="video-bc" src="" autoplay muted playsinline loop></video>
-          <p class="video-caption"><b>BC Policy:</b> BC fails to complete the task in OOD states for square-hook task.</p>
-        </div>
-        <!-- TODO: Replace with RISE Sim -->
-        <div class="video-item">
-          <video class="video-rise" src="" autoplay muted playsinline loop></video>
+          <video class="video-rise" src="./viz/rise_video_square.mp4" autoplay muted playsinline loop></video>
           <p class="video-caption"><b>RISE:</b> By sharing square play data, RISE completes the square-peg tasks in a high-coverage of inital state.</p>
         </div>
-        <!-- TODO: Replace with RISE Sim -->
         <div class="video-item">
-          <video class="video-rise" src="" autoplay muted playsinline loop></video>
+          <video class="video-rise" src="./amortization/hook_policy.mp4" autoplay muted playsinline loop></video>
           <p class="video-caption"><b>RISE:</b> By sharing square play data, RISE completes the square-hook task in a high-coverage of inital state.</p>
         </div>
       </div>
-
     </div>
 
     <!-- Expandable Demo Gallery for Multi-Task Learning -->
@@ -346,17 +337,17 @@ Learning via Offline Reinforcement Learning</div>
             <div class="demo-gallery-inner">
               <div class="demo-video-item">
                 <!-- TODO: ADD EXPERT PEG -->
-                <video src="./lampshade/Lampshade_Expert_DATA.mp4" autoplay muted playsinline loop></video>
+                <video src="./amortization/square_data.mp4" autoplay muted playsinline loop></video>
                 <p class="demo-video-caption">Expert demos collected from narrow inital distribution for square-peg task.</p>
               </div>
               <!-- TODO ADD EXPERT HOOK -->
               <div class="demo-video-item">
-                <video src="./lampshade/Lampshade_Play_DATA.mp4" autoplay muted playsinline loop></video>
+                <video src="./amortization/hook_data.mp4" autoplay muted playsinline loop></video>
                 <p class="demo-video-caption">Expert demos collected from narrow inital distribution for square-hook task.</p>
               </div>
               <!-- TODO: ADD SIM PLAY -->
               <div class="demo-video-item">
-                <video src="./tipping/Tipping_DATA.mp4" autoplay muted playsinline loop></video>
+                <video src="./amortization/square_play_data.mp4" autoplay muted playsinline loop></video>
                 <p class="demo-video-caption">Play demos collected from wide inital distribution for square setting.</p>
               </div>
             </div>
@@ -421,6 +412,30 @@ Video Gallery Section - Cloth VIDEOS
   </div> -->
 <!-- End Video Gallery Section -->
 
+<!-- =============================== ENVIRONMENT COMPARISON SECTION ==================================== -->
+<div class="tagline" id="environment-comparison">RISE Outperforms BC on a Wide Range of Tasks.</div>
+
+<div class="env-comparison-section">
+  <div class="env-comparison-header">
+    <button class="env-arrow" id="env-left-arrow">&#8592;</button>
+    <button class="env-arrow" id="env-right-arrow">&#8594;</button>
+  </div>
+  <div class="env-comparison-videos">
+    <div class="env-video-item">
+      <video class="video-bc" id="env-video-0" src="" autoplay muted playsinline loop></video>
+      <p class="env-video-caption" id="env-caption-0">Baseline 1</p>
+    </div>
+    <div class="env-video-item">
+      <video class="video-bc" id="env-video-1" src="" autoplay muted playsinline loop></video>
+      <p class="env-video-caption" id="env-caption-1">Baseline 2</p>
+    </div>
+    <div class="env-video-item">
+      <video class="video-rise" id="env-video-2" src="" autoplay muted playsinline loop></video>
+      <p class="env-video-caption" id="env-caption-2">Our Method</p>
+    </div>
+  </div>
+</div>
+<!-- =============================== END ENVIRONMENT COMPARISON SECTION ==================================== -->
 
 
     <!-- Additional video gallery for generalization examples -->
@@ -450,15 +465,63 @@ Video Gallery Section - Cloth VIDEOS
     <div class="tagline" id="algorithm">The Algorithm.</div>
          <!-- Offline RL Section -->
     <div class="section-subtitle">Offline RL</div>
-    <p>TODO</p>
+    <p>
+      Offline RL is a natural method to learn policies from non-optimal data. Reward labels for human collected demonstrations on real robots
+      are difficult to obtain; thus, we only assume labels of whether the offline data belongs to an expert dataset, or a non-expert dataset. 
+      We label all transitions in the expert dataset with a reward of 1, and all transitions in the non-expert dataset with a reward of 0. 
+      We build off of IDQL, using the following updates:
+    </p>
+
+    <p>
+      $$
+      \begin{align}
+      \mathcal{L}_V(\psi) &= \mathbb{E}_{(s, a) \sim (\mathcal{D}_{\text{E}} \cup \mathcal{D}_{\text{NE}})} \left[ L^{\tau}_2 (Q_\phi (s, a) - V_{\psi}(s)) \right] \qquad \text{(Value Learning)} \\
+      \mathcal{L}_Q(\phi) &= \mathbb{E}_{(s, a) \sim \mathcal{D}_{\text{E}}} \left[ \left( 1 + \gamma V_{\psi}(s') - Q_{\phi}(s, a)\right)^2 \right]  + \mathbb{E}_{(s, a) \sim \mathcal{D}_{\text{NE}}} \left[ \left(\gamma V_{\psi}(s') - Q_{\phi}(s, a)\right)^2 \right]\\
+      \pi_B(a|s) &= \text{argmax}_{\pi} \mathbb{E}_{{s, a} \sim (\mathcal{D}_{\text{E}} \cup \mathcal{D}_{\text{NE}})}\left[\log \pi(a|s) \right] \qquad \text{(Behavior Policy Learning)} \\
+      \pi^*(a|s) &= \underset{a \in \{a_1,\dots, a_K\} \sim \pi_B(a|s)}{\text{argmax}} Q_\phi(s, a) \qquad \text{(Optimal Policy Extraction)}
+  
+      \end{align}
+      $$
+    </p>
+
+    <p>
+    However, in practice, without very large datasets, the likelihood of state-overlap in the data in a continous space tends to 0, 
+    resulting in stitching across overlapping states unlikely. This prevents offline RL from effectively recovering back to expert states
+    from non-expert ones. While this is challenging to solve in the most general case - we base our
+    practical improvements on a set of empirical findings in a robotic manipulation setting, introducing a Lipschitz penalty using spectral normalization
+    along with data augmentation to improve stitching. 
+    </p>
+
     <!-- <a id="figure-2-img" href="figs/4.png" download="4.png">
       <img src="figs/4-min.png" alt="Lipschitz Continuity">
     </a>
     <p class="figure-caption"> -->
 
-    <!-- Lipschitz Continuity Section -->
-    <div class="section-subtitle">Lipschitz Continuity for Robustness</div>
-    <p>TODO</p>
+    <!-- Improving Stitching in Offline RL -->
+    <div class="section-subtitle">Improving Stitching in Offline RL</div>
+    <p>
+    Empirically, we observe that Q-value functions learned with expectile regression tend to be accurate and interpolate well within a neighborhood of the data, showing
+    reasonable stitching behavior. The challenge comes from policy extraction—while Q functions can interpolate within a neighborhood, we find that the marginal action distribution
+    captured by the behavior policy and be overly conservative. This tends to be the main practical challenge in offline RL.
+    </p>
+
+    <p>
+    To understand this, consider the figures below, which demonstrate a toy task where the goal is to push an object to a goal on a table. By default, on the left figure, the action distribution
+    of the policy (in our case parameterized by a diffusion model) is very narrow, and the optimal action falls outside of the policy distribution (see the right figure). To remedy this, we 
+    introduce a Lipschitz penalty to the behavior policy during training, which effectively widens the action distribution, improving stitching. While there are several ways to enforce
+    Lipschitz continuity, we simply opt for regularizing the policy with a spectral norm penalty. Our behavior policy loss becomes:
+    </p>
+
+    <p>
+      $$
+      \max_\theta \mathbb{E}_{(s, a) \sim (\mathcal{D}_{\text{E}} \cup \mathcal{D}_{\text{NE}})}\left[ \log \pi_\theta(a|s) \right] + \lambda\sum_{W \in \theta} \|\sigma_{\text{max}}(W)\|^2.
+      $$
+    </p>
+
+    <p>
+      The effect of spectral norm regularization is shown in the figure below, significantly widening the action distribution.
+    </p>
+
     <a id="figure-3-img" href="SpectralGraphic.jpeg" download="SpectralGraphic.jpeg">
       <img src="figs/SpectralGraphic.jpeg" alt="Effect of Spectral Norm on Action Distribution">
     </a>
@@ -467,14 +530,68 @@ Video Gallery Section - Cloth VIDEOS
     </p>
 
      <!-- Data Augmentation Section -->
-     <div class="section-subtitle">Data Augmentation</div>
-     <p>TODO</p>
     <!-- <a id="figure-3-img" href="figs/3.png" download="3.png">
       <img src="figs/3-min.png" alt="Training Process">
     </a>
     <p class="figure-caption">
       <b>Figure 3:</b> Training process showing how Lipschitz constraints improve policy robustness.
     </p> -->
+
+    <p>
+    In addition, we apply an explicit method of widening the policy distribution by adding additional transitions to the dataset. For a given (s, a) pair, we
+    select nearby transitions (s', a') such that d(s, s') < T for some threshold T and distance metric d. We then add the transition (s, a') to the dataset.
+    We use Euclidean distance in the feature space of a large pretrained vision model, in our case DINOv2, as the distance metric, which has been shown to capture
+    semantic similarity between images.
+    </p>
+
+    <p>
+    We can also visualize the effect of RISE in the figures below. Below, we first visualize the expert and non-expert data for the square-peg task. Though they
+    appear to overlap, in practice, stitching is challenging. We see that using naive offline RL, the policy takes transitions similar to those found in 
+    the non-expert data, but is unable to stitch to complete the task. In contrast, RISE, which incorporates the Lipschitz penalty and data augmentation, successfully completes the task.
+    </p>
+
+    <!-- =============================== DATA VIZ ==================================== -->
+    <div class="video-grid-2x2-section">
+      <div class="video-grid-2x2">
+        <div class="grid-video-item">
+          <video src="./viz/rewards_play_render.mp4" autoplay muted playsinline loop></video>
+          <p class="grid-video-caption">Non-expert data for the square-peg task.</p>
+        </div>
+        <div class="grid-video-item">
+          <video src="./viz/rewards_play_animation.mp4" autoplay muted playsinline loop></video>
+          <p class="grid-video-caption">Visualization of trajectories in the non-expert data, showing task completion.</p>
+        </div>
+        <div class="grid-video-item">
+          <video src="./viz/rewards_expert_render.mp4" autoplay muted playsinline loop></video>
+          <p class="grid-video-caption">Example of expert data for the square-peg task.</p>
+        </div>
+        <div class="grid-video-item">
+          <video src="./viz/rewards_expert_animation.mp4" autoplay muted playsinline loop></video>
+          <p class="grid-video-caption">Visualization of trajectories in the expert data, showing task completion.</p>
+        </div>
+      </div>
+    </div>
+    <!-- =============================== END DATA VIZ ==================================== -->
+
+    <!-- =============================== COMPARISON VIDEOS ==================================== -->
+    <div class="three-video-comparison-section">
+      <div class="three-video-comparison-container">
+        <div class="three-video-item">
+          <video class="video-bc" src="./viz/nospectral_video_square.mp4" autoplay muted playsinline loop></video>
+          <p class="three-video-caption">Policy trained with naive offline RL</p>
+        </div>
+        <div class="three-video-item">
+          <video class="no-border-video" src="./viz/comparison_graph.mp4" autoplay muted playsinline loop></video>
+          <p class="three-video-caption">Naive offline RL fails to stitch, resulting in task failure, while RISE successfully stitches.</p>
+        </div>
+        <div class="three-video-item">
+          <video class="video-rise" src="./viz/rise_video_square.mp4" autoplay muted playsinline loop></video>
+          <p class="three-video-caption">Policy trained with RISE</p>
+        </div>
+      </div>
+    </div>
+    <!-- =============================== END COMPARISON VIDEOS ==================================== -->
+    
 
 
     <!-- =============================== ACKNOWLEDGEMENTS ==================================== -->
@@ -492,6 +609,9 @@ Video Gallery Section - Cloth VIDEOS
       <pre><code>Insert bibtex here.
         }</code></pre>
     </div>
+
+
+  
 
   </div> <!-- End of main-content div -->
 
@@ -620,6 +740,59 @@ Video Gallery Section - Cloth VIDEOS
       });
     });
   </script>
+
+<script>
+  const envData = [
+
+    {
+      title: "Environment 2",
+      videos: [
+        { src: "./base/two_piece_bc.mp4", caption: "Base Diffusion Policy" },
+        { src: "./base/two_piece_bcu.mp4", caption: "Diffusion Policy with Non-Expert Data" },
+        { src: "./base/two_piece_rise.mp4", caption: "RISE" }
+      ]
+    },
+    {
+      title: "Environment 3",
+      videos: [
+        { src: "./base/threading_bc.mp4", caption: "Base Diffusion Policy" },
+        { src: "./base/threading_bcu.mp4", caption: "Diffusion Policy with Non-Expert Data" },
+        { src: "./base/threading_rise.mp4", caption: "RISE" }
+      ]
+    },
+    {
+      title: "Environment 1",
+      videos: [
+        { src: "./base/square_bc.mp4", caption: "Base Diffusion Policy" },
+        { src: "./base/square_bcu.mp4", caption: "Diffusion Policy with Non-Expert Data" },
+        { src: "./base/square_rise.mp4", caption: "RISE" }
+      ]
+    },
+
+    // Add more environments as needed
+  ];
+
+  let currentEnv = 0;
+
+  function updateEnvSection() {
+    for (let i = 0; i < 3; i++) {
+      document.getElementById(`env-video-${i}`).src = envData[currentEnv].videos[i].src;
+      document.getElementById(`env-caption-${i}`).textContent = envData[currentEnv].videos[i].caption;
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    updateEnvSection();
+    document.getElementById('env-left-arrow').onclick = function() {
+      currentEnv = (currentEnv - 1 + envData.length) % envData.length;
+      updateEnvSection();
+    };
+    document.getElementById('env-right-arrow').onclick = function() {
+      currentEnv = (currentEnv + 1) % envData.length;
+      updateEnvSection();
+    };
+  });
+</script>
 
 </body>
 </html>
