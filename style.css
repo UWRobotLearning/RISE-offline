@@ -649,7 +649,23 @@ button:focus {
 
 .video-item video {
   width: 100%;
-  height: 400px;
+  height: 300px;
+  object-fit: cover;
+  border: 1.5px solid #000;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  transition: transform 0.2s ease;
+}
+
+.video-item2 {
+  flex: 1;
+  max-width: 300px;
+  text-align: center;
+}
+
+.video-item2 video {
+  width: 100%;
+  height: 300px;
   object-fit: cover;
   border: 1.5px solid #000;
   border-radius: 10px;
@@ -857,6 +873,22 @@ button:focus {
   transition: transform 0.2s ease;
 }
 
+.demo-video-item2 {
+  flex-shrink: 0;
+  width: 250px;
+  text-align: center;
+}
+
+.demo-video-item2 video {
+  width: 250px;
+  height: 250px;
+  object-fit: cover;
+  border: 1.5px solid #000;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  transition: transform 0.2s ease;
+}
+
 .demo-video-item video:hover {
   transform: scale(1.02);
 }
@@ -1029,18 +1061,35 @@ button:focus {
 
 .three-video-item {
   flex: 1;
-  max-width: 300px;
+  max-width: 280px;
   text-align: center;
 }
 
 .three-video-item video {
   width: 100%;
-  height: 260px;
+  height: 280px;
   object-fit: cover;
   border-radius: 10px;
   margin-bottom: 10px;
   background: #000;
 }
+
+.three-video-item2 {
+  flex: 1;
+  max-width: 300px;
+  text-align: center;
+}
+
+.three-video-item2 video {
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  background: #000;
+  transform: scale(0.88);
+}
+
 
 .no-border-video {
   border: none !important;
