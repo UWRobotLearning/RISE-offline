@@ -134,12 +134,12 @@ Learning via Offline Reinforcement Learning</div>
           <p class="recovery-description">By utilizing play data, RISE is able to recover from <b>OOD states</b>.</p>
           <div class="video-comparison-container">
             <div class="video-item">
-              <video class="video-bc" src="./lampshade/Lampshade_BC_OOD.mp4" autoplay muted playsinline loop></video>
-              <p class="video-caption"><b>Diffusion Policy:</b> BC fails to recover from initial states that are OOD.</p>
+              <video class="video-bc" src="./lampshade/lampshade_stitching_fail.mp4" autoplay muted playsinline loop></video>
+              <p class="video-caption"><b>Standard Offline RL (IDQL):</b> Offline RL fails to stitch disjoint trajectories together.</p>
             </div>
             <div class="video-item">
-              <video class="video-rise" src="./lampshade/LampshadeRecovery.mp4" autoplay muted playsinline loop></video>
-              <p class="video-caption"><b>RISE:</b> By leveraging non-expert data, RISE is able to recover from OOD states.</p>
+              <video class="video-rise" src="./lampshade/lampshade_stitching.mp4" autoplay muted playsinline loop></video>
+              <p class="video-caption"><b>RISE:</b> By leveraging non-expert data in addition to expert data, RISE is able to recover from OOD states.</p>
             </div>
           </div>
         </div>
@@ -167,11 +167,11 @@ Learning via Offline Reinforcement Learning</div>
             <div class="video-item">
               <!-- TODO: Replace with FAILING BC Tipping -->
               <video class="video-bc" src="./tipping/Lampshade_Tipping_BC_Disturbance.mp4" autoplay muted playsinline loop></video>
-              <p class="video-caption"><b>Diffusion Policy:</b> BC fails to stitch together non-expert data with expert data.</p>
+              <p class="video-caption"><b>Diffusion Policy:</b> BC policies are brittle and cannot utilize non-expert data effectively.</p>
             </div>
             <div class="video-item">
               <video class="video-rise" src="./tipping/Tipping_Two_Disturbance.mp4" autoplay muted playsinline loop></video>
-              <p class="video-caption"><b>RISE:</b> RISE is able to continually recover from multiple disturbances.</p>
+              <p class="video-caption"><b>RISE:</b> RISE creates robust policies that are able to continually recover from multiple disturbances.</p>
             </div>
           </div>
         </div>
